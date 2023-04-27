@@ -18,17 +18,6 @@ class AuthController: NSObject {
         database = Firestore.firestore()
         super.init()
         
-//        Task {
-//            do {
-//                let authDataResult = try await authController.signInAnonymously()
-//                currentUser = authDataResult.user
-//            }
-//            catch {
-//                fatalError("Firebase Authentication Failed with Error")
-//            }
-//
-//
-//        }
     }
     func getCurrentUser()->FirebaseAuth.User?{
         return Auth.auth().currentUser

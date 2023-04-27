@@ -17,7 +17,6 @@ class UserController: NSObject {
         database = Firestore.firestore()
         userRef = database.collection("users")
         super.init()
-        self.setupUserListener()
     }
     
     func setupUserListener(){ 
@@ -27,23 +26,14 @@ class UserController: NSObject {
                 print("Failed to fetch documents with error: \(String(describing: error))");
                 return
             }
-        }
-        self.getAllTrips()
-        
-        
-    }
-    
-    // move to trips controller
-    func getAllTrips(){
-        var currentUser = AuthController().getCurrentUser()
-        var user = UserController().getUserByID(id: currentUser!.uid) { (User, Error) in
-            print(User)
-            print(Error)
+            self.parseUserSnapshot(snapshot: QuerySnapshot)
         }
         
         
     }
     
+    
+        
     
     func createUser(id: String, email: String , trips: [DocumentReference] = []){
         let user = User()
@@ -59,19 +49,31 @@ class UserController: NSObject {
     }
         
     
+
     func getUserByID(id: String, completion: @escaping (User?, Error?) -> Void) {
+            
+        // Get a reference to the "users" collection in Firestore
+        let usersCollection = Firestore.firestore().collection("users")
         
-        userRef!.whereField("id", isEqualTo: id).getDocuments { (querySnapshot, error) in
+        // Get a reference to the document with the given ID in the "users" collection
+        let userDoc = usersCollection.document(id)
+        
+        // Retrieve the user's data from Firestore
+        userDoc.getDocument { (documentSnapshot, error) in
+            
+            // Handle any errors that occurred while retrieving the user's data
             if let error = error {
                 completion(nil, error)
                 return
             }
             
-            guard let document = querySnapshot?.documents.first else {
+            // Check if the user's document exists in the database
+            guard let document = documentSnapshot else {
                 completion(nil, nil)
                 return
             }
             
+            // Convert the user's data into a User object
             do {
                 let user = try document.data(as: User.self)
                 completion(user, nil)
@@ -80,6 +82,7 @@ class UserController: NSObject {
             }
         }
     }
+
 
     func parseUserSnapshot(snapshot:QuerySnapshot){
         

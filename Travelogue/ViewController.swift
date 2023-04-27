@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class ViewController: UIViewController {
-    var loginSuccess:Bool?
+    var loginSuccess=false
     
     @IBAction func signUp(_ sender: Any) {
         AuthController().signUp(email: emailTextField.text!, password: passwordTextField.text!)
@@ -24,7 +24,6 @@ class ViewController: UIViewController {
                 print(Auth.auth().currentUser?.email)
                 DispatchQueue.main.async { // only runs AFTER login success is assigned
                     self.loginSuccess=true
-                    self.performSegue(withIdentifier: "homePageSegue", sender: self)
                 }
             } else {
                 // Login failed, handle the error
@@ -51,11 +50,12 @@ class ViewController: UIViewController {
         
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "homePageSegue" {
+        if identifier == "homePageSegue" && loginSuccess {
             // Prevent segue if login failed
             return false
         }
         return true
+    
     }
 
 }
