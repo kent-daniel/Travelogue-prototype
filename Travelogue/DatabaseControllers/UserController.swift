@@ -20,7 +20,7 @@ class UserController: NSObject {
         self.setupUserListener()
     }
     
-    func setupUserListener(){
+    func setupUserListener(){ 
         userRef?.addSnapshotListener() {
             (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else {
