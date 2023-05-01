@@ -24,22 +24,22 @@ class AuthController: NSObject {
     }
     
     // AUTH
-    func signUp(email: String, password: String) -> Bool{
-        var signupSuccess=false
-        Auth.auth().createUser(withEmail: email, password: password)
-        { (user, error) in
-            if error == nil{
-                self.currentUser = Auth.auth().currentUser!
-                
-                signupSuccess=true
-                UserController().createUser(id: self.currentUser!.uid, email: email)
-            }else{
-                print(error)
+    func signUp(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(false, error)
+            } else if let user = user {
+                let newUser = Auth.auth().currentUser!
+                self.currentUser = newUser
+                UserController().createUser(id: newUser.uid, email: email)
+                completion(true, nil)
+            } else {
+                completion(false, nil)
             }
-            
         }
-        return signupSuccess
     }
+    
     func signIn(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error == nil {

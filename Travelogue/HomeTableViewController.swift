@@ -14,7 +14,7 @@ class HomeTableViewController: UITableViewController {
         var username = AuthController().getCurrentUser()?.email
         
         self.title = "Welcome Home , " + username!
-        TripController().getAllTrips()
+        TripController().getCurrentUserTrips()
 //        UserController().setupUserListener()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

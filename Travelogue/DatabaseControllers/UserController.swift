@@ -19,15 +19,16 @@ class UserController: NSObject {
         super.init()
     }
     
-    func setupUserListener(){ 
-        userRef?.addSnapshotListener() {
-            (querySnapshot, error) in
-            guard let querySnapshot = querySnapshot else {
-                print("Failed to fetch documents with error: \(String(describing: error))");
-                return
-            }
-            self.parseUserSnapshot(snapshot: QuerySnapshot)
-        }
+    func setupUserListener(){
+        // TODO
+//        userRef?.addSnapshotListener() {
+//            (querySnapshot, error) in
+//            guard let querySnapshot = querySnapshot else {
+//                print("Failed to fetch documents with error: \(String(describing: error))");
+//                return
+//            }
+//            self.parseUserSnapshot(snapshot: QuerySnapshot)
+//        }
         
         
     }

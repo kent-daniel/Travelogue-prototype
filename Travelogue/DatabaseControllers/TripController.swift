@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class TripController: NSObject {
+    var database: Firestore
+    var tripRef : CollectionReference?
     // move to trips controller
-    func getAllTrips(){
+    func getCurrentUserTrips(){
         // move to trips controller
         
         var currentUser = AuthController().getCurrentUser()
@@ -22,5 +26,15 @@ class TripController: NSObject {
             }
         })
         print(user)
+    }
+    
+    func createTrip(){
+        
+    }
+    
+    override init() {
+        database = Firestore.firestore()
+        tripRef = database.collection("trips")
+        super.init()
     }
 }

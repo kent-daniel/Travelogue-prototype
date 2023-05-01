@@ -12,9 +12,10 @@
 		84C5154629F9EBCE00B2902B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154529F9EBCE00B2902B /* User.swift */; };
 		84C5154829F9F1E400B2902B /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154729F9F1E400B2902B /* Trip.swift */; };
 		84C5154A29FA004500B2902B /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154929FA004500B2902B /* TripController.swift */; };
+		84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D994CC29FFE85B0057B8C8 /* SignUpViewController.swift */; };
 		84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371629F94B1D00A3BD9C /* AppDelegate.swift */; };
 		84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */; };
-		84F3371B29F94B1D00A3BD9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371A29F94B1D00A3BD9C /* ViewController.swift */; };
+		84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371A29F94B1D00A3BD9C /* LoginViewController.swift */; };
 		84F3371E29F94B1D00A3BD9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3371C29F94B1D00A3BD9C /* Main.storyboard */; };
 		84F3372129F94B1D00A3BD9C /* Travelogue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371F29F94B1D00A3BD9C /* Travelogue.xcdatamodeld */; };
 		84F3372329F94B1D00A3BD9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F3372229F94B1D00A3BD9C /* Assets.xcassets */; };
@@ -54,10 +55,11 @@
 		84C5154529F9EBCE00B2902B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84C5154729F9F1E400B2902B /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		84C5154929FA004500B2902B /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
+		84D994CC29FFE85B0057B8C8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		84F3371329F94B1D00A3BD9C /* Travelogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3371629F94B1D00A3BD9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		84F3371A29F94B1D00A3BD9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84F3371A29F94B1D00A3BD9C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84F3371D29F94B1D00A3BD9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84F3372029F94B1D00A3BD9C /* Travelogue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Travelogue.xcdatamodel; sourceTree = "<group>"; };
 		84F3372229F94B1D00A3BD9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,7 +140,8 @@
 				84F3375629F965B000A3BD9C /* DatabaseControllers */,
 				84F3371629F94B1D00A3BD9C /* AppDelegate.swift */,
 				84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */,
-				84F3371A29F94B1D00A3BD9C /* ViewController.swift */,
+				84F3371A29F94B1D00A3BD9C /* LoginViewController.swift */,
+				84D994CC29FFE85B0057B8C8 /* SignUpViewController.swift */,
 				84F3371C29F94B1D00A3BD9C /* Main.storyboard */,
 				84F3372229F94B1D00A3BD9C /* Assets.xcassets */,
 				84F3372429F94B1D00A3BD9C /* LaunchScreen.storyboard */,
@@ -319,8 +322,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */,
 				84C5154129F9D8E000B2902B /* HomeTableViewController.swift in Sources */,
-				84F3371B29F94B1D00A3BD9C /* ViewController.swift in Sources */,
+				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,
 				84F3375829F966E900A3BD9C /* AuthController.swift in Sources */,
 				84C5154829F9F1E400B2902B /* Trip.swift in Sources */,
 				84F3372129F94B1D00A3BD9C /* Travelogue.xcdatamodeld in Sources */,
