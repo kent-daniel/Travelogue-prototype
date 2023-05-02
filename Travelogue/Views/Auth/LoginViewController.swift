@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 class LoginViewController: UIViewController {
     
     @IBAction func goToSignUp(_ sender: Any) {
-        self.navigateToSignUpController()
+        NavigationHelper.navigateToSignUp(from: self)
     }
     @IBAction func signIn(_ sender: Any) {
         AuthController().signIn(email: emailTextField.text!, password: passwordTextField.text!){ (success, error) in
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
                 // Login successful, do something
                 print(Auth.auth().currentUser?.email)
                 DispatchQueue.main.async { // only runs AFTER login success is assigned
-                    self.navigateToHomeController()
+                    NavigationHelper.navigateToTripController(from: self)
                 }
             } else {
                 // Login failed, handle the error
@@ -71,19 +71,12 @@ class LoginViewController: UIViewController {
         guard let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {
             return
         }
-        signUpViewController.navigationItem.hidesBackButton = true
+        
 
         navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    func navigateToHomeController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeTableViewController") as? HomeTableViewController else {
-            return
-        }
-        homeViewController.navigationItem.hidesBackButton=true
-        navigationController?.pushViewController(homeViewController, animated: true)
-    }
+    
 
     
     func downloadImage(from httpsUrl: String, into imageView: UIImageView) async -> UIImage? {

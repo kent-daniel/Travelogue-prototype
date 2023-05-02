@@ -10,7 +10,9 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 class User: NSObject ,Codable{
+    var id:String?
     var email:String?
     var trips :[DocumentReference]?
+    var name: String?
     
 }

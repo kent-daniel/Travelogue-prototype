@@ -21,24 +21,26 @@ class UserController: NSObject {
     
     func setupUserListener(){
         // TODO
-//        userRef?.addSnapshotListener() {
-//            (querySnapshot, error) in
-//            guard let querySnapshot = querySnapshot else {
-//                print("Failed to fetch documents with error: \(String(describing: error))");
-//                return
-//            }
-//            self.parseUserSnapshot(snapshot: QuerySnapshot)
-//        }
+        //        userRef?.addSnapshotListener() {
+        //            (querySnapshot, error) in
+        //            guard let querySnapshot = querySnapshot else {
+        //                print("Failed to fetch documents with error: \(String(describing: error))");
+        //                return
+        //            }
+        //            self.parseUserSnapshot(snapshot: QuerySnapshot)
+        //        }
         
         
     }
     
     
-        
     
-    func createUser(id: String, email: String , trips: [DocumentReference] = []){
+    
+    func createUser(id: String, email: String , name: String , trips: [DocumentReference] = []){
         let user = User()
+        user.id = id
         user.email = email
+        user.name = name
         user.trips=trips
         let userRef = userRef?.document(id)
         do {
@@ -48,11 +50,11 @@ class UserController: NSObject {
             print("Failed to create user: \(error.localizedDescription)")
         }
     }
-        
     
-
+    
+    
     func getUserByID(id: String, completion: @escaping (User?, Error?) -> Void) {
-            
+        
         // Get a reference to the "users" collection in Firestore
         let usersCollection = Firestore.firestore().collection("users")
         
@@ -83,36 +85,55 @@ class UserController: NSObject {
             }
         }
     }
-
-
-    func parseUserSnapshot(snapshot:QuerySnapshot){
+    
+    func addTripToUser(user:User , newTrip:Trip){
+        // get trip reference
+        let tripRef = TripController().getDocumentReference(for: newTrip)!
         
-        snapshot.documentChanges.forEach { (change) in
-            var parsedUser: User?
-            do {
-                parsedUser = try change.document.data(as: User.self)
-                var docRefs = parsedUser?.trips
-                docRefs?.forEach({ docRef in
-                    docRef.getDocument { (document, error) in
-                        if let error = error {
-                            print("Error fetching document: \(error)")
-                        } else if let document = document, document.exists {
-//                            let data = document.data(as: Trip.self)
-                            // trips
-//                            print(data)
-                            // Process the data as needed
-                        } else {
-                            print("Document does not exist")
-                        }
-                    }
-                })
-                
-            } catch {
-                print("Unable to decode hero. Is the hero malformed?")
-                return
+        // get user reference
+        let userRef = userRef?.document(user.id!)
+        
+        // "append" trip
+        userRef!.updateData([
+            "trips": FieldValue.arrayUnion([tripRef])
+        ]){ error in
+            if let error = error {
+                print("Error updating user document: \(error.localizedDescription)")
+            } else {
+                print("User document updated successfully!")
             }
             
         }
         
+        func parseUserSnapshot(snapshot:QuerySnapshot){
+            
+            snapshot.documentChanges.forEach { (change) in
+                var parsedUser: User?
+                do {
+                    parsedUser = try change.document.data(as: User.self)
+                    var docRefs = parsedUser?.trips
+                    docRefs?.forEach({ docRef in
+                        docRef.getDocument { (document, error) in
+                            if let error = error {
+                                print("Error fetching document: \(error)")
+                            } else if let document = document, document.exists {
+                                //                            let data = document.data(as: Trip.self)
+                                // trips
+                                //                            print(data)
+                                // Process the data as needed
+                            } else {
+                                print("Document does not exist")
+                            }
+                        }
+                    })
+                    
+                } catch {
+                    print("Unable to decode hero. Is the hero malformed?")
+                    return
+                }
+                
+            }
+            
+        }
     }
 }

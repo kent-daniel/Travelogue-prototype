@@ -1,21 +1,17 @@
 //
-//  HomeTableViewController.swift
+//  MembersEditTableViewController.swift
 //  Travelogue
 //
-//  Created by kent daniel on 27/4/2023.
+//  Created by kent daniel on 3/5/2023.
 //
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class MembersEditTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var username = AuthController().getCurrentUser()?.email
-        
-        self.title = "Welcome Home , " + username!
-        TripController().getCurrentUserTrips()
-//        UserController().setupUserListener()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

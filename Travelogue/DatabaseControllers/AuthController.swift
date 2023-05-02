@@ -24,7 +24,7 @@ class AuthController: NSObject {
     }
     
     // AUTH
-    func signUp(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+    func signUp(name:String , email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -32,7 +32,7 @@ class AuthController: NSObject {
             } else if let user = user {
                 let newUser = Auth.auth().currentUser!
                 self.currentUser = newUser
-                UserController().createUser(id: newUser.uid, email: email)
+                UserController().createUser(id: newUser.uid, email: email, name: name)
                 completion(true, nil)
             } else {
                 completion(false, nil)
