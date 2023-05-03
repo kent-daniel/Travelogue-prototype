@@ -85,7 +85,41 @@ class UserController: NSObject {
             }
         }
     }
-    
+    func searchUsersByEmail(email: String, completion: @escaping ([User]?, Error?) -> Void) {
+        
+        // Create a query that searches for users with email equal to or containing the given string
+        
+        
+        // ISSUE : cant do partial matching
+       
+        let query = userRef!.whereField("email", isEqualTo: email)
+                                    .whereField("email", isLessThanOrEqualTo: email + "\u{f8ff}")
+
+        // Execute the query and retrieve the matching documents
+        query.getDocuments { (querySnapshot, error) in
+            // Handle any errors that occurred while retrieving the documents
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+
+            // Convert the documents into User objects and add them to the results array
+            var results: [User] = []
+            for document in querySnapshot!.documents {
+                do {
+                    let user = try document.data(as: User.self)
+                    print(user.email)
+                    results.append(user)
+                } catch {
+                    print("Unable to decode user. Is the user malformed?")
+                }
+            }
+
+            // Call the completion handler with the results array
+            completion(results, nil)
+        }
+    }
+
     func addTripToUser(user:User , newTrip:Trip){
         // get trip reference
         let tripRef = TripController().getDocumentReference(for: newTrip)!

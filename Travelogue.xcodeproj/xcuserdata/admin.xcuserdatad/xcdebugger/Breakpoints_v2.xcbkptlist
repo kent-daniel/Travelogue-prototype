@@ -78,8 +78,8 @@
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "parseUserSnapshot(snapshot:)"
             landmarkType = "9">
             <Locations>
@@ -126,8 +126,8 @@
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "parseUserSnapshot(snapshot:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -248,7 +248,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0D411F90-23F2-4D93-8854-E1B1BEA6CCB5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelogue/Views/Trip/TripTableViewController.swift"
@@ -256,7 +256,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "loadTrips()"
+            landmarkName = "fetchTrips()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -288,6 +288,102 @@
                   startingLineNumber = "38"
                   endingLineNumber = "38"
                   offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F484DB8-FBEA-478A-8644-3825E9A66315"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Members/MembersEditTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "saveBtnPressed(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3F484DB8-FBEA-478A-8644-3825E9A66315 - b61f8752aa044c75"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MembersEditTableViewController.passMembersArray(Any) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Members/MembersEditTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "3F484DB8-FBEA-478A-8644-3825E9A66315 - 123e77acca3de815"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MembersEditTableViewController.saveSelectedMembers(Any) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Members/MembersEditTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CAAC7A8-B433-466D-94DB-A340EBF71D4A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Members/MembersEditTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "saveBtnPressed(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4CAAC7A8-B433-466D-94DB-A340EBF71D4A - 11cfd306f49db53"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MembersEditTableViewController.saveBtnPressed(Any) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Members/MembersEditTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "4CAAC7A8-B433-466D-94DB-A340EBF71D4A - 11cfd306f49db53"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MembersEditTableViewController.saveBtnPressed(Any) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Members/MembersEditTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "156">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -142,6 +142,7 @@
 		844511E22A0158560068E2CB /* Trip */ = {
 			isa = PBXGroup;
 			children = (
+				844C4EFB2A021A5100D34068 /* delegates */,
 				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
 				844511DC2A0157D80068E2CB /* TripEditViewController.swift */,
 				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
@@ -164,6 +165,13 @@
 				84F3372429F94B1D00A3BD9C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		844C4EFB2A021A5100D34068 /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = delegates;
 			sourceTree = "<group>";
 		};
 		84C5154429F9EBA600B2902B /* Models */ = {

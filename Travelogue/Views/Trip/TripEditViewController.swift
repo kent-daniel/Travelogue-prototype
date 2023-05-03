@@ -10,6 +10,7 @@ import UIKit
 class TripEditViewController: UIViewController {
     
     var currentUser : User?
+    var members : [User]?
     
     @IBOutlet weak var MemberListTableView: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -32,10 +33,15 @@ class TripEditViewController: UIViewController {
             }
         }
         
-        // fetch all members
+        
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // get members
+        print(members)
     }
     
     

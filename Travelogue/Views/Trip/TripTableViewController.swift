@@ -13,12 +13,12 @@ class TripTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle()
-        loadTrips()
+        fetchTrips()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadTrips()
+        fetchTrips()
     }
     
     
@@ -34,7 +34,7 @@ class TripTableViewController: UITableViewController {
         }
     }
 
-    func loadTrips() {
+    func fetchTrips() {
         TripController().getCurrentUserTrips { trips in
             if let trips = trips {
                 print(trips)
