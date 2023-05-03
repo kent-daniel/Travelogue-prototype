@@ -12,10 +12,10 @@ import FirebaseFirestoreSwift
 class UserController: NSObject {
     var database: Firestore
     var userRef : CollectionReference?
-    
+    let USER_COL_NAME = "users"
     override init() {
         database = Firestore.firestore()
-        userRef = database.collection("users")
+        userRef = database.collection(USER_COL_NAME)
         super.init()
     }
     
@@ -34,7 +34,13 @@ class UserController: NSObject {
     }
     
     
-    
+    func getDocumentReference(for user: User) -> DocumentReference? {
+        if let userID = user.id {
+            return Firestore.firestore().collection(USER_COL_NAME).document(userID)
+        } else {
+            return nil
+        }
+    }
     
     func createUser(id: String, email: String , name: String , trips: [DocumentReference] = []){
         let user = User()
@@ -56,7 +62,7 @@ class UserController: NSObject {
     func getUserByID(id: String, completion: @escaping (User?, Error?) -> Void) {
         
         // Get a reference to the "users" collection in Firestore
-        let usersCollection = Firestore.firestore().collection("users")
+        let usersCollection = Firestore.firestore().collection(USER_COL_NAME)
         
         // Get a reference to the document with the given ID in the "users" collection
         let userDoc = usersCollection.document(id)
@@ -91,10 +97,10 @@ class UserController: NSObject {
         
         
         // ISSUE : cant do partial matching
-       
+        
         let query = userRef!.whereField("email", isEqualTo: email)
-                                    .whereField("email", isLessThanOrEqualTo: email + "\u{f8ff}")
-
+            .whereField("email", isLessThanOrEqualTo: email + "\u{f8ff}")
+        
         // Execute the query and retrieve the matching documents
         query.getDocuments { (querySnapshot, error) in
             // Handle any errors that occurred while retrieving the documents
@@ -102,7 +108,7 @@ class UserController: NSObject {
                 completion(nil, error)
                 return
             }
-
+            
             // Convert the documents into User objects and add them to the results array
             var results: [User] = []
             for document in querySnapshot!.documents {
@@ -114,12 +120,12 @@ class UserController: NSObject {
                     print("Unable to decode user. Is the user malformed?")
                 }
             }
-
+            
             // Call the completion handler with the results array
             completion(results, nil)
         }
     }
-
+    
     func addTripToUser(user:User , newTrip:Trip){
         // get trip reference
         let tripRef = TripController().getDocumentReference(for: newTrip)!
@@ -139,35 +145,35 @@ class UserController: NSObject {
             
         }
         
-        func parseUserSnapshot(snapshot:QuerySnapshot){
+//        func parseUserSnapshot(snapshot:QuerySnapshot){
+//
+//            snapshot.documentChanges.forEach { (change) in
+//                var parsedUser: User?
+//                do {
+//                    parsedUser = try change.document.data(as: User.self)
+//                    var docRefs = parsedUser?.trips
+//                    docRefs?.forEach({ docRef in
+//                        docRef.getDocument { (document, error) in
+//                            if let error = error {
+//                                print("Error fetching document: \(error)")
+//                            } else if let document = document, document.exists {
+//                                //                            let data = document.data(as: Trip.self)
+//                                // trips
+//                                //                            print(data)
+//                                // Process the data as needed
+//                            } else {
+//                                print("Document does not exist")
+//                            }
+//                        }
+//                    })
+//
+//                } catch {
+//                    print("Unable to decode hero. Is the hero malformed?")
+//                    return
+//                }
+//
+//            }
             
-            snapshot.documentChanges.forEach { (change) in
-                var parsedUser: User?
-                do {
-                    parsedUser = try change.document.data(as: User.self)
-                    var docRefs = parsedUser?.trips
-                    docRefs?.forEach({ docRef in
-                        docRef.getDocument { (document, error) in
-                            if let error = error {
-                                print("Error fetching document: \(error)")
-                            } else if let document = document, document.exists {
-                                //                            let data = document.data(as: Trip.self)
-                                // trips
-                                //                            print(data)
-                                // Process the data as needed
-                            } else {
-                                print("Document does not exist")
-                            }
-                        }
-                    })
-                    
-                } catch {
-                    print("Unable to decode hero. Is the hero malformed?")
-                    return
-                }
-                
-            }
-            
-        }
+//        }
     }
 }

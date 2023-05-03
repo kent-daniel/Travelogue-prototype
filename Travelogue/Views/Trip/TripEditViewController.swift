@@ -7,18 +7,23 @@
 
 import UIKit
 
-class TripEditViewController: UIViewController {
+class TripEditViewController: UIViewController ,passMembersDelegate{
     
     var currentUser : User?
     var members : [User]?
     
-    @IBOutlet weak var MemberListTableView: UITableView!
+    @IBOutlet weak var membersTable: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
     
+    // ISSUE : rename
     @IBAction func addTrip(_ sender: Any) {
-        TripController().createNewTrip(name: nameTextField.text!, admin: self.currentUser!)
+        // add admin
+        let currentTrip = TripController().createNewTrip(name: nameTextField.text!, admin: self.currentUser!)
         
-        NavigationHelper.navigateToTripController(from: self)
+        print(members)
+        TripController().updateTripMembers(members: members!, trip: currentTrip!)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -33,27 +38,67 @@ class TripEditViewController: UIViewController {
             }
         }
         
+        // Set up table view
+        tableViewSetup()
         
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // get members
-        print(members)
+        
+    }
+    
+    // UI set up
+    func tableViewSetup(){
+        membersTable.layer.borderColor = UIColor.lightGray.cgColor
+        membersTable.layer.borderWidth = 1
+        membersTable.layer.cornerRadius = 8
+        membersTable.layer.masksToBounds = true
+        
+        membersTable.dataSource = self
+        membersTable.delegate = self
+        membersTable.register(UITableViewCell.self, forCellReuseIdentifier: "membersCell")
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    func passMembers(members: [User]) {
+        self.members=members
+        membersTable.reloadData()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "tripEditAddMembers"){
+            let membersVC = segue.destination as! MembersEditTableViewController
+            membersVC.delegate = self
+        }
     }
-    */
-
+    
+    
+    
+    
+    
+    
 }
+
+
+extension TripEditViewController : UITableViewDelegate , UITableViewDataSource{
+    // TABLE VIEW CODE
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return members?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "membersCell", for: indexPath)
+        let member = members![indexPath.row]
+        cell.textLabel?.text = member.name
+        return cell
+    }
+    
+    
+}
+
+
+
+
+
+
+
+

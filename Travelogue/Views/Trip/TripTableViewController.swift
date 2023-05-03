@@ -37,7 +37,6 @@ class TripTableViewController: UITableViewController {
     func fetchTrips() {
         TripController().getCurrentUserTrips { trips in
             if let trips = trips {
-                print(trips)
                 self.userTrips=trips
                 self.tableView.reloadData()
             } else {
@@ -70,7 +69,6 @@ class TripTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath)
         
         let trip = userTrips[indexPath.row]
-        print(trip.name)
         cell.textLabel?.text = trip.name // Display the trip name in the cell
         
         return cell

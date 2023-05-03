@@ -7,17 +7,19 @@
 
 import UIKit
 
+protocol passMembersDelegate : NSObjectProtocol{
+    func passMembers(members: [User])
+}
+
+
+
 class MembersEditTableViewController: UITableViewController , UISearchBarDelegate{
-    
+    weak var delegate : passMembersDelegate?
     var members = [User]()
     var indicator = UIActivityIndicatorView()
     
     @IBAction func saveBtnPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let tripEditVC = storyboard.instantiateViewController(withIdentifier: "TripEditViewController") as? TripEditViewController else {
-                    return
-                }
-        tripEditVC.members = self.members
+        delegate?.passMembers(members: self.members)
         navigationController?.popViewController(animated: true)
         
     }

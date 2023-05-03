@@ -222,7 +222,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Add members "/>
                                 <connections>
-                                    <segue destination="5TC-Q5-F0q" kind="show" id="LXg-gG-BXN"/>
+                                    <segue destination="5TC-Q5-F0q" kind="show" identifier="tripEditAddMembers" id="LXg-gG-BXN"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8ho-6P-2wZ">
@@ -230,7 +230,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pRA-s9-gdf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="membersCell" id="pRA-s9-gdf">
                                         <rect key="frame" x="0.0" y="50" width="259" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pRA-s9-gdf" id="0va-wq-uUP">
@@ -252,13 +252,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="MemberListTableView" destination="8ho-6P-2wZ" id="zoC-EM-pyO"/>
+                        <outlet property="membersTable" destination="8ho-6P-2wZ" id="PNe-Kc-vFi"/>
                         <outlet property="nameTextField" destination="0N2-Vr-LSg" id="HMz-Qe-018"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhh-Hm-Qp2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2681.679389312977" y="-237.32394366197184"/>
+            <point key="canvasLocation" x="2732" y="-238"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="FDw-3Y-3Ur">
@@ -374,7 +374,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7H-8n-S11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3362" y="-231"/>
+            <point key="canvasLocation" x="3439" y="-238"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="ghm-FU-u19">
@@ -390,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0Q-Uy-pPP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3985" y="-311"/>
+            <point key="canvasLocation" x="5303" y="-85"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gMf-12-mRa">
@@ -453,10 +453,10 @@
             </objects>
             <point key="canvasLocation" x="1501.5267175572519" y="641.54929577464793"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Trip Nav Flow-->
         <scene sceneID="1jt-kQ-xMD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" sceneMemberID="viewController">
+                <navigationController title="Trip Nav Flow" automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZu-e7-Agk">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
