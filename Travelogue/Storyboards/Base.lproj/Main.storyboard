@@ -169,6 +169,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bwo-o9-98f" kind="show" identifier="ShowTripDetailsSegue" id="FPZ-Df-ccT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -187,6 +190,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-5F-ZIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2024" y="-238"/>
+        </scene>
+        <!--Trip details view-->
+        <scene sceneID="Nyo-7V-OTl">
+            <objects>
+                <viewController id="bwo-o9-98f" customClass="TripDetailsViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SRo-tt-lY1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="trip contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-ZZ-YeS">
+                                <rect key="frame" x="168" y="308" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TkL-cX-en5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Trip details view" id="XcY-Wk-e6n">
+                        <barButtonItem key="rightBarButtonItem" title="edit" id="Db1-wu-dP4">
+                            <connections>
+                                <segue destination="ee0-kN-ed7" kind="show" id="8hi-AH-1aj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="Db1-wu-dP4" id="uv3-bV-VYJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xft-iK-ImF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2911" y="-736"/>
         </scene>
         <!--Edit Trip Details-->
         <scene sceneID="hRC-wN-52i">
@@ -258,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhh-Hm-Qp2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="-238"/>
+            <point key="canvasLocation" x="2911" y="135"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="FDw-3Y-3Ur">
@@ -292,7 +329,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3n-zT-3yR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2428.2442748091603" y="641.54929577464793"/>
+            <point key="canvasLocation" x="2480" y="1632"/>
         </scene>
         <!--trip name-->
         <scene sceneID="hSM-iZ-VvR">
@@ -323,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P45-RX-Wyz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3286.2595419847326" y="807.74647887323943"/>
+            <point key="canvasLocation" x="4178" y="939"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="bJV-bp-XMy">
@@ -339,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXg-tP-ddd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4212.9770992366412" y="126.7605633802817"/>
+            <point key="canvasLocation" x="4905" y="235"/>
         </scene>
         <!--Members Edit Table View Controller-->
         <scene sceneID="2LG-mz-B3G">
@@ -374,7 +411,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7H-8n-S11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3439" y="-238"/>
+            <point key="canvasLocation" x="3711" y="135"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="ghm-FU-u19">
@@ -412,7 +449,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaa-DZ-CI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4356" y="200"/>
+            <point key="canvasLocation" x="4975" y="1118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1sz-U7-h2N">
@@ -451,7 +488,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtU-8v-cPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1501.5267175572519" y="641.54929577464793"/>
+            <point key="canvasLocation" x="1477" y="1479"/>
         </scene>
         <!--Trip Nav Flow-->
         <scene sceneID="1jt-kQ-xMD">
@@ -472,6 +509,9 @@
             <point key="canvasLocation" x="1264.885496183206" y="-238.02816901408451"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8hi-AH-1aj"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="safari" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">
