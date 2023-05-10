@@ -11,10 +11,39 @@ class CreateTripViewController: UIViewController ,passMembersDelegate{
     
     var currentUser : User?
     var members : [User]?
-    
+    var fromDate = Date()
+    var toDate : Date?
+    var fromDateDatePicker = UIDatePicker()
+        var toDateDatePicker = UIDatePicker()
     @IBOutlet weak var membersTable: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
     
+    @IBOutlet weak var descTextField: UITextField!
+    
+    @IBOutlet weak var fromDateTextField: UITextField!
+    @IBOutlet weak var toDateTextField: UITextField!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // get current user
+        var currentUserId = AuthController().getCurrentUser()?.uid
+        
+        UserController().getUserByID(id: currentUserId!) { user, err in
+            if let user = user {
+                self.currentUser = user
+            } else {
+                print(err?.localizedDescription)
+            }
+        }
+        
+        // Set up UI
+        tableViewSetup()
+        setupDatePicker()
+        
+        
+    }
     // ISSUE : rename
     @IBAction func addTrip(_ sender: Any) {
         // add admin
@@ -25,41 +54,11 @@ class CreateTripViewController: UIViewController ,passMembersDelegate{
         navigationController?.popViewController(animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // get current user
-        var currentUserId = AuthController().getCurrentUser()?.uid
-        UserController().getUserByID(id: currentUserId!) { user, err in
-            if let user = user {
-                self.currentUser = user
-            } else {
-                print(err?.localizedDescription)
-            }
-        }
-        
-        // Set up table view
-        tableViewSetup()
-        
-        
-    
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         
     }
     
-    // UI set up
-    func tableViewSetup() {
-        membersTable.layer.cornerRadius = 8
-        membersTable.layer.masksToBounds = true
-        membersTable.isEditing = true
-        membersTable.dataSource = self
-        membersTable.delegate = self
-        membersTable.layer.borderWidth = 1
-        membersTable.register(MemberTableViewCell.self, forCellReuseIdentifier: "membersCell")
-        membersTable.heightAnchor.constraint(equalToConstant: 0).isActive = true // Set initial height to 0
-    }
-
+    
     
     func passMembers(members: [User]) {
         if self.members == nil {
@@ -76,10 +75,10 @@ class CreateTripViewController: UIViewController ,passMembersDelegate{
         // Update table height based on number of members
         membersTable.heightAnchor.constraint(equalToConstant: CGFloat(self.members?.count ?? 0) * 44.0).isActive = true
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "tripEditAddMembers"){
-            let membersVC = segue.destination as! MembersEditTableViewController
+            let membersVC = segue.destination as! MembersSearchTableViewController
             membersVC.delegate = self
         }
     }
@@ -107,7 +106,7 @@ extension CreateTripViewController : UITableViewDelegate , UITableViewDataSource
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-
+    
     
 }
 
@@ -116,7 +115,7 @@ class MemberTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        self.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
         self.layer.cornerRadius = 8
         self.layer.masksToBounds = true
         self.layer.shadowColor = UIColor.black.cgColor
@@ -126,6 +125,8 @@ class MemberTableViewCell: UITableViewCell {
     }
     
 }
+
+
 
 
 

@@ -13,7 +13,7 @@ protocol passMembersDelegate : NSObjectProtocol{
 
 
 
-class MembersEditTableViewController: UITableViewController , UISearchBarDelegate{
+class MembersSearchTableViewController: UITableViewController , UISearchBarDelegate{
     weak var delegate : passMembersDelegate?
     var members = [User]()
     var indicator = UIActivityIndicatorView()

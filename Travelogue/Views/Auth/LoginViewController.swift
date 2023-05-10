@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
                 // Login successful, do something
                 print(Auth.auth().currentUser?.email)
                 DispatchQueue.main.async { // only runs AFTER login success is assigned
-                    NavigationHelper.navigateToTripController(from: self)
+                    NavigationHelper.navigateToHomeController(from: self)
                 }
             } else {
                 // Login failed, handle the error

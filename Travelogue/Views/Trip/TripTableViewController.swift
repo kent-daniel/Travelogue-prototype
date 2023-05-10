@@ -76,16 +76,19 @@ class TripTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let trip = userTrips[indexPath.row]
-            performSegue(withIdentifier: "ShowTripDetailsSegue", sender: trip)
+//            performSegue(withIdentifier: "ShowTripDetailsSegue", sender: trip)
         }
         
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "ShowTripDetailsSegue",
-               let tripDetailVC = segue.destination as? TripDetailsViewController,
-               let trip = sender as? Trip {
-                tripDetailVC.trip = trip
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowTripDetailsSegue",
+           let indexPath = tableView.indexPathForSelectedRow{
+                   let selectedRow = indexPath.row
+                   let detailVC = segue.destination as! TripDetailsViewController
+                   detailVC.trip = self.userTrips[selectedRow]
+           }
         }
+       
+    }
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -141,4 +144,4 @@ class TripTableViewController: UITableViewController {
      }
      */
     
-}
+

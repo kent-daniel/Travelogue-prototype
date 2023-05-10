@@ -19,13 +19,13 @@ class NavigationHelper {
         viewController.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    static func navigateToTripController(from viewController: UIViewController) {
+    static func navigateToHomeController(from viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let tripViewController = storyboard.instantiateViewController(withIdentifier: "TripTableViewController") as? TripTableViewController else {
+        guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeTabbarViewController else {
             return
         }
-        tripViewController.navigationItem.hidesBackButton=true
-        viewController.navigationController?.pushViewController(tripViewController, animated: true)
+        homeVC.navigationItem.hidesBackButton=true
+        viewController.navigationController?.pushViewController(homeVC, animated: true)
     }
     
 }

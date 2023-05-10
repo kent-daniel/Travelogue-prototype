@@ -86,25 +86,7 @@ class TripController: NSObject {
             return nil
         }
     }
-    //    func updateTripMembers(members: [User], trip: Trip) {
-    //        guard let tripRef = getDocumentReference(for: trip) else {
-    //
-    //            return
-    //        }
-    //
-    //        let userRef = for user in members{
-    //            UserController().getDocumentReference(for: user)
-    //        }
-    //
-    //        tripRef.updateData(["members": FieldValue.arrayUnion([userRef])]) { error in
-    //            if let error = error {
-    //                // Handle the error
-    //                print("Error adding member to trip: \(error.localizedDescription)")
-    //            } else {
-    //                print("Member added to trip successfully")
-    //            }
-    //        }
-    //    }
+  
     func updateTripMembers(members: [User], trip: Trip) {
         guard let tripRef = getDocumentReference(for: trip) else {
             return
@@ -137,9 +119,9 @@ class TripController: NSObject {
         }
         
         
-        func deleteTrip(trip:Trip , user:User){
-            
-        }
+//        func deleteTrip(trip:Trip , user:User){
+//
+//        }
         
         
         

@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController {
             guard let self = self else { return }
             if success {
                 print("Sign up successful")
-                NavigationHelper.navigateToTripController(from: self)
+                NavigationHelper.navigateToHomeController(from: self)
             } else {
                 if let error = error {
                     let errorMessage = error.localizedDescription

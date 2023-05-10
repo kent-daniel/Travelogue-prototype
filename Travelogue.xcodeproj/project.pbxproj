@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DA2A011EF70068E2CB /* NavigationHelper.swift */; };
 		844511DD2A0157D80068E2CB /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DC2A0157D80068E2CB /* CreateTripViewController.swift */; };
-		844511E62A015AD50068E2CB /* MembersEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E52A015AD50068E2CB /* MembersEditTableViewController.swift */; };
+		844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */; };
 		844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E72A016AB00068E2CB /* TripDetailsViewController.swift */; };
+		844D6AA02A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */; };
+		844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */; };
+		844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA82A0BE816007055CD /* CreatePostViewController.swift */; };
+		844D6AAB2A0BF713007055CD /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AAA2A0BF713007055CD /* PostController.swift */; };
+		844D6AAD2A0BF97E007055CD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AAC2A0BF97E007055CD /* Post.swift */; };
 		84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154029F9D8E000B2902B /* TripTableViewController.swift */; };
 		84C5154329F9DFB900B2902B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154229F9DFB900B2902B /* UserController.swift */; };
 		84C5154629F9EBCE00B2902B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154529F9EBCE00B2902B /* User.swift */; };
@@ -56,8 +61,13 @@
 /* Begin PBXFileReference section */
 		844511DA2A011EF70068E2CB /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		844511DC2A0157D80068E2CB /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
-		844511E52A015AD50068E2CB /* MembersEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersEditTableViewController.swift; sourceTree = "<group>"; };
+		844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersSearchTableViewController.swift; sourceTree = "<group>"; };
 		844511E72A016AB00068E2CB /* TripDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewController.swift; sourceTree = "<group>"; };
+		844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTripView+UISetupCreateTripSetupUI.swift"; sourceTree = "<group>"; };
+		844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
+		844D6AA82A0BE816007055CD /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		844D6AAA2A0BF713007055CD /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		844D6AAC2A0BF97E007055CD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		84C5154029F9D8E000B2902B /* TripTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
 		84C5154229F9DFB900B2902B /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		84C5154529F9EBCE00B2902B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -123,8 +133,10 @@
 		844511E02A0158240068E2CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				844D6AA32A0BE281007055CD /* HomePage */,
 				844511E22A0158560068E2CB /* Trip */,
 				844511E12A0158420068E2CB /* Auth */,
+				844D6AA82A0BE816007055CD /* CreatePostViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,9 +153,9 @@
 		844511E22A0158560068E2CB /* Trip */ = {
 			isa = PBXGroup;
 			children = (
+				844D6A9E2A0BD59C007055CD /* CreateTrip */,
 				844511E32A01587A0068E2CB /* Members */,
 				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
-				844511DC2A0157D80068E2CB /* CreateTripViewController.swift */,
 				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
 			);
 			path = Trip;
@@ -152,7 +164,7 @@
 		844511E32A01587A0068E2CB /* Members */ = {
 			isa = PBXGroup;
 			children = (
-				844511E52A015AD50068E2CB /* MembersEditTableViewController.swift */,
+				844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */,
 			);
 			path = Members;
 			sourceTree = "<group>";
@@ -166,11 +178,29 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		844D6A9E2A0BD59C007055CD /* CreateTrip */ = {
+			isa = PBXGroup;
+			children = (
+				844511DC2A0157D80068E2CB /* CreateTripViewController.swift */,
+				844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */,
+			);
+			path = CreateTrip;
+			sourceTree = "<group>";
+		};
+		844D6AA32A0BE281007055CD /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 		84C5154429F9EBA600B2902B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				84C5154529F9EBCE00B2902B /* User.swift */,
 				84C5154729F9F1E400B2902B /* Trip.swift */,
+				844D6AAC2A0BF97E007055CD /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +266,7 @@
 				84F3375729F966E900A3BD9C /* AuthController.swift */,
 				84C5154229F9DFB900B2902B /* UserController.swift */,
 				84C5154929FA004500B2902B /* TripController.swift */,
+				844D6AAA2A0BF713007055CD /* PostController.swift */,
 			);
 			path = DatabaseControllers;
 			sourceTree = "<group>";
@@ -382,10 +413,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844D6AAB2A0BF713007055CD /* PostController.swift in Sources */,
 				84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */,
 				844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */,
 				84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */,
+				844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */,
 				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,
+				844D6AA02A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift in Sources */,
 				84F3375829F966E900A3BD9C /* AuthController.swift in Sources */,
 				844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */,
 				84C5154829F9F1E400B2902B /* Trip.swift in Sources */,
@@ -394,9 +428,11 @@
 				84C5154629F9EBCE00B2902B /* User.swift in Sources */,
 				84C5154329F9DFB900B2902B /* UserController.swift in Sources */,
 				84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */,
-				844511E62A015AD50068E2CB /* MembersEditTableViewController.swift in Sources */,
+				844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */,
 				84C5154A29FA004500B2902B /* TripController.swift in Sources */,
+				844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */,
 				84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */,
+				844D6AAD2A0BF97E007055CD /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
