@@ -78,8 +78,8 @@
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "addTripToUser(user:newTrip:)"
             landmarkType = "7">
             <Locations>
@@ -126,8 +126,8 @@
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "addTripToUser(user:newTrip:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "createUser(id:email:name:trips:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "getUserByID(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,7 +376,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DB439BD4-E18A-43E9-9CA1-96B8C221B06A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelogue/Views/Trip/TripEditViewController.swift"
@@ -392,7 +392,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5BD7556F-AAEA-4D5B-B74B-181C59C2BB35"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelogue/DatabaseControllers/TripController.swift"
@@ -407,129 +407,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "19025FF6-78D7-40B5-B548-75B29B83EB9E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Travelogue/DatabaseControllers/TripController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "updateTripMembers(members:trip:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "19025FF6-78D7-40B5-B548-75B29B83EB9E - 8bdd429d06a2df06"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travelogue.TripController.updateTripMembers(members: Swift.Array&lt;Travelogue.User&gt;, trip: Travelogue.Trip) -&gt; ()"
-                  moduleName = "Travelogue"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/TripController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "524">
-               </Location>
-               <Location
-                  uuid = "19025FF6-78D7-40B5-B548-75B29B83EB9E - 8bdd429d06a2df27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travelogue.TripController.updateTripMembers(members: Swift.Array&lt;Travelogue.User&gt;, trip: Travelogue.Trip) -&gt; ()"
-                  moduleName = "Travelogue"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/TripController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "504">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02B15AD6-9E04-481E-9BF3-10FDE5AD3A2E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Travelogue/DatabaseControllers/TripController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "updateTripMembers(members:trip:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "02B15AD6-9E04-481E-9BF3-10FDE5AD3A2E - 8bdd429d06a2de0e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travelogue.TripController.updateTripMembers(members: Swift.Array&lt;Travelogue.User&gt;, trip: Travelogue.Trip) -&gt; ()"
-                  moduleName = "Travelogue"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/TripController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  uuid = "02B15AD6-9E04-481E-9BF3-10FDE5AD3A2E - 8bdd429d06a2de0e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travelogue.TripController.updateTripMembers(members: Swift.Array&lt;Travelogue.User&gt;, trip: Travelogue.Trip) -&gt; ()"
-                  moduleName = "Travelogue"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/TripController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "208">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F5106DBB-738E-45D6-A677-0E296610D403"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "addTripToUser(user:newTrip:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5106DBB-738E-45D6-A677-0E296610D403 - 7d86fde26e401e3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.UserController.addTripToUser(user: Travelogue.User, newTrip: Travelogue.Trip) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/UserController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "F5106DBB-738E-45D6-A677-0E296610D403 - 7d86fde26e401ebb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.UserController.addTripToUser(user: Travelogue.User, newTrip: Travelogue.Trip) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/UserController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BCD13DDF-B163-4A30-8F6E-E0740D12CBF6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelogue/DatabaseControllers/UserController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "addTripToUser(user:newTrip:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BCD13DDF-B163-4A30-8F6E-E0740D12CBF6 - 7d86fde26e401df5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.UserController.addTripToUser(user: Travelogue.User, newTrip: Travelogue.Trip) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/UserController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "BCD13DDF-B163-4A30-8F6E-E0740D12CBF6 - 7d86fde26e401e71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.UserController.addTripToUser(user: Travelogue.User, newTrip: Travelogue.Trip) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/DatabaseControllers/UserController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "680">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -591,6 +559,21 @@
                   startingLineNumber = "14"
                   endingLineNumber = "14"
                   offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "F7291A92-EFD1-4F0F-8323-D57CE0D3D867 - a3f542145f191577"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.TripDetailsViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/TripDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
          </BreakpointContent>

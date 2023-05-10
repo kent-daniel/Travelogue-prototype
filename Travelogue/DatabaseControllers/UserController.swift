@@ -34,13 +34,15 @@ class UserController: NSObject {
     }
     
     
-    func getDocumentReference(for user: User) -> DocumentReference? {
+    func getDocumentReference(for user: User, completion: @escaping (DocumentReference?) -> Void) {
         if let userID = user.id {
-            return Firestore.firestore().collection(USER_COL_NAME).document(userID)
+            let userRef = Firestore.firestore().collection(USER_COL_NAME).document(userID)
+            completion(userRef)
         } else {
-            return nil
+            completion(nil)
         }
     }
+
     
     func createUser(id: String, email: String , name: String , trips: [DocumentReference] = []){
         let user = User()
@@ -94,11 +96,7 @@ class UserController: NSObject {
     func searchUsersByEmail(email: String, completion: @escaping ([User]?, Error?) -> Void) {
         
         // Create a query that searches for users with email equal to or containing the given string
-        
-        
-        // ISSUE : cant do partial matching
-        
-        let query = userRef!.whereField("email", isEqualTo: email)
+        let query = userRef!.whereField("email", isGreaterThanOrEqualTo: email)
             .whereField("email", isLessThanOrEqualTo: email + "\u{f8ff}")
         
         // Execute the query and retrieve the matching documents

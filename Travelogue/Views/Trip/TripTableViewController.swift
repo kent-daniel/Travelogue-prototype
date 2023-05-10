@@ -27,7 +27,7 @@ class TripTableViewController: UITableViewController {
         UserController().getUserByID(id: id!) { user, err in
             if let user = user {
                 let username = user.name!
-                self.title = username + "'s  Trips"
+                self.title = "Hi " + username
             } else {
                 print(err?.localizedDescription)
             }
@@ -45,6 +45,15 @@ class TripTableViewController: UITableViewController {
             }
         }
     }
+//    This will ensure that the title is set before the trips are loaded.
+
+
+
+
+
+
+
+    
     
     // MARK: - Table view data source
     
@@ -66,17 +75,17 @@ class TripTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let trip = userTrips[indexPath.row]
-        performSegue(withIdentifier: "ShowTripDetailsSegue", sender: trip)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowTripDetailsSegue",
-           let tripDetailVC = segue.destination as? TripDetailsViewController,
-           let trip = sender as? Trip {
-            tripDetailVC.trip = trip
+            let trip = userTrips[indexPath.row]
+            performSegue(withIdentifier: "ShowTripDetailsSegue", sender: trip)
         }
-    }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "ShowTripDetailsSegue",
+               let tripDetailVC = segue.destination as? TripDetailsViewController,
+               let trip = sender as? Trip {
+                tripDetailVC.trip = trip
+            }
+        }
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

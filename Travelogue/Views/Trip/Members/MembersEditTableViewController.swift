@@ -18,12 +18,7 @@ class MembersEditTableViewController: UITableViewController , UISearchBarDelegat
     var members = [User]()
     var indicator = UIActivityIndicatorView()
     
-    @IBAction func saveBtnPressed(_ sender: Any) {
-        delegate?.passMembers(members: self.members)
-        navigationController?.popViewController(animated: true)
-        
-    }
-    
+   
     
     
     
@@ -104,6 +99,17 @@ class MembersEditTableViewController: UITableViewController , UISearchBarDelegat
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           // Get the selected member
+           let selectedMember = members[indexPath.row]
+           
+           // Call the delegate method to pass the selected member back to the previous screen
+           delegate?.passMembers(members: [selectedMember])
+           
+           // Go back to the previous screen
+           navigationController?.popViewController(animated: false)
+       }
     
     
     /*

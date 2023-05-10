@@ -113,13 +113,18 @@ class TripController: NSObject {
         var userRefs = [DocumentReference]()
         
         for member in members {
-            guard let memberRef = UserController().getDocumentReference(for: member) else {
-                continue
+            UserController().getDocumentReference(for: member) { (memberRef) in
+                
+                
+                if let memberRef = memberRef {
+                    userRefs.append(memberRef)
+                    
+                    // Add the trip to the member's list of trips
+                    UserController().addTripToUser(user: member, newTrip: trip)
+                }
             }
             
-            userRefs.append(memberRef)
-            // Add the trip to the member's list of trips
-            UserController().addTripToUser(user: member, newTrip: trip)
+        }
             
             
             tripRef.updateData(["members": FieldValue.arrayUnion(userRefs)]) { error in
@@ -140,5 +145,5 @@ class TripController: NSObject {
         
         
         
-    }
 }
+

@@ -37,21 +37,19 @@ class TripDetailsViewController: UIViewController {
                 return
             }
             
-            // get the document reference for the current user
-            guard let currentUserRef = UserController().getDocumentReference(for: user) else {
-                // handle the case where there is an error getting the document reference for the current user
-                print("Error getting document reference for current user.")
-                return
+            UserController().getDocumentReference(for: user) { currentUserRef in
+                guard let currentUserRef = currentUserRef else {
+                    // handle the case where currentUserRef is nil
+                    return
+                }
+                
+                if currentUserRef == self.trip.admin {
+                    self.editButton.isEnabled = true
+                } else {
+                    self.editButton.isEnabled = false
+                }
             }
-            
-            // check if the current user is the admin of the trip
-            if currentUserRef == self.trip.admin {
-                // enable the edit button if the current user is the admin of the trip
-                self.editButton.isEnabled = true
-            } else {
-                // disable the edit button if the current user is not the admin of the trip
-                self.editButton.isEnabled = false
-            }
+
         }
     }
 

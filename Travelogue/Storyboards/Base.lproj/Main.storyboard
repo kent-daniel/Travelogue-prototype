@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrY-2f-G6v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="456"/>
+            <point key="canvasLocation" x="-937" y="515"/>
         </scene>
         <!--Trip Page-->
         <scene sceneID="22w-ZC-0Ri">
@@ -228,7 +228,7 @@
         <!--Edit Trip Details-->
         <scene sceneID="hRC-wN-52i">
             <objects>
-                <viewController storyboardIdentifier="TripEditViewController" title="Edit Trip Details" id="ee0-kN-ed7" customClass="TripEditViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripEditViewController" title="Edit Trip Details" id="ee0-kN-ed7" customClass="CreateTripViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkG-Wr-FQd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,7 +267,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="membersCell" id="pRA-s9-gdf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="membersCell" id="pRA-s9-gdf" customClass="MemberTableViewCell" customModule="Travelogue" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="259" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pRA-s9-gdf" id="0va-wq-uUP">
@@ -401,13 +401,7 @@
                             <outlet property="delegate" destination="5TC-Q5-F0q" id="tVT-Mg-hSM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="UY6-tt-WgU" customClass="Member">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="TeK-a7-hNG">
-                            <connections>
-                                <action selector="saveBtnPressed:" destination="5TC-Q5-F0q" id="DdA-R2-NP0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="UY6-tt-WgU" customClass="Member"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7H-8n-S11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
