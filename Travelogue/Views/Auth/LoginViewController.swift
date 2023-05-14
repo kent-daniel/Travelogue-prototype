@@ -17,8 +17,6 @@ class LoginViewController: UIViewController {
     @IBAction func signIn(_ sender: Any) {
         AuthController().signIn(email: emailTextField.text!, password: passwordTextField.text!){ (success, error) in
             if success {
-                // Login successful, do something
-                print(Auth.auth().currentUser?.email)
                 DispatchQueue.main.async { // only runs AFTER login success is assigned
                     NavigationHelper.navigateToHomeController(from: self)
                 }
@@ -39,9 +37,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginPageImage: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Get the app delegate and cast it to your custom AppDelegate class
+        
         passwordTextField.placeholder="password"
         passwordTextField.isSecureTextEntry=true
         emailTextField.placeholder="email"

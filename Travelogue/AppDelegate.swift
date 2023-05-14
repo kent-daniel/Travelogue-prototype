@@ -9,15 +9,33 @@ import UIKit
 import CoreData
 import UIKit
 import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var currentUser: User?
+    var window: UIWindow?
+    var userLoggedIn: Bool = false
 
 //    var databaseController = FirebaseController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        // Check if the user is already signed in
+        if Auth.auth().currentUser != nil {
+            // User is already signed in, set the current user property
+            let currentUserId = Auth.auth().currentUser!.uid
+            UserController().getUserByID(id: currentUserId) { user, error in
+                if let user = user {
+                    self.currentUser = user
+                    self.userLoggedIn = true
+                    
+                } else {
+                    print(error?.localizedDescription ?? "Error getting current user")
+                }
+            }
+        }
         return true
     }
 
@@ -81,4 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+//    // Implement the LoginViewControllerDelegate method to store the logged-in user
+//    func didLogIn(user: User) {
+//        currentUser = user
+//    }
+
 

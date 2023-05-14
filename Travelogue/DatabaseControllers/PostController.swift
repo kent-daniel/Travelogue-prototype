@@ -10,7 +10,7 @@ import FirebaseStorage
 class PostController: NSObject {
     
     
-    static func uploadImage(_ image: UIImage, for tripID: String, completion: @escaping (Result<URL, Error>) -> Void) {
+    static func uploadImage(_ image: UIImage, for trip: Trip?, currentUser: User? ,completion: @escaping (Result<URL, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to get image data"])
             completion(.failure(error))
@@ -18,7 +18,7 @@ class PostController: NSObject {
         }
         
         let filename = UUID().uuidString + ".jpg"
-        let storageRef = Storage.storage().reference().child(tripID).child(filename)
+        let storageRef = Storage.storage().reference().child(trip!.id!).child(filename)
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -34,6 +34,7 @@ class PostController: NSObject {
                     completion(.failure(error))
                 } else if let url = url {
                     completion(.success(url))
+                    TripController().addPostToTrip(imageURL: url.absoluteString, trip: trip!, by: currentUser!)
                 }
             }
         }
@@ -41,6 +42,7 @@ class PostController: NSObject {
         uploadTask.observe(.progress) { snapshot in
             let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
             print("Upload progress: \(percentComplete)%")
+        
         }
     }
 

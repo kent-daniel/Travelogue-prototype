@@ -39,6 +39,7 @@ class CreateTripViewController: UIViewController ,passMembersDelegate{
         }
         
         // Set up UI
+        self.tabBarController?.tabBar.isHidden = true
         tableViewSetup()
         setupDatePicker()
         
@@ -58,6 +59,13 @@ class CreateTripViewController: UIViewController ,passMembersDelegate{
         
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.tabBarController?.tabBar.isHidden = true
+//    }
+
+    
+
     
     
     func passMembers(members: [User]) {

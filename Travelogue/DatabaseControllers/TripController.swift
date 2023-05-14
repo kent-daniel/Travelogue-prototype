@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import CoreLocation
 
 class TripController: NSObject {
     var database: Firestore
@@ -117,15 +118,118 @@ class TripController: NSObject {
                 }
             }
         }
-        
+    
         
 //        func deleteTrip(trip:Trip , user:User){
 //
 //        }
-        
+    
+    func addPostToTrip(imageURL: String?, trip: Trip, by currentUser: User) {
+        UserController().getDocumentReference(for: currentUser) { userRef in
+            guard let userRef = userRef else {
+                print("Error getting user reference")
+                return
+            }
+            var newPost = Post()
+            newPost.poster = userRef
+            newPost.dateTime = Date()
+            newPost.location = [21.00000,31.289832747]
+            newPost.url = imageURL!
+//            self.getLocation { location, error in
+//                if let location = location {
+//                    newPost.location = [21.00000,31.289832747]
+//                } else {
+//                    print("Error getting location: \(error?.localizedDescription ?? "")")
+//                }
+//                newPost.url = imageURL
+                do {
+                    let db = Firestore.firestore()
+                    let tripRef = db.collection("trips").document(trip.id!)
+                    let postsRef = tripRef.collection("posts")
+                    try postsRef.addDocument(from: newPost)
+                } catch let error {
+                    print("Error adding post: \(error.localizedDescription)")
+                }
+//            }
+        }
+    }
+    
+    func getAllTripPosts(for trip: Trip, completion: @escaping (Result<[Post], Error>) -> Void) {
+        let db = Firestore.firestore()
+        let tripRef = db.collection("trips").document(trip.id!)
+        let postsRef = tripRef.collection("posts")
+
+        postsRef.getDocuments { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot {
+                var posts: [Post] = []
+                for document in snapshot.documents {
+                    do {
+                        let post = try document.data(as: Post.self)
+                        
+                            posts.append(post)
+                        
+                    } catch let error {
+                        print("Error decoding post: \(error.localizedDescription)")
+                    }
+                }
+                completion(.success(posts))
+            }
+        }
+    }
+
+
+
+//    func getLocation(completion: @escaping (CLLocation?, Error?) -> Void) {
+//        let locationManager = CLLocationManager()
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestLocation { location, error in
+//            completion(location, error)
+//        }
+//    }
+
         
         
         
         
 }
+
+
+//class TripController: CLLocationManagerDelegate {
+//
+//    var locationManager: CLLocationManager?
+//
+//    func getLocation(completion: @escaping (CLLocation?, Error?) -> Void) {
+//        locationManager = CLLocationManager()
+//        locationManager?.delegate = self
+//        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager?.requestWhenInUseAuthorization()
+//        locationManager?.requestLocation()
+//
+//        // Store the completion handler so it can be called later
+//        self.completionHandler = completion
+//    }
+//
+//    // CLLocationManagerDelegate methods
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        guard let location = locations.last else {
+//            return
+//        }
+//        // Call the completion handler with the location and no error
+//        completionHandler?(location, nil)
+//        completionHandler = nil // clear the completion handler
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        // Call the completion handler with no location and the error
+//        completionHandler?(nil, error)
+//        completionHandler = nil // clear the completion handler
+//    }
+//
+//    private var completionHandler: ((CLLocation?, Error?) -> Void)?
+//
+//}
+
 

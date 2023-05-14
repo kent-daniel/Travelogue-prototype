@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zhy-QF-mNc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bHZ-ty-ILD">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144.27480916030532" y="-238.02816901408451"/>
+            <point key="canvasLocation" x="-938" y="-238"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="VHD-Kq-IhR">
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrY-2f-G6v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-937" y="515"/>
+            <point key="canvasLocation" x="-1674" y="537"/>
         </scene>
         <!--Trip Page-->
         <scene sceneID="22w-ZC-0Ri">
@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" id="uJ4-He-lNO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripCell" id="uJ4-He-lNO" customClass="TripCellTableViewCell" customModule="Travelogue" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uJ4-He-lNO" id="1EW-iy-KCM">
@@ -190,7 +190,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-5F-ZIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2024" y="-238"/>
+            <point key="canvasLocation" x="1993" y="-218"/>
         </scene>
         <!--Trip details view-->
         <scene sceneID="Nyo-7V-OTl">
@@ -381,6 +381,23 @@
             <point key="canvasLocation" x="3711" y="135"/>
         </scene>
         <!--Item-->
+        <scene sceneID="lXm-Ee-m5D">
+            <objects>
+                <navigationController id="EBW-bs-Mji" customClass="PostNavViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="JsH-ig-waD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qG3-eH-i80">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IUo-d4-Pyg" kind="relationship" relationship="rootViewController" id="cQl-HE-csk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9z-K9-qVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-350" y="784"/>
+        </scene>
+        <!--Create A New Post-->
         <scene sceneID="zZy-uN-oIW">
             <objects>
                 <viewController id="IUo-d4-Pyg" customClass="CreatePostViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
@@ -437,6 +454,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="plus.circle" catalog="system" id="tdo-a4-bSu"/>
+                    <navigationItem key="navigationItem" title="Create A New Post" id="tRF-3p-jbO"/>
                     <connections>
                         <outlet property="ImageContainer" destination="nak-4B-rHY" id="98S-Lm-gtb"/>
                         <outlet property="chosenTrip" destination="UcM-JB-KAB" id="aTb-wV-Iue"/>
@@ -444,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCE-jt-Kms" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387.02290076335879" y="1247.8873239436621"/>
+            <point key="canvasLocation" x="474" y="784"/>
         </scene>
         <!--Home Tabbar View Controller-->
         <scene sceneID="gMf-12-mRa">
@@ -459,14 +477,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="r7Z-kl-66m" kind="relationship" relationship="viewControllers" id="8Vy-n8-gek"/>
-                        <segue destination="IUo-d4-Pyg" kind="relationship" relationship="viewControllers" id="gkV-sx-PDS"/>
-                        <segue destination="bHZ-ty-ILD" kind="relationship" relationship="viewControllers" id="P19-eg-avy"/>
+                        <segue destination="EBW-bs-Mji" kind="relationship" relationship="viewControllers" id="khK-JZ-z5T"/>
+                        <segue destination="bHZ-ty-ILD" kind="relationship" relationship="viewControllers" id="WK4-F0-gWe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaa-DZ-CI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="389" y="497"/>
+            <point key="canvasLocation" x="100" y="63"/>
         </scene>
         <!--Item-->
         <scene sceneID="740-ta-Lyv">
@@ -482,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZt-IJ-ELQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243" y="907"/>
+            <point key="canvasLocation" x="2244" y="1626"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1sz-U7-h2N">
@@ -500,12 +517,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ny-LY-ggp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-970" y="-238"/>
+            <point key="canvasLocation" x="-2117" y="-238"/>
         </scene>
         <!--Trip Nav Flow-->
         <scene sceneID="1jt-kQ-xMD">
             <objects>
-                <navigationController title="Trip Nav Flow" automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" sceneMemberID="viewController">
+                <navigationController title="Trip Nav Flow" automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" customClass="TripNavigationViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" selectedImage="safari.fill" catalog="system" id="EN3-QX-aqf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZu-e7-Agk">
@@ -514,12 +531,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="yCK-4N-EHr" kind="relationship" relationship="rootViewController" id="GDF-nT-woA"/>
+                        <segue destination="yCK-4N-EHr" kind="relationship" relationship="rootViewController" id="yVk-Gl-cOO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJR-M1-3s2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="135"/>
+            <point key="canvasLocation" x="944" y="-217"/>
         </scene>
     </scenes>
     <resources>

@@ -15,6 +15,7 @@ class Trip: NSObject, Codable{
     var name:String?
     var admin: DocumentReference?
     var members :[DocumentReference]?
+    var posts : [Post]?
 //    var description -> string
 //    var itineraries // sub coll
 //    var announcements

@@ -12,7 +12,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     private var selectedImage: UIImage?
     var currentUser:User?
     var userTrips:[Trip]?
-    var selectedTripID:String?
+    var selectedTrip:Trip?
     @IBOutlet weak var ImageContainer: UIImageView!
     
     @IBOutlet weak var chosenTrip: UIButton!
@@ -31,7 +31,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             return
         }
         
-        PostController.uploadImage(image , for: self.selectedTripID!) { result in
+        PostController.uploadImage(image , for: self.selectedTrip , currentUser: self.currentUser) { result in
             switch result {
             case .success(let url):
                 self.savePost(with: url)
@@ -53,7 +53,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                     let tripName = trip.name
                     return UIAction(title: tripName!, handler: { _ in
                         // Set the selected trip ID to the ID of the selected trip
-                        self.selectedTripID = trip.id
+                        self.selectedTrip = trip
                         // Update the title of the button to show the selected trip name
                         self.chosenTrip.setTitle(tripName, for: .normal)
                     })

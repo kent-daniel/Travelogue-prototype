@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class Post: NSObject , Codable {
+    @DocumentID var id: String?
     // user who posted
-    var poster:User
-    var dateTime:Date
+    var poster: DocumentReference?
+    var dateTime:Date?
     // date time
     // location
-    var location:String?
+    var location:[Double]?
     // url
     var url:String?
 }

@@ -18,7 +18,14 @@ class NavigationHelper {
         
         viewController.navigationController?.pushViewController(signUpViewController, animated: true)
     }
-    
+    static func navigateToLogin(from viewController: UIViewController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let loginVC = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController else {
+            return
+        }
+        loginVC.navigationItem.hidesBackButton=true
+        viewController.navigationController?.pushViewController(loginVC, animated: true)
+    }
     static func navigateToHomeController(from viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeTabbarViewController else {

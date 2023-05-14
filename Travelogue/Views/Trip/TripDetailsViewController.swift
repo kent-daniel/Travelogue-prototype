@@ -11,13 +11,12 @@ class TripDetailsViewController: UIViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     var trip:Trip?
     var currentUser:User?
-    var userRole = "member"
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set the title of the view controller to the trip name
         self.title = trip?.name
-        
+        print(trip)
         // make sure there is a current user
         guard let userID = AuthController().getCurrentUser()?.uid else {
             // handle the case where there is no current user
@@ -49,7 +48,7 @@ class TripDetailsViewController: UIViewController {
                 
                 print(currentUserRef , self.trip?.admin)
                 if currentUserRef == self.trip?.admin {
-                    self.userRole = "admin"
+                   
                     self.editButton.isEnabled = true
                 } else {
                     self.editButton.isEnabled = false
@@ -57,6 +56,10 @@ class TripDetailsViewController: UIViewController {
             }
 
         }
+        
+        
+        // get all trips
+        
     }
 
         
