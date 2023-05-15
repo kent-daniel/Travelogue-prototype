@@ -138,7 +138,6 @@ class TripController: NSObject {
             var newPost = Post()
             newPost.poster = userRef
             newPost.dateTime = Date()
-            newPost.location = [21.00000,31.289832747]
             newPost.url = imageURL!
 
                 do {

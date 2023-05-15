@@ -14,9 +14,5 @@ class Post: NSObject , Codable {
     // user who posted
     var poster: DocumentReference?
     var dateTime:Date?
-    // date time
-    // location
-    var location:[Double]?
-    // url
     var url:String?
 }

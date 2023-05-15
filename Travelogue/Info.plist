@@ -23,5 +23,7 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo library permission</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location permission</string>
 </dict>
 </plist>

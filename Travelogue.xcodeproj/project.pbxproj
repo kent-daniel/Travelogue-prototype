@@ -16,10 +16,19 @@
 		844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA82A0BE816007055CD /* CreatePostViewController.swift */; };
 		844D6AAB2A0BF713007055CD /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AAA2A0BF713007055CD /* PostController.swift */; };
 		844D6AAD2A0BF97E007055CD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AAC2A0BF97E007055CD /* Post.swift */; };
+		8453A8262A12277E00BDBCC6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8252A12277E00BDBCC6 /* HomePageViewController.swift */; };
+		8453A8292A1227D000BDBCC6 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8282A1227D000BDBCC6 /* PostListViewController.swift */; };
+		8453A82B2A1227E900BDBCC6 /* ItineraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A82A2A1227E900BDBCC6 /* ItineraryListViewController.swift */; };
+		8453A8312A12288100BDBCC6 /* TripInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */; };
+		8453A8332A12289100BDBCC6 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8322A12289100BDBCC6 /* TripMapViewController.swift */; };
+		8453A8372A122E1500BDBCC6 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8362A122E1500BDBCC6 /* Info.swift */; };
+		8453A8392A122E4000BDBCC6 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8382A122E4000BDBCC6 /* Itinerary.swift */; };
+		8453A83C2A1233D900BDBCC6 /* GooglePlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */; };
+		8453A83E2A1243A500BDBCC6 /* CreateItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83D2A1243A500BDBCC6 /* CreateItineraryViewController.swift */; };
+		8453A8402A1244DB00BDBCC6 /* ImageDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83F2A1244DB00BDBCC6 /* ImageDownloadHelper.swift */; };
 		845AA63E2A10A904007AFA19 /* TripCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */; };
 		845AA6402A10ABD8007AFA19 /* TripNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */; };
 		845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */; };
-		845AA6442A10C511007AFA19 /* customTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA6432A10C511007AFA19 /* customTabBar.swift */; };
 		84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154029F9D8E000B2902B /* TripTableViewController.swift */; };
 		84C5154329F9DFB900B2902B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154229F9DFB900B2902B /* UserController.swift */; };
 		84C5154629F9EBCE00B2902B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154529F9EBCE00B2902B /* User.swift */; };
@@ -72,10 +81,19 @@
 		844D6AA82A0BE816007055CD /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		844D6AAA2A0BF713007055CD /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		844D6AAC2A0BF97E007055CD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		8453A8252A12277E00BDBCC6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		8453A8282A1227D000BDBCC6 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
+		8453A82A2A1227E900BDBCC6 /* ItineraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListViewController.swift; sourceTree = "<group>"; };
+		8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoViewController.swift; sourceTree = "<group>"; };
+		8453A8322A12289100BDBCC6 /* TripMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
+		8453A8362A122E1500BDBCC6 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		8453A8382A122E4000BDBCC6 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
+		8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesController.swift; sourceTree = "<group>"; };
+		8453A83D2A1243A500BDBCC6 /* CreateItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryViewController.swift; sourceTree = "<group>"; };
+		8453A83F2A1244DB00BDBCC6 /* ImageDownloadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadHelper.swift; sourceTree = "<group>"; };
 		845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCellTableViewCell.swift; sourceTree = "<group>"; };
 		845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripNavigationViewController.swift; sourceTree = "<group>"; };
 		845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavViewController.swift; sourceTree = "<group>"; };
-		845AA6432A10C511007AFA19 /* customTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTabBar.swift; sourceTree = "<group>"; };
 		84C5154029F9D8E000B2902B /* TripTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
 		84C5154229F9DFB900B2902B /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		84C5154529F9EBCE00B2902B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -134,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				844511DA2A011EF70068E2CB /* NavigationHelper.swift */,
+				8453A83F2A1244DB00BDBCC6 /* ImageDownloadHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -144,7 +163,6 @@
 				844D6AA32A0BE281007055CD /* HomePage */,
 				844511E22A0158560068E2CB /* Trip */,
 				844511E12A0158420068E2CB /* Auth */,
-				844D6AA82A0BE816007055CD /* CreatePostViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,23 +179,20 @@
 		844511E22A0158560068E2CB /* Trip */ = {
 			isa = PBXGroup;
 			children = (
-				844D6A9E2A0BD59C007055CD /* CreateTrip */,
-				844511E32A01587A0068E2CB /* Members */,
-				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
-				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
-				845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */,
+				844D6A9E2A0BD59C007055CD /* Trip Create */,
+				8453A8272A12279D00BDBCC6 /* Trip View */,
 				845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */,
 				845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */,
 			);
 			path = Trip;
 			sourceTree = "<group>";
 		};
-		844511E32A01587A0068E2CB /* Members */ = {
+		844511E32A01587A0068E2CB /* Add members */ = {
 			isa = PBXGroup;
 			children = (
 				844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */,
 			);
-			path = Members;
+			path = "Add members";
 			sourceTree = "<group>";
 		};
 		844511E42A0158EA0068E2CB /* Storyboards */ = {
@@ -189,22 +204,95 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		844D6A9E2A0BD59C007055CD /* CreateTrip */ = {
+		844D6A9E2A0BD59C007055CD /* Trip Create */ = {
 			isa = PBXGroup;
 			children = (
-				844511DC2A0157D80068E2CB /* CreateTripViewController.swift */,
-				844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */,
+				8453A82C2A12282200BDBCC6 /* Create New Trip */,
+				844D6AA82A0BE816007055CD /* CreatePostViewController.swift */,
 			);
-			path = CreateTrip;
+			path = "Trip Create";
 			sourceTree = "<group>";
 		};
 		844D6AA32A0BE281007055CD /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
 				844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */,
-				845AA6432A10C511007AFA19 /* customTabBar.swift */,
+				8453A8252A12277E00BDBCC6 /* HomePageViewController.swift */,
 			);
 			path = HomePage;
+			sourceTree = "<group>";
+		};
+		8453A8272A12279D00BDBCC6 /* Trip View */ = {
+			isa = PBXGroup;
+			children = (
+				8453A82D2A12283400BDBCC6 /* View Trip */,
+				8453A82E2A12284C00BDBCC6 /* View Trip Posts */,
+				8453A82F2A12285600BDBCC6 /* View Trip Itinerary */,
+				8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */,
+				8453A8322A12289100BDBCC6 /* TripMapViewController.swift */,
+			);
+			path = "Trip View";
+			sourceTree = "<group>";
+		};
+		8453A82C2A12282200BDBCC6 /* Create New Trip */ = {
+			isa = PBXGroup;
+			children = (
+				8453A8352A1228F800BDBCC6 /* Add info */,
+				8453A8342A1228D800BDBCC6 /* Add itinerary */,
+				844511E32A01587A0068E2CB /* Add members */,
+				844511DC2A0157D80068E2CB /* CreateTripViewController.swift */,
+				844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */,
+			);
+			path = "Create New Trip";
+			sourceTree = "<group>";
+		};
+		8453A82D2A12283400BDBCC6 /* View Trip */ = {
+			isa = PBXGroup;
+			children = (
+				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
+				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
+				845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */,
+			);
+			path = "View Trip";
+			sourceTree = "<group>";
+		};
+		8453A82E2A12284C00BDBCC6 /* View Trip Posts */ = {
+			isa = PBXGroup;
+			children = (
+				8453A8282A1227D000BDBCC6 /* PostListViewController.swift */,
+			);
+			path = "View Trip Posts";
+			sourceTree = "<group>";
+		};
+		8453A82F2A12285600BDBCC6 /* View Trip Itinerary */ = {
+			isa = PBXGroup;
+			children = (
+				8453A82A2A1227E900BDBCC6 /* ItineraryListViewController.swift */,
+			);
+			path = "View Trip Itinerary";
+			sourceTree = "<group>";
+		};
+		8453A8342A1228D800BDBCC6 /* Add itinerary */ = {
+			isa = PBXGroup;
+			children = (
+				8453A83D2A1243A500BDBCC6 /* CreateItineraryViewController.swift */,
+			);
+			path = "Add itinerary";
+			sourceTree = "<group>";
+		};
+		8453A8352A1228F800BDBCC6 /* Add info */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Add info";
+			sourceTree = "<group>";
+		};
+		8453A83A2A122E5C00BDBCC6 /* APIControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */,
+			);
+			path = APIControllers;
 			sourceTree = "<group>";
 		};
 		84C5154429F9EBA600B2902B /* Models */ = {
@@ -213,6 +301,8 @@
 				84C5154529F9EBCE00B2902B /* User.swift */,
 				84C5154729F9F1E400B2902B /* Trip.swift */,
 				844D6AAC2A0BF97E007055CD /* Post.swift */,
+				8453A8362A122E1500BDBCC6 /* Info.swift */,
+				8453A8382A122E4000BDBCC6 /* Itinerary.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +330,7 @@
 		84F3371529F94B1D00A3BD9C /* Travelogue */ = {
 			isa = PBXGroup;
 			children = (
+				8453A83A2A122E5C00BDBCC6 /* APIControllers */,
 				84C5154429F9EBA600B2902B /* Models */,
 				84F3375629F965B000A3BD9C /* DatabaseControllers */,
 				844511E02A0158240068E2CB /* Views */,
@@ -426,12 +517,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				844D6AAB2A0BF713007055CD /* PostController.swift in Sources */,
+				8453A8402A1244DB00BDBCC6 /* ImageDownloadHelper.swift in Sources */,
 				845AA6402A10ABD8007AFA19 /* TripNavigationViewController.swift in Sources */,
+				8453A8332A12289100BDBCC6 /* TripMapViewController.swift in Sources */,
 				84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */,
 				844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */,
-				845AA6442A10C511007AFA19 /* customTabBar.swift in Sources */,
 				84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */,
 				844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */,
+				8453A82B2A1227E900BDBCC6 /* ItineraryListViewController.swift in Sources */,
+				8453A83E2A1243A500BDBCC6 /* CreateItineraryViewController.swift in Sources */,
 				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,
 				844D6AA02A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift in Sources */,
 				845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */,
@@ -440,13 +534,19 @@
 				84C5154829F9F1E400B2902B /* Trip.swift in Sources */,
 				844511DD2A0157D80068E2CB /* CreateTripViewController.swift in Sources */,
 				84F3372129F94B1D00A3BD9C /* Travelogue.xcdatamodeld in Sources */,
+				8453A8372A122E1500BDBCC6 /* Info.swift in Sources */,
+				8453A8312A12288100BDBCC6 /* TripInfoViewController.swift in Sources */,
 				84C5154629F9EBCE00B2902B /* User.swift in Sources */,
+				8453A8392A122E4000BDBCC6 /* Itinerary.swift in Sources */,
 				84C5154329F9DFB900B2902B /* UserController.swift in Sources */,
 				845AA63E2A10A904007AFA19 /* TripCellTableViewCell.swift in Sources */,
 				84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */,
 				844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */,
 				84C5154A29FA004500B2902B /* TripController.swift in Sources */,
+				8453A8262A12277E00BDBCC6 /* HomePageViewController.swift in Sources */,
+				8453A8292A1227D000BDBCC6 /* PostListViewController.swift in Sources */,
 				844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */,
+				8453A83C2A1233D900BDBCC6 /* GooglePlacesController.swift in Sources */,
 				84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */,
 				844D6AAD2A0BF97E007055CD /* Post.swift in Sources */,
 			);

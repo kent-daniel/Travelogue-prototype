@@ -6,7 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -190,7 +190,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-5F-ZIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1993" y="-218"/>
+            <point key="canvasLocation" x="2918.320610687023" y="-218.3098591549296"/>
         </scene>
         <!--Trip details view-->
         <scene sceneID="Nyo-7V-OTl">
@@ -200,19 +200,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="trip contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-ZZ-YeS">
-                                <rect key="frame" x="168" y="308" width="97" height="21"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gg7-e3-3cd">
+                                <rect key="frame" x="16" y="172" width="361" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9a3-aN-rla">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bQR-vw-TxS">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gl1-Gu-TvK">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TkL-cX-en5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Trip details view" id="XcY-Wk-e6n">
-                        <barButtonItem key="rightBarButtonItem" title="edit" image="ellipsis.circle" catalog="system" id="Db1-wu-dP4"/>
+                        <barButtonItem key="rightBarButtonItem" title="edit" image="ellipsis.circle" catalog="system" changesSelectionAsPrimaryAction="YES" id="Db1-wu-dP4"/>
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="Db1-wu-dP4" id="uv3-bV-VYJ"/>
@@ -220,12 +234,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xft-iK-ImF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="-736"/>
+            <point key="canvasLocation" x="3837.4045801526718" y="-736.61971830985919"/>
         </scene>
-        <!--Edit Trip Details-->
+        <!--Itinerary List View Controller-->
+        <scene sceneID="e8G-P7-VTQ">
+            <objects>
+                <viewController id="4HG-5o-PpQ" customClass="ItineraryListViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rFJ-2P-wGO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Fmp-6P-Rhu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0So-No-fDh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5187" y="-737"/>
+        </scene>
+        <!--Create Itinerary View Controller-->
+        <scene sceneID="mjm-gx-U5Q">
+            <objects>
+                <viewController id="x14-9V-D78" customClass="CreateItineraryViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DGz-bD-QjC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="pSm-o1-Xib"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bD4-kG-Fpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5949" y="-737"/>
+        </scene>
+        <!--Create Trip Details-->
         <scene sceneID="hRC-wN-52i">
             <objects>
-                <viewController storyboardIdentifier="TripEditViewController" title="Edit Trip Details" id="ee0-kN-ed7" customClass="CreateTripViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripEditViewController" title="Create Trip Details" id="ee0-kN-ed7" customClass="CreateTripViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkG-Wr-FQd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhh-Hm-Qp2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2910.6870229007632" y="134.50704225352112"/>
+            <point key="canvasLocation" x="2918" y="576"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Sa2-cR-hkF">
@@ -380,41 +424,20 @@
             </objects>
             <point key="canvasLocation" x="3711" y="135"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="lXm-Ee-m5D">
-            <objects>
-                <navigationController id="EBW-bs-Mji" customClass="PostNavViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="JsH-ig-waD"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qG3-eH-i80">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="IUo-d4-Pyg" kind="relationship" relationship="rootViewController" id="cQl-HE-csk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c9z-K9-qVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2244" y="-1722"/>
-        </scene>
         <!--Create A New Post-->
         <scene sceneID="zZy-uN-oIW">
             <objects>
-                <viewController id="IUo-d4-Pyg" customClass="CreatePostViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePostViewController" id="IUo-d4-Pyg" customClass="CreatePostViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vjt-zm-Ma6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nak-4B-rHY">
-                                <rect key="frame" x="23" y="128" width="339" height="351"/>
+                                <rect key="frame" x="21" y="196" width="339" height="351"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hm0-RD-EHS">
-                                <rect key="frame" x="132" y="328" width="116" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiz-jR-DHf">
-                                <rect key="frame" x="30" y="497" width="112" height="35"/>
+                                <rect key="frame" x="28" y="565" width="112" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Add photos"/>
@@ -423,31 +446,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR3-m6-auZ">
-                                <rect key="frame" x="30" y="645" width="99" height="35"/>
+                                <rect key="frame" x="28" y="713" width="99" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save post"/>
                                 <connections>
                                     <action selector="savePost:" destination="IUo-d4-Pyg" eventType="touchUpInside" id="YBa-rR-83Z"/>
                                 </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip name :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9p-DE-fPe">
-                                <rect key="frame" x="30" y="570" width="85" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcM-JB-KAB">
-                                <rect key="frame" x="145" y="577" width="80" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="Ooz-9Y-dHN">
-                                    <children>
-                                        <command title="Item 1" id="ssb-Ds-BvW"/>
-                                        <command title="Item 2" id="WBK-7W-jcn"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Choose trip"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I1R-JA-ETb"/>
@@ -457,12 +462,27 @@
                     <navigationItem key="navigationItem" title="Create A New Post" id="tRF-3p-jbO"/>
                     <connections>
                         <outlet property="ImageContainer" destination="nak-4B-rHY" id="98S-Lm-gtb"/>
-                        <outlet property="chosenTrip" destination="UcM-JB-KAB" id="aTb-wV-Iue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCE-jt-Kms" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3066" y="-1722"/>
+            <point key="canvasLocation" x="3837" y="-1513"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="BY2-vB-c3L">
+            <objects>
+                <viewController id="viC-Ze-kWK" customClass="HomePageViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zeV-PM-Hgj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="rbf-Al-HME"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="IN8-XL-ut5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yqz-Q7-JFc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1144.2748091603053" y="-659.15492957746483"/>
         </scene>
         <!--Home Tabbar View Controller-->
         <scene sceneID="gMf-12-mRa">
@@ -478,7 +498,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="bHZ-ty-ILD" kind="relationship" relationship="viewControllers" id="Mws-Hn-fv3"/>
-                        <segue destination="EBW-bs-Mji" kind="relationship" relationship="viewControllers" id="yYw-eV-nk9"/>
+                        <segue destination="Nuq-3y-e1y" kind="relationship" relationship="viewControllers" id="rFe-gr-rZm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaa-DZ-CI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -525,9 +545,10 @@
                 <navigationController title="Trip Nav Flow" automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" customClass="TripNavigationViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" selectedImage="safari.fill" catalog="system" id="EN3-QX-aqf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZu-e7-Agk">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="WZu-e7-Agk">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="linkColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -536,7 +557,56 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJR-M1-3s2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="497" y="-206"/>
+            <point key="canvasLocation" x="2159.5419847328244" y="-218.3098591549296"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Ge7-yi-bod">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nuq-3y-e1y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="doN-q6-ppO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="taD-7f-K0M">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="viC-Ze-kWK" kind="relationship" relationship="rootViewController" id="nw9-bf-JoI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdg-Cs-7av" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217.55725190839695" y="-659.15492957746483"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="j9p-6Z-6kH">
+            <objects>
+                <viewController id="dX6-Bg-dtR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e8F-Q4-ueB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="axT-Zw-1rh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pmj-69-ffC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6637" y="-737"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wdQ-fW-0Nn">
+            <objects>
+                <viewController id="Mw9-Wq-a1c" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XfB-BE-Esb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oVO-DJ-bnE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYf-Gc-yrC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4523" y="-737"/>
         </scene>
     </scenes>
     <resources>
@@ -547,6 +617,9 @@
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

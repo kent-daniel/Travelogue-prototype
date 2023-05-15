@@ -51,22 +51,29 @@ class LoginViewController: UIViewController {
         
     }
         
-    func setUpBackgroundImage(){
+    func setUpBackgroundImage() {
         NSLayoutConstraint.activate([
-                    loginPageImage.topAnchor.constraint(equalTo: view.topAnchor),
-                    loginPageImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                    loginPageImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                    loginPageImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
+            loginPageImage.topAnchor.constraint(equalTo: view.topAnchor),
+            loginPageImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loginPageImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loginPageImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         loginPageImage.contentMode = UIView.ContentMode.scaleAspectFill
-        Task{
-            let httpsUrl = "https://source.unsplash.com/random/600x900/?clear,sky"
-            let img = await downloadImage(from: httpsUrl, into: loginPageImage)
-            if let img=img{
-                loginPageImage.image=img
+        
+        let httpsUrl = "https://source.unsplash.com/random/600x900/?sky"
+        ImageDownloadHelper.downloadImage(from: httpsUrl) { (image, error) in
+            if let img = image {
+                self.loginPageImage.image = img
+            } else {
+                print("Error downloading image: \(error?.localizedDescription ?? "unknown error")")
             }
         }
     }
+
+
+            
+        
+    
     
     func navigateToSignUpController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -13,9 +13,9 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     var currentUser:User?
     var userTrips:[Trip]?
     var selectedTrip:Trip?
+    var activityIndicator: UIActivityIndicatorView?
+
     @IBOutlet weak var ImageContainer: UIImageView!
-    
-    @IBOutlet weak var chosenTrip: UIButton!
     
     @IBAction func addPic(_ sender: Any) {
         
@@ -36,6 +36,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
 
     @IBAction func savePost(_ sender: Any) {
+        self.activityIndicator?.startAnimating()
         guard let image = selectedImage else {
             print("No image selected.")
             return
@@ -44,7 +45,12 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         PostController.uploadImage(image , for: self.selectedTrip , currentUser: self.currentUser) { result in
             switch result {
             case .success(let url):
-                self.savePost(with: url)
+                print(url)
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                    self.activityIndicator?.stopAnimating()
+                }
             case .failure(let error):
                 print("Failed to upload image: \(error.localizedDescription)")
             }
@@ -57,42 +63,14 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.currentUser = appDelegate?.currentUser
         
-        TripController().getCurrentUserTrips { trips in
-            if let trips = trips {
-                self.userTrips = trips
-                // Create a pull-down menu
-                let menu = UIMenu(title: "Choose a trip", children: (self.userTrips ?? []).compactMap { trip in
-                    let tripName = trip.name
-                    return UIAction(title: tripName!, handler: { _ in
-                        // Set the selected trip ID to the ID of the selected trip
-                        self.selectedTrip = trip
-                        // Update the title of the button to show the selected trip name
-                        self.chosenTrip.setTitle(tripName, for: .normal)
-                    })
-                })
-                // Assign the pull-down menu to the button
-                self.chosenTrip.menu = menu
-            } else {
-                // Handle the error case
-                print("Error retrieving trips")
-            }
-        }
-
-
-        
-
-
-
-        
-        
-        
+        // Initialize the activity indicator
+            activityIndicator = UIActivityIndicatorView(style: .large)
+            activityIndicator?.center = view.center
+            activityIndicator?.hidesWhenStopped = true
+        view.addSubview(activityIndicator!)
     }
     
-    func savePost(with imageUrl: URL) {
-        // Use the URL to create a new post document in Firebase Firestore
-        print("Image URL: \(imageUrl.absoluteString)")
-        // ...
-    }
+   
     
     func requestPhotoLibraryAccessPermission() {
         PHPhotoLibrary.requestAuthorization { status in
