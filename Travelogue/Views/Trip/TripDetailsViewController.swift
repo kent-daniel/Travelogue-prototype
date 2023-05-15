@@ -13,49 +13,28 @@ class TripDetailsViewController: UIViewController {
     var currentUser:User?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.currentUser = appDelegate?.currentUser
         // set the title of the view controller to the trip name
         self.title = trip?.name
-        print(trip)
-        // make sure there is a current user
-        guard let userID = AuthController().getCurrentUser()?.uid else {
-            // handle the case where there is no current user
-            print("No current user found.")
-            return
-        }
         
-        // get the user document for the current user
-        UserController().getUserByID(id: userID) { user, error in
-            if let error = error {
-                // handle the case where there is an error getting the user document
-                print("Error getting user document: \(error.localizedDescription)")
+        print(trip?.posts)
+        UserController().getDocumentReference(for: currentUser!) { currentUserRef in
+            guard let currentUserRef = currentUserRef else {
+                // handle the case where currentUserRef is nil
                 return
-            }
-            
-            if let user = user{
-                self.currentUser = user
-            } else {
-                // handle the case where there is no user document for the current user
-                print("No user document found for current user.")
-                return
-            }
-            
-            UserController().getDocumentReference(for: user!) { currentUserRef in
-                guard let currentUserRef = currentUserRef else {
-                    // handle the case where currentUserRef is nil
-                    return
-                }
-                
-                print(currentUserRef , self.trip?.admin)
-                if currentUserRef == self.trip?.admin {
-                   
-                    self.editButton.isEnabled = true
-                } else {
-                    self.editButton.isEnabled = false
-                }
             }
 
+            print(currentUserRef , self.trip?.admin)
+            if currentUserRef == self.trip?.admin {
+
+                self.editButton.isEnabled = true
+            } else {
+                self.editButton.isEnabled = false
+            }
         }
+//
+//        }
         
         
         // get all trips

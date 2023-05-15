@@ -34,7 +34,7 @@ class TripTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        fetchTrips()
+        fetchTrips()
         self.tabBarController?.tabBar.isHidden = false
         setTitle()
     }

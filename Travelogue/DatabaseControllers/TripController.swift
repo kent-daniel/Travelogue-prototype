@@ -35,6 +35,11 @@ class TripController: NSObject {
                         if let document = document, document.exists {
                             let trip = try? document.data(as: Trip.self)
                             if let trip = trip {
+                                self.getAllTripPosts(for: trip){ posts,error in
+                                    //print(posts)
+                                    trip.posts = posts!
+                                    
+                                }
                                 trips.append(trip)
                             }
                         }
@@ -135,13 +140,7 @@ class TripController: NSObject {
             newPost.dateTime = Date()
             newPost.location = [21.00000,31.289832747]
             newPost.url = imageURL!
-//            self.getLocation { location, error in
-//                if let location = location {
-//                    newPost.location = [21.00000,31.289832747]
-//                } else {
-//                    print("Error getting location: \(error?.localizedDescription ?? "")")
-//                }
-//                newPost.url = imageURL
+
                 do {
                     let db = Firestore.firestore()
                     let tripRef = db.collection("trips").document(trip.id!)
@@ -150,18 +149,17 @@ class TripController: NSObject {
                 } catch let error {
                     print("Error adding post: \(error.localizedDescription)")
                 }
-//            }
         }
     }
     
-    func getAllTripPosts(for trip: Trip, completion: @escaping (Result<[Post], Error>) -> Void) {
+    func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
         let db = Firestore.firestore()
         let tripRef = db.collection("trips").document(trip.id!)
         let postsRef = tripRef.collection("posts")
 
         postsRef.getDocuments { snapshot, error in
             if let error = error {
-                completion(.failure(error))
+                completion(nil, error)
             } else if let snapshot = snapshot {
                 var posts: [Post] = []
                 for document in snapshot.documents {
@@ -174,7 +172,7 @@ class TripController: NSObject {
                         print("Error decoding post: \(error.localizedDescription)")
                     }
                 }
-                completion(.success(posts))
+                completion(posts, nil)
             }
         }
     }

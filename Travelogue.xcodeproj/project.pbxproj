@@ -19,6 +19,7 @@
 		845AA63E2A10A904007AFA19 /* TripCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */; };
 		845AA6402A10ABD8007AFA19 /* TripNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */; };
 		845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */; };
+		845AA6442A10C511007AFA19 /* customTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA6432A10C511007AFA19 /* customTabBar.swift */; };
 		84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154029F9D8E000B2902B /* TripTableViewController.swift */; };
 		84C5154329F9DFB900B2902B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154229F9DFB900B2902B /* UserController.swift */; };
 		84C5154629F9EBCE00B2902B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154529F9EBCE00B2902B /* User.swift */; };
@@ -74,6 +75,7 @@
 		845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCellTableViewCell.swift; sourceTree = "<group>"; };
 		845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripNavigationViewController.swift; sourceTree = "<group>"; };
 		845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavViewController.swift; sourceTree = "<group>"; };
+		845AA6432A10C511007AFA19 /* customTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTabBar.swift; sourceTree = "<group>"; };
 		84C5154029F9D8E000B2902B /* TripTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
 		84C5154229F9DFB900B2902B /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		84C5154529F9EBCE00B2902B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */,
+				845AA6432A10C511007AFA19 /* customTabBar.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				845AA6402A10ABD8007AFA19 /* TripNavigationViewController.swift in Sources */,
 				84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */,
 				844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */,
+				845AA6442A10C511007AFA19 /* customTabBar.swift in Sources */,
 				84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */,
 				844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */,
 				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,

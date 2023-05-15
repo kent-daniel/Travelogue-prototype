@@ -18,11 +18,21 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var chosenTrip: UIButton!
     
     @IBAction func addPic(_ sender: Any) {
-        requestPhotoLibraryAccessPermission()
+        
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
-        self.present(imagePickerController, animated: true, completion: nil)
+        if PHPhotoLibrary.authorizationStatus() == .authorized {
+                // Access granted, continue with your logic
+            print("allowed")
+            self.present(imagePickerController, animated: true, completion: nil)
+                //self.present(imagePickerController, animated: true, completion: nil)
+        }else{
+            requestPhotoLibraryAccessPermission()
+            print("disallow")
+        }
+        
+        
     }
 
     @IBAction func savePost(_ sender: Any) {
@@ -44,7 +54,9 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // Create an array of trip names
         // Create an array of trip names
-       
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.currentUser = appDelegate?.currentUser
+        
         TripController().getCurrentUserTrips { trips in
             if let trips = trips {
                 self.userTrips = trips
@@ -72,30 +84,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
 
 
         
-        // Do any additional setup after loading the view.
-        // make sure there is a current user
-        guard let userID = AuthController().getCurrentUser()?.uid else {
-            // handle the case where there is no current user
-            print("No current user found.")
-            return
-        }
         
-        // get the user document for the current user
-        UserController().getUserByID(id: userID) { user, error in
-            if let error = error {
-                // handle the case where there is an error getting the user document
-                print("Error getting user document: \(error.localizedDescription)")
-                return
-            }
-            
-            if let user = user{
-                self.currentUser = user
-            } else {
-                // handle the case where there is no user document for the current user
-                print("No user document found for current user.")
-                return
-            }
-        }
         
     }
     
@@ -111,10 +100,26 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                 switch status {
                 case .authorized:
                     // Access granted, continue with your logic
+                    print("allowed")
                     break
                 case .denied, .restricted:
                     // Access denied or restricted, handle the error
-                    break
+                    // Access denied or restricted, display alert
+                    let alert = UIAlertController(title: "Permission Denied", message: "Please enable photo library access in Settings to use this feature.", preferredStyle: .alert)
+                  
+                    
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: { action in
+                        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                            return
+                        }
+
+                        if UIApplication.shared.canOpenURL(settingsUrl) {
+                            UIApplication.shared.open(settingsUrl)
+                        }
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                               
                 case .notDetermined:
                     // Should not happen, handle the error
                     break
