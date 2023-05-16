@@ -10,6 +10,7 @@ import CoreData
 import UIKit
 import FirebaseCore
 import FirebaseAuth
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        // Configure google places
+        GMSPlacesClient.provideAPIKey("AIzaSyBHwJepcI5KvsFa-DJRli6TNWgJGItJmWI")
         // Check if the user is already signed in
         if Auth.auth().currentUser != nil {
             // User is already signed in, set the current user property

@@ -42,7 +42,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             return
         }
         
-        PostController.uploadImage(image , for: self.selectedTrip , currentUser: self.currentUser) { result in
+        StorageController.uploadImage(image , for: self.selectedTrip , currentUser: self.currentUser) { result in
             switch result {
             case .success(let url):
                 print(url)

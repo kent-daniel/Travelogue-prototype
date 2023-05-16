@@ -11,7 +11,6 @@ import FirebaseFirestoreSwift
 
 class Post: NSObject , Codable {
     @DocumentID var id: String?
-    // user who posted
     var poster: DocumentReference?
     var dateTime:Date?
     var url:String?

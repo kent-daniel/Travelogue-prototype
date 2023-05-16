@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseStorage
-class PostController: NSObject {
+class StorageController: NSObject {
     
     
     static func uploadImage(_ image: UIImage, for trip: Trip?, currentUser: User? ,completion: @escaping (Result<URL, Error>) -> Void) {

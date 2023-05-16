@@ -6,7 +6,14 @@
 //
 
 import UIKit
+import FirebaseFirestoreSwift
 
-class Itinerary: NSObject {
-
+class Itinerary: NSObject , Codable{
+    @DocumentID var id: String?
+    var title : String?
+    var desc:String?
+    var address:String?
+    var coordinate:[Double]?
+    var dateTime:Date?
+    var imgURL:String?
 }
