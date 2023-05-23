@@ -2,13 +2,14 @@
 //  CreateItineraryViewController.swift
 //  Travelogue
 //
-//  Created by kent daniel on 15/5/2023.
+//  Created by kent daniel on 23/5/2023.
 //
 
 import UIKit
 
 class CreateItineraryViewController: UIViewController {
-
+    @IBOutlet weak var locationName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

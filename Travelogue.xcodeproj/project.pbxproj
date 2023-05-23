@@ -24,7 +24,6 @@
 		8453A8372A122E1500BDBCC6 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8362A122E1500BDBCC6 /* Info.swift */; };
 		8453A8392A122E4000BDBCC6 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8382A122E4000BDBCC6 /* Itinerary.swift */; };
 		8453A83C2A1233D900BDBCC6 /* GooglePlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */; };
-		8453A83E2A1243A500BDBCC6 /* CreateItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83D2A1243A500BDBCC6 /* CreateItineraryViewController.swift */; };
 		8453A8402A1244DB00BDBCC6 /* ImageDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83F2A1244DB00BDBCC6 /* ImageDownloadHelper.swift */; };
 		8453A8422A12537C00BDBCC6 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8412A12537C00BDBCC6 /* PostCell.swift */; };
 		845AA63E2A10A904007AFA19 /* TripCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */; };
@@ -40,6 +39,8 @@
 		84C5154829F9F1E400B2902B /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154729F9F1E400B2902B /* Trip.swift */; };
 		84C5154A29FA004500B2902B /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5154929FA004500B2902B /* TripController.swift */; };
 		84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D994CC29FFE85B0057B8C8 /* SignUpViewController.swift */; };
+		84EF58BD2A1C978B00024615 /* ItineraryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF58BC2A1C978B00024615 /* ItineraryListTableViewController.swift */; };
+		84EF58BF2A1C992C00024615 /* CreateItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF58BE2A1C992C00024615 /* CreateItineraryViewController.swift */; };
 		84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371629F94B1D00A3BD9C /* AppDelegate.swift */; };
 		84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */; };
 		84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371A29F94B1D00A3BD9C /* LoginViewController.swift */; };
@@ -94,7 +95,6 @@
 		8453A8362A122E1500BDBCC6 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		8453A8382A122E4000BDBCC6 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesController.swift; sourceTree = "<group>"; };
-		8453A83D2A1243A500BDBCC6 /* CreateItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryViewController.swift; sourceTree = "<group>"; };
 		8453A83F2A1244DB00BDBCC6 /* ImageDownloadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadHelper.swift; sourceTree = "<group>"; };
 		8453A8412A12537C00BDBCC6 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +107,8 @@
 		84C5154729F9F1E400B2902B /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		84C5154929FA004500B2902B /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
 		84D994CC29FFE85B0057B8C8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		84EF58BC2A1C978B00024615 /* ItineraryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListTableViewController.swift; sourceTree = "<group>"; };
+		84EF58BE2A1C992C00024615 /* CreateItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryViewController.swift; sourceTree = "<group>"; };
 		84F3371329F94B1D00A3BD9C /* Travelogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3371629F94B1D00A3BD9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -287,7 +289,8 @@
 		8453A8342A1228D800BDBCC6 /* Add itinerary */ = {
 			isa = PBXGroup;
 			children = (
-				8453A83D2A1243A500BDBCC6 /* CreateItineraryViewController.swift */,
+				84EF58BC2A1C978B00024615 /* ItineraryListTableViewController.swift */,
+				84EF58BE2A1C992C00024615 /* CreateItineraryViewController.swift */,
 			);
 			path = "Add itinerary";
 			sourceTree = "<group>";
@@ -542,16 +545,17 @@
 				846EAA932A1312C600506714 /* SearchLocationViewController.swift in Sources */,
 				844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */,
 				8453A82B2A1227E900BDBCC6 /* ItineraryListViewController.swift in Sources */,
-				8453A83E2A1243A500BDBCC6 /* CreateItineraryViewController.swift in Sources */,
 				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,
 				844D6AA02A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift in Sources */,
 				845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */,
 				84F3375829F966E900A3BD9C /* AuthController.swift in Sources */,
 				844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */,
 				84C5154829F9F1E400B2902B /* Trip.swift in Sources */,
+				84EF58BF2A1C992C00024615 /* CreateItineraryViewController.swift in Sources */,
 				844511DD2A0157D80068E2CB /* CreateTripViewController.swift in Sources */,
 				8453A8422A12537C00BDBCC6 /* PostCell.swift in Sources */,
 				84F3372129F94B1D00A3BD9C /* Travelogue.xcdatamodeld in Sources */,
+				84EF58BD2A1C978B00024615 /* ItineraryListTableViewController.swift in Sources */,
 				8453A8372A122E1500BDBCC6 /* Info.swift in Sources */,
 				8453A8312A12288100BDBCC6 /* TripInfoViewController.swift in Sources */,
 				84C5154629F9EBCE00B2902B /* User.swift in Sources */,
