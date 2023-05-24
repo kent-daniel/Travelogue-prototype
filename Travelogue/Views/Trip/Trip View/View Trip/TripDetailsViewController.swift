@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TripDetailsViewController: UIViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -21,6 +22,7 @@ class TripDetailsViewController: UIViewController {
         // set the title of the view controller to the trip name
         self.title = trip?.name
         self.posts = trip?.posts
+        print(self.trip?.itineraries)
         
         UserController().getDocumentReference(for: currentUser!) { currentUserRef in
             guard let currentUserRef = currentUserRef else {
@@ -101,6 +103,28 @@ class TripDetailsViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         collectionView.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showMapSegue"){
+            let mapVC = segue.destination as! TripMapViewController
+            // get all name , coordinate & address from the itinerary & pass to mapVC
+            
+            // Extract the necessary data from itineraries
+            var locations: [(name: String, coordinate: CLLocationCoordinate2D, address: String, imageURL: String?)] = []
+            for itinerary in trip?.itineraries ?? [] {
+                if let name = itinerary.title,
+                   let coordinateArray = itinerary.coordinate,
+                   coordinateArray.count >= 2,
+                   let latitude = coordinateArray.first,
+                   let longitude = coordinateArray.last,
+                   let address = itinerary.address{
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    locations.append((name: name, coordinate: coordinate, address: address, imageURL: itinerary.imgURL ?? ""))
+                }
+            }
+            
+            mapVC.locations = locations
+        }
     }
 }
 

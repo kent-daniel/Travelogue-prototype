@@ -38,7 +38,9 @@ class TripController: NSObject {
                                 self.getAllTripPosts(for: trip){ posts,error in
                                     //print(posts)
                                     trip.posts = posts!
-                                    
+                                    self.getAllTripItineraries(for: trip){ itineraries,error in
+                                        trip.itineraries = itineraries!
+                                    }
                                 }
                                 trips.append(trip)
                             }
@@ -188,7 +190,33 @@ class TripController: NSObject {
         }
     }
     
-    func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
+    private func getAllTripItineraries(for trip:Trip , completion: @escaping ([Itinerary]? , Error?)-> Void){
+        let db = Firestore.firestore()
+        let tripRef = tripCollectionRef!.document(trip.id!)
+        let itinerariesRef = tripRef.collection("itineraries")
+        
+        itinerariesRef.getDocuments { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+            } else if let snapshot = snapshot {
+                var itineraryList: [Itinerary] = []
+                for document in snapshot.documents {
+                    do {
+                        let itinerary = try document.data(as: Itinerary.self)
+                        
+                            itineraryList.append(itinerary)
+                        
+                    } catch let error {
+                        print("Error decoding itinerary: \(error.localizedDescription)")
+                    }
+                }
+                completion(itineraryList, nil)
+            }
+        }
+        
+    }
+    
+    private func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
         let db = Firestore.firestore()
         let tripRef = db.collection("trips").document(trip.id!)
         let postsRef = tripRef.collection("posts")
@@ -212,6 +240,11 @@ class TripController: NSObject {
             }
         }
     }
+    
+    
+    
+    }
+
 
 
 
@@ -221,7 +254,7 @@ class TripController: NSObject {
         
         
         
-}
+
 
 
 //class TripController: CLLocationManagerDelegate {

@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -224,6 +225,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwm-4g-NRU">
+                                <rect key="frame" x="105" y="204" width="142" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Go to map view"/>
+                                <connections>
+                                    <segue destination="Mw9-Wq-a1c" kind="show" identifier="showMapSegue" id="kic-e2-eEs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TkL-cX-en5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -606,20 +616,31 @@
             </objects>
             <point key="canvasLocation" x="6637" y="-737"/>
         </scene>
-        <!--View Controller-->
+        <!--Trip Map View Controller-->
         <scene sceneID="wdQ-fW-0Nn">
             <objects>
-                <viewController id="Mw9-Wq-a1c" sceneMemberID="viewController">
+                <viewController id="Mw9-Wq-a1c" customClass="TripMapViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XfB-BE-Esb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDP-uJ-JzO">
+                                <rect key="frame" x="16" y="101" width="361" height="542"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="oVO-DJ-bnE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kXg-lf-I0u"/>
+                    <connections>
+                        <outlet property="Map" destination="BDP-uJ-JzO" id="adv-63-zEl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYf-Gc-yrC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4523" y="-737"/>
+            <point key="canvasLocation" x="4521.3740458015263" y="-737.32394366197184"/>
         </scene>
         <!--Itinerary List Table View Controller-->
         <scene sceneID="d8m-Iz-cN6">
