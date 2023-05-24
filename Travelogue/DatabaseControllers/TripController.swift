@@ -129,6 +129,43 @@ class TripController: NSObject {
 //
 //        }
     
+    func updateItinerariesInTrip(itineraries: [Itinerary], trip: Trip) {
+        guard let tripRef = getDocumentReference(for: trip) else {
+            return
+        }
+        
+        // Create a subcollection reference for itineraries under the trip
+        let itinerariesCollectionRef = tripRef.collection("itineraries")
+        
+        // Delete existing itineraries in the subcollection
+        itinerariesCollectionRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error retrieving existing itineraries: \(error.localizedDescription)")
+                return
+            }
+            
+            // Delete each existing itinerary document
+            snapshot?.documents.forEach { document in
+                itinerariesCollectionRef.document(document.documentID).delete()
+            }
+            
+            // Add the new itineraries to the subcollection
+            for itinerary in itineraries {
+                do {
+                    let itineraryDocRef = try itinerariesCollectionRef.addDocument(from: itinerary)
+                    
+                    // Update the itinerary's ID with the document ID assigned by Firestore
+                    itinerary.id = itineraryDocRef.documentID
+                } catch {
+                    print("Failed to add itinerary to trip: \(error.localizedDescription)")
+                }
+            }
+            
+            print("Itineraries overwritten successfully")
+        }
+    }
+
+    
     func addPostToTrip(imageURL: String?, trip: Trip, by currentUser: User) {
         UserController().getDocumentReference(for: currentUser) { userRef in
             guard let userRef = userRef else {
@@ -178,14 +215,7 @@ class TripController: NSObject {
 
 
 
-//    func getLocation(completion: @escaping (CLLocation?, Error?) -> Void) {
-//        let locationManager = CLLocationManager()
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.requestLocation { location, error in
-//            completion(location, error)
-//        }
-//    }
+
 
         
         

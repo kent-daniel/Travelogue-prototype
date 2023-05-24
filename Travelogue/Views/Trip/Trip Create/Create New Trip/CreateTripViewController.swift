@@ -10,6 +10,7 @@ import UIKit
 class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLocationViewControllerDelegate, ItineraryListEditDelegate{
     func didFinishEditingItineraryList(itineraries: [Itinerary]) {
         print(itineraries)
+        itineraryList = itineraries
     }
     
     
@@ -22,6 +23,7 @@ class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLo
     
     var currentUser : User?
     var members : [User]?
+    var itineraryList : [Itinerary]?
     var fromDate = Date()
     var toDate : Date?
     var fromDateDatePicker = UIDatePicker()
@@ -62,7 +64,7 @@ class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLo
         let currentTrip = TripController().createNewTrip(name: nameTextField.text!, admin: self.currentUser!)
         
         TripController().updateTripMembers(members: members!, trip: currentTrip!)
-        
+        TripController().updateItinerariesInTrip(itineraries: itineraryList!, trip: currentTrip!)
         navigationController?.popViewController(animated: true)
     }
     
@@ -102,6 +104,8 @@ class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLo
         }else if (segue.identifier == "itineraryListSegue"){
             let itineraryListVC = segue.destination as! ItineraryListTableViewController
             itineraryListVC.delegate = self
+        
+            
         }
     }
     

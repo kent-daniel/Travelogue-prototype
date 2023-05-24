@@ -382,7 +382,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Create itineraries"/>
                                 <connections>
-                                    <segue destination="0ub-1Z-asu" kind="show" identifier="itineraryListSegue" id="oho-NF-Sol"/>
+                                    <segue destination="7oQ-KW-hsR" kind="show" identifier="itineraryListSegue" id="EMB-DM-9Hk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -785,25 +785,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgN-4c-3R2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5518" y="1592"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UQw-kH-HCL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ub-1Z-asu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="4xP-Ip-CEc"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tu9-fL-2y7">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7oQ-KW-hsR" kind="relationship" relationship="rootViewController" id="8aS-MD-NX9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gDs-hW-mZK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3009.9236641221373" y="1621.8309859154931"/>
         </scene>
     </scenes>
     <resources>
