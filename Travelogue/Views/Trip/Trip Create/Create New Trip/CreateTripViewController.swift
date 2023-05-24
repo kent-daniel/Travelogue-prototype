@@ -7,7 +7,18 @@
 
 import UIKit
 
-class CreateTripViewController: UIViewController ,passMembersDelegate{
+class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLocationViewControllerDelegate, ItineraryListEditDelegate{
+    func didFinishEditingItineraryList(itineraries: [Itinerary]) {
+        print(itineraries)
+    }
+    
+    
+    func didSelectLocation(_ location: Location) {
+        print(location.name)
+        print(location.address)
+        print(location.coordinate)
+    }
+    
     
     var currentUser : User?
     var members : [User]?
@@ -83,11 +94,14 @@ class CreateTripViewController: UIViewController ,passMembersDelegate{
         // Update table height based on number of members
         membersTable.heightAnchor.constraint(equalToConstant: CGFloat(self.members?.count ?? 0) * 44.0).isActive = true
     }
-    
+    // MARK: - segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "tripEditAddMembers"){
             let membersVC = segue.destination as! MembersSearchTableViewController
             membersVC.delegate = self
+        }else if (segue.identifier == "itineraryListSegue"){
+            let itineraryListVC = segue.destination as! ItineraryListTableViewController
+            itineraryListVC.delegate = self
         }
     }
     

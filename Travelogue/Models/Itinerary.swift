@@ -16,4 +16,6 @@ class Itinerary: NSObject , Codable{
     var coordinate:[Double]?
     var dateTime:Date?
     var imgURL:String?
+    
+    
 }

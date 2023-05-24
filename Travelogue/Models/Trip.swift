@@ -16,11 +16,11 @@ class Trip: NSObject, Codable{
     var admin: DocumentReference?
     var members :[DocumentReference]?
     var posts : [Post]?
+    var date : Date?
 //    var description -> string
-//    var itineraries // sub coll
+    var itineraries : [Itinerary]?
 //    var announcements
-//    var locations -> real time DB
-//      var posts
+
     
     
 
