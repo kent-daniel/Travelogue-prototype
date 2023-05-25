@@ -41,6 +41,7 @@
 		84EF58BD2A1C978B00024615 /* ItineraryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF58BC2A1C978B00024615 /* ItineraryListTableViewController.swift */; };
 		84EF58BF2A1C992C00024615 /* CreateItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF58BE2A1C992C00024615 /* CreateItineraryViewController.swift */; };
 		84EF58C32A1DD52D00024615 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF58C22A1DD52D00024615 /* DateParser.swift */; };
+		84EF58C52A1F3F9100024615 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84EF58C42A1F3F9100024615 /* GoogleService-Info.plist */; };
 		84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371629F94B1D00A3BD9C /* AppDelegate.swift */; };
 		84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */; };
 		84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3371A29F94B1D00A3BD9C /* LoginViewController.swift */; };
@@ -56,7 +57,6 @@
 		84F3374F29F9647700A3BD9C /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84F3374E29F9647700A3BD9C /* FirebaseDatabaseSwift */; };
 		84F3375129F9647700A3BD9C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84F3375029F9647700A3BD9C /* FirebaseFirestoreSwift */; };
 		84F3375329F9647700A3BD9C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 84F3375229F9647700A3BD9C /* FirebaseStorage */; };
-		84F3375529F9651F00A3BD9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F3375429F9651F00A3BD9C /* GoogleService-Info.plist */; };
 		84F3375829F966E900A3BD9C /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3375729F966E900A3BD9C /* AuthController.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +109,7 @@
 		84EF58BC2A1C978B00024615 /* ItineraryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListTableViewController.swift; sourceTree = "<group>"; };
 		84EF58BE2A1C992C00024615 /* CreateItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryViewController.swift; sourceTree = "<group>"; };
 		84EF58C22A1DD52D00024615 /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		84EF58C42A1F3F9100024615 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F3371329F94B1D00A3BD9C /* Travelogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3371629F94B1D00A3BD9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F3371829F94B1D00A3BD9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,7 +124,6 @@
 		84F3373629F94B1D00A3BD9C /* TravelogueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3373A29F94B1D00A3BD9C /* TravelogueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelogueUITests.swift; sourceTree = "<group>"; };
 		84F3373C29F94B1D00A3BD9C /* TravelogueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelogueUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		84F3375429F9651F00A3BD9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F3375729F966E900A3BD9C /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -354,7 +354,7 @@
 				844511D72A011DA50068E2CB /* Helpers */,
 				844511E42A0158EA0068E2CB /* Storyboards */,
 				84F3372229F94B1D00A3BD9C /* Assets.xcassets */,
-				84F3375429F9651F00A3BD9C /* GoogleService-Info.plist */,
+				84EF58C42A1F3F9100024615 /* GoogleService-Info.plist */,
 				84F3372729F94B1D00A3BD9C /* Info.plist */,
 				84F3371F29F94B1D00A3BD9C /* Travelogue.xcdatamodeld */,
 			);
@@ -508,7 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F3372629F94B1D00A3BD9C /* LaunchScreen.storyboard in Resources */,
-				84F3375529F9651F00A3BD9C /* GoogleService-Info.plist in Resources */,
+				84EF58C52A1F3F9100024615 /* GoogleService-Info.plist in Resources */,
 				84F3372329F94B1D00A3BD9C /* Assets.xcassets in Resources */,
 				84F3371E29F94B1D00A3BD9C /* Main.storyboard in Resources */,
 			);
