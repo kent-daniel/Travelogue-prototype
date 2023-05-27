@@ -10,14 +10,7 @@ import UIKit
 
 class NavigationHelper {
     
-    static func navigateToSignUp(from viewController: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {
-            return
-        }
-        
-        viewController.navigationController?.pushViewController(signUpViewController, animated: true)
-    }
+    
     static func navigateToLogin(from viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let loginVC = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController else {

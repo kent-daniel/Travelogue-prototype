@@ -11,6 +11,8 @@
 		844511DD2A0157D80068E2CB /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DC2A0157D80068E2CB /* CreateTripViewController.swift */; };
 		844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */; };
 		844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E72A016AB00068E2CB /* TripDetailsViewController.swift */; };
+		8445EAB32A21D44300581E93 /* hideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */; };
+		8445EAB62A21DD7A00581E93 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 8445EAB52A21DD7A00581E93 /* ProgressHUD */; };
 		844D6AA02A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */; };
 		844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */; };
 		844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA82A0BE816007055CD /* CreatePostViewController.swift */; };
@@ -82,6 +84,7 @@
 		844511DC2A0157D80068E2CB /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 		844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersSearchTableViewController.swift; sourceTree = "<group>"; };
 		844511E72A016AB00068E2CB /* TripDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewController.swift; sourceTree = "<group>"; };
+		8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hideKeyboardExtension.swift; sourceTree = "<group>"; };
 		844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTripView+UISetupCreateTripSetupUI.swift"; sourceTree = "<group>"; };
 		844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
 		844D6AA82A0BE816007055CD /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 				84F3374F29F9647700A3BD9C /* FirebaseDatabaseSwift in Frameworks */,
 				846EAA9A2A132B1900506714 /* GooglePlaces in Frameworks */,
 				846EAA982A132B1900506714 /* GoogleMapsBase in Frameworks */,
+				8445EAB62A21DD7A00581E93 /* ProgressHUD in Frameworks */,
 				84F3374D29F9647700A3BD9C /* FirebaseDatabase in Frameworks */,
 				846EAA962A132B1900506714 /* GoogleMaps in Frameworks */,
 				84F3374B29F9647700A3BD9C /* FirebaseAuth in Frameworks */,
@@ -166,6 +170,7 @@
 				844511DA2A011EF70068E2CB /* NavigationHelper.swift */,
 				8453A83F2A1244DB00BDBCC6 /* ImageDownloadHelper.swift */,
 				84EF58C22A1DD52D00024615 /* DateParser.swift */,
+				8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				846EAA952A132B1900506714 /* GoogleMaps */,
 				846EAA972A132B1900506714 /* GoogleMapsBase */,
 				846EAA992A132B1900506714 /* GooglePlaces */,
+				8445EAB52A21DD7A00581E93 /* ProgressHUD */,
 			);
 			productName = Travelogue;
 			productReference = 84F3371329F94B1D00A3BD9C /* Travelogue.app */;
@@ -490,6 +496,7 @@
 			packageReferences = (
 				84F3374929F9647700A3BD9C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				846EAA942A132B1900506714 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
+				8445EAB42A21DD7A00581E93 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 84F3371429F94B1D00A3BD9C /* Products */;
 			projectDirPath = "";
@@ -570,6 +577,7 @@
 				844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */,
 				8453A83C2A1233D900BDBCC6 /* GooglePlacesController.swift in Sources */,
 				84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */,
+				8445EAB32A21D44300581E93 /* hideKeyboardExtension.swift in Sources */,
 				844D6AAD2A0BF97E007055CD /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -910,6 +918,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8445EAB42A21DD7A00581E93 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 		846EAA942A132B1900506714 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP.git";
@@ -929,6 +945,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8445EAB52A21DD7A00581E93 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8445EAB42A21DD7A00581E93 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
 		846EAA952A132B1900506714 /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 846EAA942A132B1900506714 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;

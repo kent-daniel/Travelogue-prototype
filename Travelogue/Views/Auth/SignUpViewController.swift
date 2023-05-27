@@ -6,20 +6,23 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseFirestoreSwift
 class SignUpViewController: UIViewController {
     
-    
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBAction func signUpUser(_ sender: Any) {
         // create a new user
-        AuthController().signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [weak self] success, error in
+        AuthController().signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [weak self] user, error in
             guard let self = self else { return }
-            if success {
+            if (user != nil) {
                 print("Sign up successful")
-                NavigationHelper.navigateToHomeController(from: self)
+                appDelegate?.currentUser = user // assign global var
+                // perform segue to home
+                self.performSegue(withIdentifier: "signUpToTabBar", sender: nil)
             } else {
                 if let error = error {
                     let errorMessage = error.localizedDescription
@@ -35,23 +38,11 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        
+        hideKeyboardWhenTappedOutside()
+      
         
     }
     
-    //    @IBAction func signUp(_ sender: Any) {
-    //        AuthController().signUp(email: emailTextField.text!, password: passwordTextField.text!)
-    //    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

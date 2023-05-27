@@ -10,47 +10,26 @@ import UIKit
 class TripTableViewController: UITableViewController {
     
     var userTrips:[Trip] = []
+    var currentUser: User?
+    
+    
+    // MARK: view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        // start a timer to periodically check if the user has been loaded
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] timer in
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            
-            if appDelegate!.userLoggedIn != true {
-                // user has not been loaded, navigate to login controller
-                NavigationHelper.navigateToLogin(from: self)
-                timer.invalidate()
-            } else {
-                // user has been loaded, fetch trips
-                setTitle()
-                fetchTrips()
-                
-                tableView.register(TripCellTableViewCell.self, forCellReuseIdentifier: "TripCell")
-                timer.invalidate()
-            }
-        }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.currentUser = appDelegate?.currentUser
         
-        
+        self.title = currentUser?.name
+        fetchTrips()
+        tableView.register(TripCellTableViewCell.self, forCellReuseIdentifier: "TripCell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchTrips()
-        self.tabBarController?.tabBar.isHidden = false
-        setTitle()
+        
+        
     }
     
     
-    func setTitle() {
-        var id = AuthController().getCurrentUser()?.uid
-        UserController().getUserByID(id: id!) { user, err in
-            if let user = user {
-                let username = user.name!
-                self.title = "Hi " + username
-            } else {
-                print(err?.localizedDescription)
-            }
-        }
-    }
     
     func fetchTrips() {
         TripController().getCurrentUserTrips { trips in
@@ -63,9 +42,22 @@ class TripTableViewController: UITableViewController {
             }
         }
     }
-    //    This will ensure that the title is set before the trips are loaded.
     
     
+    // MARK: sign out user
+    @IBAction func signOut(_ sender: Any) {
+        AuthController().signOut()
+        // navigate to login view controller
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
+
+        // Set the presentation style to full screen
+        loginViewController.modalPresentationStyle = .fullScreen
+
+        // Present the login view controller
+        self.present(loginViewController, animated: true, completion: nil)
+    }
     
     
     
@@ -97,6 +89,7 @@ class TripTableViewController: UITableViewController {
         performSegue(withIdentifier: "ShowTripDetailsSegue", sender: trip)
     }
     
+    // MARK: segue prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTripDetailsSegue",
            let indexPath = tableView.indexPathForSelectedRow{

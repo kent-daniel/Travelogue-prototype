@@ -43,21 +43,26 @@ class UserController: NSObject {
         }
     }
 
-    
-    func createUser(id: String, email: String , name: String , trips: [DocumentReference] = []){
+    // MARK: - CREATE USER
+    func createUser(id: String, email: String, name: String, trips: [DocumentReference] = []) -> User? {
         let user = User()
         user.id = id
         user.email = email
         user.name = name
-        user.trips=trips
+        user.trips = trips
+        
         let userRef = userRef?.document(id)
+        
         do {
             try userRef?.setData(from: user)
             print("User created with ID: \(id)")
+            return user
         } catch {
             print("Failed to create user: \(error.localizedDescription)")
+            return nil
         }
     }
+
     
     
     

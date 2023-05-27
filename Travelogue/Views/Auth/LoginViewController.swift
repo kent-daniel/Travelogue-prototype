@@ -8,17 +8,17 @@
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import ProgressHUD
 
 class LoginViewController: UIViewController {
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
-    @IBAction func goToSignUp(_ sender: Any) {
-        NavigationHelper.navigateToSignUp(from: self)
-    }
     @IBAction func signIn(_ sender: Any) {
-        AuthController().signIn(email: emailTextField.text!, password: passwordTextField.text!){ (success, error) in
-            if success {
+        AuthController().signIn(email: emailTextField.text!, password: passwordTextField.text!){ (user, error) in
+            if (user != nil) {
                 DispatchQueue.main.async { // only runs AFTER login success is assigned
-                    NavigationHelper.navigateToHomeController(from: self)
+                    self.appDelegate?.currentUser = user
+                    self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
                 }
             } else {
                 // Login failed, handle the error
@@ -41,25 +41,44 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        hideKeyboardWhenTappedOutside()
         // Get the app delegate and cast it to your custom AppDelegate class
         
-        passwordTextField.placeholder="password"
-        passwordTextField.isSecureTextEntry=true
-        emailTextField.placeholder="email"
+        // Check if the user is already signed in
+        if Auth.auth().currentUser != nil {
+            // User is already signed in, set the current user property
+            print(Auth.auth().currentUser?.email!)
+            
+            let currentUserId = Auth.auth().currentUser!.uid
+            
+            
+            ProgressHUD.show("Fetching user data ...", icon: .privacy, delay: 2.0)
+            ProgressHUD.animationType = .circleStrokeSpin
+
+            UserController().getUserByID(id: currentUserId) { user, error in
+                if let error = error {
+                    // Handle error
+                    print(error)
+                } else {
+                    // User object is available
+                    print(user)
+                    
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    appDelegate?.currentUser = user
+                    
+                    self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+                    
+                }
+               
+            }
+
+            
+        }
         self.setUpBackgroundImage()
         
     }
         
     func setUpBackgroundImage() {
-        NSLayoutConstraint.activate([
-            loginPageImage.topAnchor.constraint(equalTo: view.topAnchor),
-            loginPageImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginPageImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginPageImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        loginPageImage.contentMode = UIView.ContentMode.scaleAspectFill
-        
         let httpsUrl = "https://source.unsplash.com/random/600x900/?sky"
         ImageDownloadHelper.downloadImage(from: httpsUrl) { (image, error) in
             if let img = image {
@@ -69,24 +88,8 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
-
-            
-        
     
     
-    func navigateToSignUpController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {
-            return
-        }
-        
-
-        navigationController?.pushViewController(signUpViewController, animated: true)
-    }
-    
-    
-
     
     func downloadImage(from httpsUrl: String, into imageView: UIImageView) async -> UIImage? {
         var image: UIImage?
