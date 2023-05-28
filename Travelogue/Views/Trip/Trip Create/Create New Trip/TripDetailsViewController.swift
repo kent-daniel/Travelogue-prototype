@@ -22,9 +22,9 @@ class TripDetailsViewController: UIViewController {
         // set the title of the view controller to the trip name
         self.title = trip?.name
         self.posts = trip?.posts
-        print(self.trip?.itineraries)
+//        print(self.trip?.itineraries)
         
-        UserController().getDocumentReference(for: currentUser!) { currentUserRef in
+        UserController().getDocumentReference(for: currentUser!) { currentUserRef,error  in
             guard let currentUserRef = currentUserRef else {
                 // handle the case where currentUserRef is nil
                 return

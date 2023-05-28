@@ -13,10 +13,12 @@ import CoreLocation
 class TripController: NSObject {
     var database: Firestore
     var tripCollectionRef : CollectionReference?
-    
+    var TRIP_REF = "trips"
+    var POST_REF = "posts"
+    var ITINERARY_REF = "itineraries"
     override init() {
         database = Firestore.firestore()
-        tripCollectionRef = database.collection("trips")
+        tripCollectionRef = database.collection(TRIP_REF)
         super.init()
     }
     
@@ -37,7 +39,7 @@ class TripController: NSObject {
                             if let trip = trip {
                                 self.getAllTripPosts(for: trip){ posts,error in
                                     //print(posts)
-                                    trip.posts = posts!
+                                    trip.posts = posts
                                     self.getAllTripItineraries(for: trip){ itineraries,error in
                                         trip.itineraries = itineraries!
                                     }
@@ -103,7 +105,7 @@ class TripController: NSObject {
         var userRefs = [DocumentReference]()
         
         for member in members {
-            UserController().getDocumentReference(for: member) { (memberRef) in
+            UserController().getDocumentReference(for: member) { (memberRef,error)  in
                 
                 
                 if let memberRef = memberRef {
@@ -167,27 +169,16 @@ class TripController: NSObject {
         }
     }
 
-    
-    func addPostToTrip(imageURL: String?, trip: Trip, by currentUser: User) {
-        UserController().getDocumentReference(for: currentUser) { userRef in
-            guard let userRef = userRef else {
-                print("Error getting user reference")
-                return
-            }
-            var newPost = Post()
-            newPost.poster = userRef
-            newPost.dateTime = Date()
-            newPost.url = imageURL!
-
-                do {
-                    let db = Firestore.firestore()
-                    let tripRef = db.collection("trips").document(trip.id!)
-                    let postsRef = tripRef.collection("posts")
-                    try postsRef.addDocument(from: newPost)
-                } catch let error {
-                    print("Error adding post: \(error.localizedDescription)")
-                }
+    // MARK: add post to trip
+    func addPostToTrip(post: Post?, trip: Trip, by currentUser: User) {
+        do {
+            let tripRef = tripCollectionRef!.document(trip.id!)
+            let postsRef = tripRef.collection(POST_REF)
+            try postsRef.addDocument(from: post)
+        } catch let error {
+            print("Error adding post: \(error.localizedDescription)")
         }
+        
     }
     
     private func getAllTripItineraries(for trip:Trip , completion: @escaping ([Itinerary]? , Error?)-> Void){
@@ -216,10 +207,11 @@ class TripController: NSObject {
         
     }
     
+    // get all trip posts
     private func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
-        let db = Firestore.firestore()
-        let tripRef = db.collection("trips").document(trip.id!)
-        let postsRef = tripRef.collection("posts")
+        
+        let tripRef = tripCollectionRef!.document(trip.id!)
+        let postsRef = tripRef.collection(POST_REF)
 
         postsRef.getDocuments { snapshot, error in
             if let error = error {
@@ -229,7 +221,6 @@ class TripController: NSObject {
                 for document in snapshot.documents {
                     do {
                         let post = try document.data(as: Post.self)
-                        
                             posts.append(post)
                         
                     } catch let error {

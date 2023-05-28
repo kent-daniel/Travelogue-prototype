@@ -21,27 +21,29 @@ class UserController: NSObject {
     
     func setupUserListener(){
         // TODO
-        //        userRef?.addSnapshotListener() {
-        //            (querySnapshot, error) in
-        //            guard let querySnapshot = querySnapshot else {
-        //                print("Failed to fetch documents with error: \(String(describing: error))");
-        //                return
-        //            }
-        //            self.parseUserSnapshot(snapshot: QuerySnapshot)
-        //        }
+//        userRef?.addSnapshotListener() {
+//            (querySnapshot, error) in
+//            guard let querySnapshot = querySnapshot else {
+//                print("Failed to fetch documents with error: \(String(describing: error))");
+//                return
+//            }
+//            self.parseUserSnapshot(snapshot: QuerySnapshot)
+//        }
         
         
     }
     
     
-    func getDocumentReference(for user: User, completion: @escaping (DocumentReference?) -> Void) {
+    func getDocumentReference(for user: User, completion: @escaping (DocumentReference?, Error?) -> Void) {
         if let userID = user.id {
             let userRef = Firestore.firestore().collection(USER_COL_NAME).document(userID)
-            completion(userRef)
+            completion(userRef, nil)
         } else {
-            completion(nil)
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "User ID is nil"])
+            completion(nil, error)
         }
     }
+
 
     // MARK: - CREATE USER
     func createUser(id: String, email: String, name: String, trips: [DocumentReference] = []) -> User? {

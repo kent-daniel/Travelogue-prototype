@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var currentUser: User?
     var window: UIWindow?
-    var userLoggedIn: Bool = false
+    
     
     //    var databaseController = FirebaseController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

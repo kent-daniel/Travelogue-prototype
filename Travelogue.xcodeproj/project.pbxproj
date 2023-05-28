@@ -226,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				8453A82C2A12282200BDBCC6 /* Create New Trip */,
-				844D6AA82A0BE816007055CD /* CreatePostViewController.swift */,
 			);
 			path = "Trip Create";
 			sourceTree = "<group>";
@@ -261,6 +260,8 @@
 				844511DC2A0157D80068E2CB /* CreateTripViewController.swift */,
 				844D6A9F2A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift */,
 				846EAA922A1312C600506714 /* SearchLocationViewController.swift */,
+				844D6AA82A0BE816007055CD /* CreatePostViewController.swift */,
+				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
 			);
 			path = "Create New Trip";
 			sourceTree = "<group>";
@@ -269,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
-				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
 				845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */,
 				8453A8412A12537C00BDBCC6 /* PostCell.swift */,
 			);

@@ -7,15 +7,18 @@
 
 import UIKit
 import Photos
+import ProgressHUD
 
-class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+
+class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
     private var selectedImage: UIImage?
     var currentUser:User?
     var userTrips:[Trip]?
     var selectedTrip:Trip?
-    var activityIndicator: UIActivityIndicatorView?
-
+    
+    @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var ImageContainer: UIImageView!
+    @IBOutlet weak var Description: UITextField!
     
     @IBAction func addPic(_ sender: Any) {
         
@@ -23,10 +26,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         if PHPhotoLibrary.authorizationStatus() == .authorized {
-                // Access granted, continue with your logic
+                // Access granted, continue logic
             print("allowed")
             self.present(imagePickerController, animated: true, completion: nil)
-                //self.present(imagePickerController, animated: true, completion: nil)
+               
         }else{
             requestPhotoLibraryAccessPermission()
             print("disallow")
@@ -36,42 +39,66 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
 
     @IBAction func savePost(_ sender: Any) {
-        self.activityIndicator?.startAnimating()
         guard let image = selectedImage else {
-            print("No image selected.")
+            ProgressHUD.show("No image selected.")
+            return
+        }
+        guard let title = postTitle.text else {
+            ProgressHUD.show("Must provide title")
             return
         }
         
-        StorageController.uploadImage(image , for: self.selectedTrip , currentUser: self.currentUser) { result in
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show("Uploading", interaction: false)
+        
+        StorageController.uploadImage(image) { result in
             switch result {
-            case .success(let url):
-                print(url)
+            case .success(let imageURL):
+                print(imageURL)
                 
+                UserController().getDocumentReference(for: self.currentUser!) { (ref, error) in
+                    if let error = error {
+                        // Handle the error
+                        print("Error retrieving document reference: \(error.localizedDescription)")
+                    } else if let documentRef = ref {
+                        let post = Post()
+                        post.poster = documentRef
+                        post.title = self.postTitle.text
+                        post.desc = self.Description.text
+                        post.dateTime = Date()
+                        post.url = imageURL
+                        
+                        TripController().addPostToTrip(post: post, trip: self.selectedTrip!, by: self.currentUser!)
+                    } else {
+                        // Handle the case where the document reference is nil
+                        print("Document reference is nil")
+                    }
+                }
+            
                 DispatchQueue.main.async {
+                    ProgressHUD.dismiss()
                     self.dismiss(animated: true, completion: nil)
-                    self.activityIndicator?.stopAnimating()
                 }
             case .failure(let error):
                 print("Failed to upload image: \(error.localizedDescription)")
+                ProgressHUD.showError("Failed to upload")
             }
         }
     }
+
+    
+    // MARK: view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Create an array of trip names
-        // Create an array of trip names
+
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.currentUser = appDelegate?.currentUser
         
-        // Initialize the activity indicator
-            activityIndicator = UIActivityIndicatorView(style: .large)
-            activityIndicator?.center = view.center
-            activityIndicator?.hidesWhenStopped = true
-        view.addSubview(activityIndicator!)
+        
     }
     
    
-    
+    // MARK: request permission
     func requestPhotoLibraryAccessPermission() {
         PHPhotoLibrary.requestAuthorization { status in
             DispatchQueue.main.async {
@@ -101,6 +128,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                 case .notDetermined:
                     // Should not happen, handle the error
                     break
+                case .limited:
+                    break
                 @unknown default:
                     // Handle the error
                     break
@@ -110,6 +139,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
 }
 
+// MARK: image picker contreoller
 extension CreatePostViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
