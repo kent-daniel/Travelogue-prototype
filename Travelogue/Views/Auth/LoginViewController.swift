@@ -13,6 +13,7 @@ import ProgressHUD
 class LoginViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
+    // MARK: - sign in
     @IBAction func signIn(_ sender: Any) {
         AuthController().signIn(email: emailTextField.text!, password: passwordTextField.text!){ (user, error) in
             if (user != nil) {
@@ -35,23 +36,38 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var signInButton: UIButton!
+    
     @IBOutlet weak var loginPageImage: UIImageView!
     
+    @IBOutlet weak var loginContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         hideKeyboardWhenTappedOutside()
-        // Get the app delegate and cast it to your custom AppDelegate class
+        emailTextField.applyUnderlineStyle()
+        passwordTextField.applyUnderlineStyle()
+        signInButton.applyPrimaryCTAStyle()
         
+        // Apply corner radius to the loginContainer view
+        loginContainer.layer.cornerRadius = 20
+        loginContainer.layer.masksToBounds = false
+        
+        // Apply drop shadow
+        loginContainer.layer.shadowColor = UIColor.systemFill.cgColor
+        loginContainer.layer.shadowOpacity = 0.5
+        loginContainer.layer.shadowOffset = CGSize(width: 0, height: 5)
+        loginContainer.layer.shadowRadius = 10
+        
+        
+        self.setUpBackgroundImage()
         // Check if the user is already signed in
         if Auth.auth().currentUser != nil {
             // User is already signed in, set the current user property
             print(Auth.auth().currentUser?.email!)
             
             let currentUserId = Auth.auth().currentUser!.uid
-            
-            
             ProgressHUD.show("Fetching user data ...", icon: .privacy, delay: 2.0)
             ProgressHUD.animationType = .circleStrokeSpin
 
@@ -74,10 +90,12 @@ class LoginViewController: UIViewController {
 
             
         }
-        self.setUpBackgroundImage()
+        
+        
+        
         
     }
-        
+   
     func setUpBackgroundImage() {
         let httpsUrl = "https://source.unsplash.com/random/600x900/?sky"
         ImageDownloadHelper.downloadImage(from: httpsUrl) { (image, error) in

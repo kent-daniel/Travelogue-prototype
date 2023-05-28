@@ -14,6 +14,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var signUpBtn: UIButton!
     @IBAction func signUpUser(_ sender: Any) {
         // create a new user
         AuthController().signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [weak self] user, error in
@@ -38,6 +39,10 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.applyUnderlineStyle()
+        nameTextField.applyUnderlineStyle()
+        passwordTextField.applyUnderlineStyle()
+        signUpBtn.applyPrimaryCTAStyle()
         hideKeyboardWhenTappedOutside()
       
         
