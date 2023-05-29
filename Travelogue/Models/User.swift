@@ -14,5 +14,6 @@ class User: NSObject ,Codable{
     var email:String?
     var trips :[DocumentReference]?
     var name: String?
+    var profileImgUrl: String?
     
 }

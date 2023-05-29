@@ -65,7 +65,7 @@ class PostCell: UICollectionViewCell {
         let imageUrlString = post.url
         if let imageUrlString {
             self.activityIndicator.startAnimating()
-            ImageDownloadHelper.downloadImage(from: imageUrlString) { (image, error) in
+            ImageManager.downloadImage(from: imageUrlString) { (image, error) in
                 if let image = image {
                     self.activityIndicator.stopAnimating()
                     self.imageView.image = image

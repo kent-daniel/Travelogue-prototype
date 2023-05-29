@@ -36,8 +36,7 @@ class UserController: NSObject {
     
     func getDocumentReference(for user: User, completion: @escaping (DocumentReference?, Error?) -> Void) {
         if let userID = user.id {
-            let userRef = Firestore.firestore().collection(USER_COL_NAME).document(userID)
-            completion(userRef, nil)
+            completion(userRef!.document(userID), nil)
         } else {
             let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "User ID is nil"])
             completion(nil, error)
@@ -46,12 +45,13 @@ class UserController: NSObject {
 
 
     // MARK: - CREATE USER
-    func createUser(id: String, email: String, name: String, trips: [DocumentReference] = []) -> User? {
+    func createUser(id: String, email: String, name: String, trips: [DocumentReference] = [] , profileImgUrl: String?) -> User? {
         let user = User()
         user.id = id
         user.email = email
         user.name = name
         user.trips = trips
+        user.profileImgUrl = profileImgUrl
         
         let userRef = userRef?.document(id)
         

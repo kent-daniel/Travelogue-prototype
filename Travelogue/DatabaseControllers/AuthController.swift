@@ -23,22 +23,20 @@ class AuthController: NSObject {
         return Auth.auth().currentUser
     }
     
-    // MARK: sign up
-    func signUp(name:String , email: String, password: String, completion: @escaping (User?, Error?) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                completion(nil, error)
-            } else if user != nil {
-                let newUser = Auth.auth().currentUser!
-                
-                self.appDelegate?.currentUser = UserController().createUser(id: newUser.uid, email: email, name: name)
-                completion(self.appDelegate?.currentUser, nil)
-            } else {
-                completion(nil, nil)
+    //MARK: create user
+    func createUser(email: String, password: String, completion: @escaping (String?, Error?) -> Void) {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                if let error = error {
+                    completion(nil, error)
+                } else if let user = user {
+                    let newUser = Auth.auth().currentUser
+                    
+                    completion(newUser?.uid, nil)
+                } else {
+                    completion(nil, nil)
+                }
             }
         }
-    }
     // MARK: sign out
     func signOut(){
         do {

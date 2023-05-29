@@ -46,19 +46,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         hideKeyboardWhenTappedOutside()
-        emailTextField.applyUnderlineStyle()
-        passwordTextField.applyUnderlineStyle()
+        emailTextField.applyUnderlineStyle().setIcon(UIImage(systemName: "person.crop.square.filled.and.at.rectangle"), side: .left)
+        passwordTextField.applyUnderlineStyle().setIcon(UIImage(systemName: "lock"), side: .left)
         signInButton.applyPrimaryCTAStyle()
         
-        // Apply corner radius to the loginContainer view
-        loginContainer.layer.cornerRadius = 20
-        loginContainer.layer.masksToBounds = false
-        
-        // Apply drop shadow
-        loginContainer.layer.shadowColor = UIColor.systemFill.cgColor
-        loginContainer.layer.shadowOpacity = 0.5
-        loginContainer.layer.shadowOffset = CGSize(width: 0, height: 5)
-        loginContainer.layer.shadowRadius = 10
+        loginContainer.applyBorderRadius(radius: 20).applyShadow()
         
         
         self.setUpBackgroundImage()
@@ -98,7 +90,7 @@ class LoginViewController: UIViewController {
    
     func setUpBackgroundImage() {
         let httpsUrl = "https://source.unsplash.com/random/600x900/?sky"
-        ImageDownloadHelper.downloadImage(from: httpsUrl) { (image, error) in
+        ImageManager.downloadImage(from: httpsUrl) { (image, error) in
             if let img = image {
                 self.loginPageImage.image = img
             } else {
