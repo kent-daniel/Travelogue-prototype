@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class TripTableViewController: UITableViewController {
     
     var userTrips:[Trip] = []
     var currentUser: User?
-    
+    var pullRefreshControl: UIRefreshControl!
+
     
     // MARK: view did load
     override func viewDidLoad() {
@@ -19,51 +21,42 @@ class TripTableViewController: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.currentUser = appDelegate?.currentUser
         
-        self.title = currentUser?.name
         fetchTrips()
         tableView.register(TripCellTableViewCell.self, forCellReuseIdentifier: "TripCell")
+        // Create the refresh control
+        pullRefreshControl = UIRefreshControl()
+        pullRefreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        
+        // Add the refresh control to the table view
+        tableView.refreshControl = pullRefreshControl
     }
-    
+    @objc private func refresh(_ sender: Any) {
+        // Perform the data fetching operation again
+        fetchTrips()
+    }
     override func viewDidAppear(_ animated: Bool) {
         
         
     }
     
     
-    
+    // MARK: fetchTrips
     func fetchTrips() {
-        TripController().getCurrentUserTrips { trips in
+        ProgressHUD.animationType = .multipleCircleScaleRipple
+        ProgressHUD.show("fetching trips ...")
+        TripController().getUserTrips(user:self.currentUser!) { trips in
             if let trips = trips {
-                self.userTrips=trips
+                let sortedTrips = trips.sorted { $0.name! < $1.name! } // Sort by name
+                self.userTrips = sortedTrips
                 self.tableView.reloadData()
             } else {
                 // Handle the error case
                 print("Error retrieving trips")
             }
+            self.pullRefreshControl.endRefreshing()
+            ProgressHUD.dismiss()
         }
     }
-    
-    
-    // MARK: sign out user
-    @IBAction func signOut(_ sender: Any) {
-        AuthController().signOut()
-        // navigate to login view controller
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
-
-        // Set the presentation style to full screen
-        loginViewController.modalPresentationStyle = .fullScreen
-
-        // Present the login view controller
-        self.present(loginViewController, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
-    
     
     // MARK: - Table view data source
     

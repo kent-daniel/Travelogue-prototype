@@ -4,7 +4,7 @@ extension UIView {
     @discardableResult
     func applyBorderRadius(radius: CGFloat) -> Self {
         layer.cornerRadius = radius
-        layer.masksToBounds = false
+        layer.masksToBounds = true
         return self
     }
     
@@ -14,6 +14,7 @@ extension UIView {
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize(width: 0, height: 5)
         layer.shadowRadius = 10
+        layer.masksToBounds = false
         return self
     }
     

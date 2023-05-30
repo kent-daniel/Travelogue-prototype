@@ -24,37 +24,22 @@ class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLo
     var currentUser : User?
     var members : [User]?
     var itineraryList : [Itinerary]?
-    var fromDate = Date()
-    var toDate : Date?
-    var fromDateDatePicker = UIDatePicker()
-        var toDateDatePicker = UIDatePicker()
+   
     @IBOutlet weak var membersTable: UITableView!
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var descTextField: UITextField!
     
-    @IBOutlet weak var fromDateTextField: UITextField!
-    @IBOutlet weak var toDateTextField: UITextField!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // get current user
-        var currentUserId = AuthController().getCurrentUser()?.uid
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.currentUser = appDelegate?.currentUser
         
-        UserController().getUserByID(id: currentUserId!) { user, err in
-            if let user = user {
-                self.currentUser = user
-            } else {
-                print(err?.localizedDescription)
-            }
-        }
         
-        // Set up UI
-        self.tabBarController?.tabBar.isHidden = true
         tableViewSetup()
-        setupDatePicker()
+        
         
         
     }

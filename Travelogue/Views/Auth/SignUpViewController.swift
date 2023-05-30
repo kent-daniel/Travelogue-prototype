@@ -104,7 +104,7 @@ class SignUpViewController: UIViewController , UIImagePickerControllerDelegate ,
         signUpBtn.applyPrimaryCTAStyle()
         profileImageView.image = UIImage(systemName: "person.circle.fill")
         profileImageView.tintColor = .lightGray
-        profileImageView.applyBorderRadius(radius: 80)
+        profileImageView.applyBorderRadius(radius: 50)
         
         hideKeyboardWhenTappedOutside()
       

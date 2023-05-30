@@ -23,42 +23,36 @@ class TripController: NSObject {
     }
     
     
-    func getCurrentUserTrips(completion: @escaping ([Trip]?) -> Void) {
+    func getUserTrips(user: User, completion: @escaping ([Trip]?) -> Void) {
         var tripRefs: [DocumentReference]?
-        let currentUser = AuthController().getCurrentUser()
-        UserController().getUserByID(id: currentUser!.uid) { user, error in
-            if let user = user {
-                tripRefs = user.trips
-                var trips: [Trip] = []
-                let group = DispatchGroup()
-                for tripRef in tripRefs ?? [] {
-                    group.enter()
-                    tripRef.getDocument { document, error in
-                        if let document = document, document.exists {
-                            let trip = try? document.data(as: Trip.self)
-                            if let trip = trip {
-                                self.getAllTripPosts(for: trip){ posts,error in
-                                    //print(posts)
-                                    trip.posts = posts
-                                    self.getAllTripItineraries(for: trip){ itineraries,error in
-                                        trip.itineraries = itineraries!
-                                    }
-                                }
-                                trips.append(trip)
+        tripRefs = user.trips
+        var trips: [Trip] = []
+        let group = DispatchGroup()
+
+        for tripRef in tripRefs ?? [] {
+            group.enter()
+            tripRef.getDocument { document, error in
+                if let document = document, document.exists {
+                    let trip = try? document.data(as: Trip.self)
+                    if let trip = trip {
+                        self.getAllTripPosts(for: trip) { posts, error in
+                            trip.posts = posts
+                            self.getAllTripItineraries(for: trip) { itineraries, error in
+                                trip.itineraries = itineraries!
                             }
                         }
-                        group.leave()
+                        trips.append(trip)
                     }
                 }
-                group.notify(queue: .main) {
-                    completion(trips)
-                }
-            } else {
-                print("Error retrieving user: \(error?.localizedDescription ?? "")")
-                completion(nil)
+                group.leave()
             }
         }
+
+        group.notify(queue: .main) {
+            completion(trips)
+        }
     }
+
     
     
     // ISSUE : tightly coupled with user , change return type as trip , more params for more deets

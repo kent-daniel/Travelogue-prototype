@@ -41,9 +41,7 @@ class TripDetailsViewController: UIViewController {
         
         
         let add = UIAction(title: "Create A Post" , image: UIImage(systemName: "plus.app")) { _ in
-            // go to create post VC
-            print("add is tapped")
-            self.navigateToPostController(from: self)
+            self.performSegue(withIdentifier: "tripCreatePostSegue", sender: nil)
         }
         
         let edit = UIAction(title: "Edit Trip", image: UIImage(systemName: "pencil")) { _ in

@@ -15,15 +15,19 @@ class LoginViewController: UIViewController {
     
     // MARK: - sign in
     @IBAction func signIn(_ sender: Any) {
+        ProgressHUD.animationType = .singleCirclePulse
+        ProgressHUD.show("Logging in")
         AuthController().signIn(email: emailTextField.text!, password: passwordTextField.text!){ (user, error) in
             if (user != nil) {
                 DispatchQueue.main.async { // only runs AFTER login success is assigned
+                    ProgressHUD.dismiss()
                     self.appDelegate?.currentUser = user
                     self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
                 }
             } else {
                 // Login failed, handle the error
                 if let error = error {
+                    ProgressHUD.dismiss()
                     let errorMessage = error.localizedDescription
                     let alert = UIAlertController(title: "Login Failed", message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
