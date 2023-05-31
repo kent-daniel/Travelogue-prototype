@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840672152A243BD000C53AEE /* CustomViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840672142A243BD000C53AEE /* CustomViewExtension.swift */; };
+		8411A3EC2A27271800B43B3F /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A3EB2A27271800B43B3F /* MemberListViewController.swift */; };
 		844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DA2A011EF70068E2CB /* NavigationHelper.swift */; };
 		844511DD2A0157D80068E2CB /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DC2A0157D80068E2CB /* CreateTripViewController.swift */; };
 		844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		840672142A243BD000C53AEE /* CustomViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewExtension.swift; sourceTree = "<group>"; };
+		8411A3EB2A27271800B43B3F /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		844511DA2A011EF70068E2CB /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		844511DC2A0157D80068E2CB /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 		844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				846EAA922A1312C600506714 /* SearchLocationViewController.swift */,
 				844D6AA82A0BE816007055CD /* CreatePostViewController.swift */,
 				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
+				8411A3EB2A27271800B43B3F /* MemberListViewController.swift */,
 			);
 			path = "Create New Trip";
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */,
 				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,
 				844D6AA02A0BD5FD007055CD /* CreateTripView+UISetupCreateTripSetupUI.swift in Sources */,
+				8411A3EC2A27271800B43B3F /* MemberListViewController.swift in Sources */,
 				845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */,
 				84F3375829F966E900A3BD9C /* AuthController.swift in Sources */,
 				844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */,

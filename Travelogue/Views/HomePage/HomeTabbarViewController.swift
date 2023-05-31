@@ -6,12 +6,8 @@ import UIKit
 class HomeTabbarViewController : UITabBarController, UITabBarControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set the tab bar background color to black
-        tabBar.barTintColor = .systemGray2
         
-        // Set the tab bar item text color to white
-        tabBar.tintColor = .white
-        
+    
         
         
         

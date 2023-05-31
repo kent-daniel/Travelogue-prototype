@@ -103,7 +103,7 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            // Get the selected member
            let selectedMember = members[indexPath.row]
-           
+        print(selectedMember.name)
            // Call the delegate method to pass the selected member back to the previous screen
            delegate?.passMembers(members: [selectedMember])
            

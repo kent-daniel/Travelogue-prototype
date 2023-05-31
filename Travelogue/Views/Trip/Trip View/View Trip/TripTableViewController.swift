@@ -73,7 +73,6 @@ class TripTableViewController: UITableViewController {
         
         let trip = userTrips[indexPath.row]
         cell.textLabel?.text = trip.name // Display the trip name in the cell
-        
         return cell
     }
     
