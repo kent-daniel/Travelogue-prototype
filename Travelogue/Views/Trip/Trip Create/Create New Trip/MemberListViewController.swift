@@ -7,13 +7,25 @@
 
 import UIKit
 
+protocol memberListDelegate : NSObjectProtocol{
+    func passMemberList(_ members: [User]?)
+}
+
 class MemberListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , passMembersDelegate{
     var members : [User]?
     var selectedTrip : Trip?
+    weak var delegate : memberListDelegate?
+    
+    @IBAction func saveMembersList(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        delegate?.passMemberList(members)
+    }
+    
     func passMembers(members: [User]) {
         if self.members == nil {
             self.members = []
         }
+        
         // not append duplicate members
         for member in members {
             if !self.members!.contains(where: { $0.id == member.id }) {
@@ -21,7 +33,7 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
             }
         }
         membersTable.reloadData()
-        membersCount.text = "Members count : \(members.count)"
+        membersCount.text = "Members count : \(self.members!.count)"
         
     }
     
@@ -32,7 +44,7 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         membersTable.isEditing = true
         membersTable.dataSource = self

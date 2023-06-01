@@ -88,6 +88,9 @@ class TripTableViewController: UITableViewController {
             let selectedRow = indexPath.row
             let detailVC = segue.destination as! TripDetailsViewController
             detailVC.trip = self.userTrips[selectedRow]
+        }else if segue.identifier == "createTripSegue"{
+            let createTripVC = segue.destination as! CreateNewTripTableViewController
+            createTripVC.selectedTrip = Trip()
         }
     }
     

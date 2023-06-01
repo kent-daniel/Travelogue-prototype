@@ -281,7 +281,7 @@
                     <navigationItem key="navigationItem" title="Your Trips" id="jTH-jd-loc">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="ict-fm-SBQ">
                             <connections>
-                                <segue destination="FEv-67-NQf" kind="show" id="gsL-tx-Rm9"/>
+                                <segue destination="FEv-67-NQf" kind="show" identifier="createTripSegue" id="gsL-tx-Rm9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -381,7 +381,7 @@
         <!--Trip Details-->
         <scene sceneID="p6j-8I-bRX">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" clearsSelectionOnViewWillAppear="NO" id="FEv-67-NQf" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" clearsSelectionOnViewWillAppear="NO" id="FEv-67-NQf" customClass="CreateNewTripTableViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="xpo-kq-TeV">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -476,7 +476,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b69-ow-ovQ">
-                                                    <rect key="frame" x="116" y="29" width="77" height="14"/>
+                                                    <rect key="frame" x="116" y="29" width="265" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                     <color key="textColor" systemColor="placeholderTextColor"/>
@@ -485,7 +485,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gIe-M7-OHd" kind="show" id="524-Oq-Upp"/>
+                                            <segue destination="gIe-M7-OHd" kind="show" identifier="tripSearchLocationSegue" id="524-Oq-Upp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="49" id="7IN-AH-bnO">
@@ -505,7 +505,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="KW6-us-j78" kind="show" id="Tw6-gc-4fu"/>
+                                            <segue destination="KW6-us-j78" kind="show" identifier="tripAddMembersSegue" id="Tw6-gc-4fu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="73" id="zs8-6N-pj2">
@@ -524,6 +524,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="7oQ-KW-hsR" kind="show" identifier="tripCreateItinerarySegue" id="72b-3D-ron"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -534,9 +537,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Trip Details" id="uuB-u1-AUW">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Ku5-qB-9BD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Ku5-qB-9BD">
+                            <connections>
+                                <action selector="saveTripChanges:" destination="FEv-67-NQf" id="sDb-LG-fla"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="430" height="932"/>
+                    <connections>
+                        <outlet property="locationName" destination="b69-ow-ovQ" id="N8G-XL-bvc"/>
+                        <outlet property="tripDate" destination="Unc-u4-8ob" id="hJ6-RR-rWA"/>
+                        <outlet property="tripDescText" destination="t8q-Af-zGh" id="apH-g0-OcR"/>
+                        <outlet property="tripNameText" destination="Wah-Zz-79q" id="OsT-um-0Qq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2a-fl-46N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -655,9 +668,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Create itineraries"/>
-                                <connections>
-                                    <segue destination="7oQ-KW-hsR" kind="show" identifier="itineraryListSegue" id="EMB-DM-9Hk"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1B7-Fn-31y"/>
@@ -764,7 +774,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trip Members" id="Tla-q6-zyT">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="MyJ-8l-qZt"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="MyJ-8l-qZt">
+                            <connections>
+                                <action selector="saveMembersList:" destination="KW6-us-j78" id="Lgl-rw-i1w"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="membersCount" destination="1w5-5b-17k" id="YxE-1l-LMO"/>
@@ -1182,7 +1196,7 @@
             <objects>
                 <tableViewController id="7oQ-KW-hsR" customClass="ItineraryListTableViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="y7C-U9-EmN">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -1238,7 +1252,7 @@
             <objects>
                 <viewController id="Poi-zs-Yck" customClass="CreateItineraryViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Od8-xz-ImU">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nMn-aQ-kQP">
@@ -1331,7 +1345,7 @@
             <objects>
                 <viewController id="0Am-PV-P5O" customClass="SearchLocationViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3G2-bb-JE1">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="HMZ-ag-0Z2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

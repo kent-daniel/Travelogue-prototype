@@ -46,10 +46,10 @@ class CreateTripViewController: UIViewController ,passMembersDelegate , SearchLo
     // ISSUE : rename
     @IBAction func addTrip(_ sender: Any) {
         // add admin
-        let currentTrip = TripController().createNewTrip(name: nameTextField.text!, admin: self.currentUser!)
-        
-        TripController().updateTripMembers(members: members!, trip: currentTrip!)
-        TripController().updateItinerariesInTrip(itineraries: itineraryList!, trip: currentTrip!)
+//        let currentTrip = TripController().createNewTrip(name: nameTextField.text!, admin: self.currentUser!)
+//
+//        TripController().updateTripMembers(members: members!, trip: currentTrip!)
+//        TripController().updateItinerariesInTrip(itineraries: itineraryList!, trip: currentTrip!)
         navigationController?.popViewController(animated: true)
     }
     

@@ -17,7 +17,9 @@ class Trip: NSObject, Codable{
     var members :[DocumentReference]?
     var posts : [Post]?
     var date : Date?
-//    var description -> string
+    var tripDesc :String?
+    var countryCode:String?
+    var locationName:String?
     var itineraries : [Itinerary]?
 //    var announcements
 

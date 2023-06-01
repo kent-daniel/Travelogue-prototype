@@ -53,25 +53,36 @@ class TripController: NSObject {
         }
     }
 
-    
+    enum Mode {
+            case edit
+            case create
+        }
     
     // ISSUE : tightly coupled with user , change return type as trip , more params for more deets
-    func createNewTrip(name: String, admin: User?) -> Trip? {
+    func createOrUpdateTrip(name: String, desc:String , date:Date , locationName: String, countryCode:String ,  admin: DocumentReference, members:[DocumentReference]?=[] ,itineraries:[Itinerary]?=[] , posts:[Post]?=[], mode:Mode) -> Trip? {
         let trip = Trip()
         trip.name = name
         trip.members = []
-        // assign trip creator as admin
-        if let admin = admin {
-            trip.admin = Firestore.firestore().collection("users").document(admin.id!)
-        }
+        trip.admin = admin
+        trip.date = date
+        trip.tripDesc = desc
+        trip.members = members
+        trip.locationName = locationName
+        trip.countryCode = countryCode
+        trip.itineraries=itineraries
         
         do {
-            // add to trip collection
-            if let tripRef = try tripCollectionRef?.addDocument(from: trip) {
+            // Add trip to the "trips" collection
+            if mode == .create{
+                let tripRef = try tripCollectionRef!.addDocument(from: trip)
                 trip.id = tripRef.documentID
+            }else if mode == .edit{
+                let tripRef = try tripCollectionRef!.document(trip.id!).setData(from: trip)
             }
+           
+            //MARK: refactor this
             // add trip to user
-            UserController().addTripToUser(user: admin!, newTrip: trip)
+//            UserController().addTripToUser(user: admin, newTrip: trip)
             
             return trip
             

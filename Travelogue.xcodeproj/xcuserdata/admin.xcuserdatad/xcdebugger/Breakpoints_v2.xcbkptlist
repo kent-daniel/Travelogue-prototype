@@ -286,8 +286,8 @@
             filePath = "Travelogue/DatabaseControllers/TripController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "updateTripMembers(members:trip:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2458,6 +2458,21 @@
                   endingLineNumber = "49"
                   offsetFromSymbolStart = "104">
                </Location>
+               <Location
+                  uuid = "2D1C23C9-FFCF-440E-A092-F5987A4534CD - 40d03d7a74c1c4c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.CreateTripViewController.addTrip(Any) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/CreateTripViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "48">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -3683,40 +3698,100 @@
             filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/MemberListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "passMembers(members:)"
-            landmarkType = "7">
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "MemberListViewController"
+            landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - b7dbc6e7a1c36aa4"
+                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - e40735bdf2df143a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  symbolName = "Travelogue.MemberListViewController.delegate.getter : Swift.Optional&lt;Travelogue.memberListDelegate&gt;"
                   moduleName = "Travelogue"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "116">
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "104">
                </Location>
                <Location
-                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - b7dbc6e7a1c36aa4"
+                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - 97d7e5d154c69056"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  symbolName = "Travelogue.MemberListViewController.delegate.setter : Swift.Optional&lt;Travelogue.memberListDelegate&gt;"
                   moduleName = "Travelogue"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
                   offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - a4784b4a6262e6dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.delegate.modify : Swift.Optional&lt;Travelogue.memberListDelegate&gt;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - 5c712054d9bbf43e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.delegate.modify : Swift.Optional&lt;Travelogue.memberListDelegate&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - af822fe548b6a0bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Travelogue.MemberListViewController"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "47BD0288-EF5A-43FB-A89A-8D7925CDBA8A - 979ea7edec2bb50e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Travelogue.MemberListViewController&gt;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "136">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3725,14 +3800,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/MemberListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "passMembers(members:)"
             landmarkType = "7">
             <Locations>
@@ -3766,7 +3841,473 @@
                   endingLineNumber = "18"
                   offsetFromSymbolStart = "312">
                </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - b7dbc6e7a1c36920"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - b7dbc6e7a1c36941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - b7dbc6e7a1c36941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - ab82c6faec4f1a1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.membersTable.getter : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - 4987a874e89362a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.membersTable.setter : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - 76a04af2629b7f1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.membersTable.modify : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - bf524c18052b1615"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.membersTable.modify : Swift.Optional&lt;__C.UITableView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - af822fe548b6a14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Travelogue.MemberListViewController"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - 979ea7edec2bb4fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Travelogue.MemberListViewController&gt;"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "9E90F54E-72D7-415D-853E-4F4F1C58BC00 - b7dbc6e7a1c368f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "320">
+               </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE9646B5-69D8-406A-A79E-3D8C97CC0994"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "CreateNewTripTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9ED4AF5F-9CA3-4BBA-8482-D6CCD6B9085B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/MemberListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "passMembers(members:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9ED4AF5F-9CA3-4BBA-8482-D6CCD6B9085B - b7dbc6e7a1c3680f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1440">
+               </Location>
+               <Location
+                  uuid = "9ED4AF5F-9CA3-4BBA-8482-D6CCD6B9085B - 60765ede430e3b1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "9ED4AF5F-9CA3-4BBA-8482-D6CCD6B9085B - b7dbc6e7a1c367b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "1408">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BE34D95-110F-46D5-B0F1-E7F6625A9CCE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/MemberListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "passMembers(members:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4BE34D95-110F-46D5-B0F1-E7F6625A9CCE - b7dbc6e7a1c36962"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  uuid = "4BE34D95-110F-46D5-B0F1-E7F6625A9CCE - b0a7623cc2a8af79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Travelogue.User) -&gt; Swift.Bool in Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "4BE34D95-110F-46D5-B0F1-E7F6625A9CCE - b7dbc6e7a1c36962"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "4BE34D95-110F-46D5-B0F1-E7F6625A9CCE - b7dbc6e7a1c36716"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  uuid = "4BE34D95-110F-46D5-B0F1-E7F6625A9CCE - b0a7623cc2a8a10d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Travelogue.User) -&gt; Swift.Bool in Travelogue.MemberListViewController.passMembers(members: Swift.Array&lt;Travelogue.User&gt;) -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/MemberListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C07885F4-77F8-48D9-B7DE-179CD44C5015"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "didSelectLocation(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB9890A4-7A23-4767-BAA3-55A66C5C26E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "CreateNewTripTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "536CBBD8-EBC6-46E0-B67A-2C394F4BE013"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F22F8271-9CC3-48E2-A3AA-F7160FFE0AB4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15986AE8-0C5C-4094-8335-C7DF502FCE05"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "CreateNewTripTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CC34CEC-0DCE-48BF-AAAF-9AC5C0924AF1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4CC34CEC-0DCE-48BF-AAAF-9AC5C0924AF1 - 849eac7b545f7dbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travelogue.CreateNewTripTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/CreateNewTripTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "1188">
+               </Location>
+               <Location
+                  uuid = "4CC34CEC-0DCE-48BF-AAAF-9AC5C0924AF1 - 38dfda665344401a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentReference&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Travelogue.CreateNewTripTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Travelogue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Desktop/Travelogue/Travelogue/Travelogue/Views/Trip/Trip%20Create/Create%20New%20Trip/CreateNewTripTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "286B5DFA-BF5D-4DFD-92F8-8FEADB0CF763"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travelogue/Views/Trip/Trip Create/Create New Trip/CreateNewTripTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "passMemberList(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
