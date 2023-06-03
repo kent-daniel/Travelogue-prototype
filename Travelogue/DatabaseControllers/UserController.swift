@@ -13,27 +13,30 @@ class UserController: NSObject {
     var database: Firestore
     var userRef : CollectionReference?
     let USER_COL_NAME = "users"
+    let TRIP_COL_NAME = "trips"
     override init() {
         database = Firestore.firestore()
         userRef = database.collection(USER_COL_NAME)
         super.init()
     }
     
-    func setupUserListener(){
-        // TODO
-//        userRef?.addSnapshotListener() {
-//            (querySnapshot, error) in
-//            guard let querySnapshot = querySnapshot else {
-//                print("Failed to fetch documents with error: \(String(describing: error))");
-//                return
-//            }
-//            self.parseUserSnapshot(snapshot: QuerySnapshot)
-//        }
-        
+    
+    // MARK: Get user from document reference
+    func getUser(from documentReference: DocumentReference, completion: @escaping (User?) -> Void) {
+        documentReference.getDocument { document, error in
+            if let document = document, document.exists {
+                let user = try? document.data(as: User.self)
+                completion(user)
+            }else{
+                completion(nil)
+            }
+        }
         
     }
     
     
+    
+    // MARK: get Doc reference from user
     func getDocumentReference(for user: User, completion: @escaping (DocumentReference?, Error?) -> Void) {
         if let userID = user.id {
             completion(userRef!.document(userID), nil)
@@ -42,8 +45,6 @@ class UserController: NSObject {
             completion(nil, error)
         }
     }
-
-
     // MARK: - CREATE USER
     func createUser(id: String, email: String, name: String, trips: [DocumentReference] = [] , profileImgUrl: String?) -> User? {
         let user = User()
@@ -64,10 +65,10 @@ class UserController: NSObject {
             return nil
         }
     }
-
     
     
     
+    //MARK: get user by id
     func getUserByID(id: String, completion: @escaping (User?, Error?) -> Void) {
         
         // Get a reference to the "users" collection in Firestore
@@ -100,6 +101,8 @@ class UserController: NSObject {
             }
         }
     }
+    
+    // MARK: search users by email
     func searchUsersByEmail(email: String, completion: @escaping ([User]?, Error?) -> Void) {
         
         // Create a query that searches for users with email equal to or containing the given string
@@ -131,16 +134,14 @@ class UserController: NSObject {
         }
     }
     
-    func addTripToUser(user:User , newTrip:Trip){
-        // get trip reference
-        let tripRef = TripController().getDocumentReference(for: newTrip)!
-        
+    // MARK: add trip to user
+    func addTripToUser(user:User , newTripRef:DocumentReference){
         // get user reference
         let userRef = userRef?.document(user.id!)
         
         // "append" trip
         userRef!.updateData([
-            "trips": FieldValue.arrayUnion([tripRef])
+            TRIP_COL_NAME: FieldValue.arrayUnion([newTripRef])
         ]){ error in
             if let error = error {
                 print("Error updating user document: \(error.localizedDescription)")
@@ -149,36 +150,61 @@ class UserController: NSObject {
             }
             
         }
-        
-//        func parseUserSnapshot(snapshot:QuerySnapshot){
-//
-//            snapshot.documentChanges.forEach { (change) in
-//                var parsedUser: User?
-//                do {
-//                    parsedUser = try change.document.data(as: User.self)
-//                    var docRefs = parsedUser?.trips
-//                    docRefs?.forEach({ docRef in
-//                        docRef.getDocument { (document, error) in
-//                            if let error = error {
-//                                print("Error fetching document: \(error)")
-//                            } else if let document = document, document.exists {
-//                                //                            let data = document.data(as: Trip.self)
-//                                // trips
-//                                //                            print(data)
-//                                // Process the data as needed
-//                            } else {
-//                                print("Document does not exist")
-//                            }
-//                        }
-//                    })
-//
-//                } catch {
-//                    print("Unable to decode hero. Is the hero malformed?")
-//                    return
-//                }
-//
-//            }
-            
-//        }
     }
+    
+    // MARK: Remove trip from user
+    func removeTripFromUser(user: User, tripRefToRemove: DocumentReference) {
+        // Get user reference
+        guard let userId = user.id else {
+            print("User ID is missing.")
+            return
+        }
+        let userRef = userRef?.document(userId)
+        
+        // Remove trip
+        userRef?.updateData([
+            "trips": FieldValue.arrayRemove([tripRefToRemove])
+        ]) { error in
+            if let error = error {
+                print("Error updating user document: \(error.localizedDescription)")
+            } else {
+                print("User document updated successfully!")
+            }
+        }
+    }
+    
+    
+    
+    //        func parseUserSnapshot(snapshot:QuerySnapshot){
+    //
+    //            snapshot.documentChanges.forEach { (change) in
+    //                var parsedUser: User?
+    //                do {
+    //                    parsedUser = try change.document.data(as: User.self)
+    //                    var docRefs = parsedUser?.trips
+    //                    docRefs?.forEach({ docRef in
+    //                        docRef.getDocument { (document, error) in
+    //                            if let error = error {
+    //                                print("Error fetching document: \(error)")
+    //                            } else if let document = document, document.exists {
+    //                                //                            let data = document.data(as: Trip.self)
+    //                                // trips
+    //                                //                            print(data)
+    //                                // Process the data as needed
+    //                            } else {
+    //                                print("Document does not exist")
+    //                            }
+    //                        }
+    //                    })
+    //
+    //                } catch {
+    //                    print("Unable to decode hero. Is the hero malformed?")
+    //                    return
+    //                }
+    //
+    //            }
+    
+    //        }
+    
 }
+

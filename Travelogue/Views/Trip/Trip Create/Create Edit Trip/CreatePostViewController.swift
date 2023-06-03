@@ -40,11 +40,17 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
 
     @IBAction func savePost(_ sender: Any) {
         guard let image = selectedImage else {
-            ProgressHUD.show("No image selected.")
+            let alert = UIAlertController(title: "Error", message: "no image selected", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
             return
         }
         guard let title = postTitle.text else {
-            ProgressHUD.show("Must provide title")
+            let alert = UIAlertController(title: "Error", message: "no image selected", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
             return
         }
         

@@ -14,6 +14,7 @@ class TripController: NSObject {
     var database: Firestore
     var tripCollectionRef : CollectionReference?
     var TRIP_REF = "trips"
+    var MEMBER_REF = "members"
     var POST_REF = "posts"
     var ITINERARY_REF = "itineraries"
     override init() {
@@ -22,7 +23,7 @@ class TripController: NSObject {
         super.init()
     }
     
-    
+    // MARK: get user trips
     func getUserTrips(user: User, completion: @escaping ([Trip]?) -> Void) {
         var tripRefs: [DocumentReference]?
         tripRefs = user.trips
@@ -58,18 +59,18 @@ class TripController: NSObject {
             case create
         }
     
-    // ISSUE : tightly coupled with user , change return type as trip , more params for more deets
-    func createOrUpdateTrip(name: String, desc:String , date:Date , locationName: String, countryCode:String ,  admin: DocumentReference, members:[DocumentReference]?=[] ,itineraries:[Itinerary]?=[] , posts:[Post]?=[], mode:Mode) -> Trip? {
+    //MARK: create or update trip
+    func createOrUpdateTrip(name: String, desc:String , date:Date , locationName: String, countryCode:String ,  admin: DocumentReference, members:[DocumentReference]?=[] ,itineraries:[Itinerary]?=[] , posts:[Post]?=[], mode:Mode , completion: @escaping (Trip?) -> Void) {
         let trip = Trip()
         trip.name = name
-        trip.members = []
+        trip.members = members
         trip.admin = admin
         trip.date = date
         trip.tripDesc = desc
         trip.members = members
         trip.locationName = locationName
         trip.countryCode = countryCode
-        trip.itineraries=itineraries
+        trip.itineraries = itineraries
         
         do {
             // Add trip to the "trips" collection
@@ -79,64 +80,58 @@ class TripController: NSObject {
             }else if mode == .edit{
                 let tripRef = try tripCollectionRef!.document(trip.id!).setData(from: trip)
             }
-           
-            //MARK: refactor this
-            // add trip to user
-//            UserController().addTripToUser(user: admin, newTrip: trip)
             
-            return trip
+            completion(trip)
             
         } catch {
             print("Failed to create trip: \(error.localizedDescription)")
-            return nil
+            completion(nil)
         }
     }
 
     
-    // TEMPORARY
+    // MARK: get doc reference
     func getDocumentReference(for trip: Trip) -> DocumentReference? {
         if let tripID = trip.id {
-            return Firestore.firestore().collection("trips").document(tripID)
+            return tripCollectionRef!.document(tripID)
         } else {
             return nil
         }
     }
   
-    func updateTripMembers(members: [User], trip: Trip) {
-        guard let tripRef = getDocumentReference(for: trip) else {
+    // MARK: Update trip members
+    func updateTripMembers(members: [DocumentReference], trip: Trip) {
+        guard let tripId = trip.id else {
+            print("Trip ID is missing.")
             return
         }
-        
-        var userRefs = [DocumentReference]()
-        
-        for member in members {
-            UserController().getDocumentReference(for: member) { (memberRef,error)  in
-                
-                
-                if let memberRef = memberRef {
-                    userRefs.append(memberRef)
-                    
-                    // Add the trip to the member's list of trips
-                    UserController().addTripToUser(user: member, newTrip: trip)
-                }
-            }
-            
-        }
-            
-            
-            tripRef.updateData(["members": FieldValue.arrayUnion(userRefs)]) { error in
-                if let error = error {
-                    print("Error adding members to trip: \(error.localizedDescription)")
-                } else {
-                    print("Members added to trip successfully")
-                }
+        tripCollectionRef!.document(tripId).updateData([
+            MEMBER_REF: members
+        ]) { error in
+            if let error = error {
+                print("Error updating trip document: \(error.localizedDescription)")
+            } else {
+                print("Trip document updated successfully!")
             }
         }
-    
-        
-//        func deleteTrip(trip:Trip , user:User){
-//
-//        }
+    }
+
+    // MARK: Remove member from trip
+    func removeMemberFromTrip(member: DocumentReference, trip: Trip) {
+        guard let tripId = trip.id else {
+            print("Trip ID is missing.")
+            return
+        }
+        tripCollectionRef!.document(tripId).updateData([
+            MEMBER_REF: FieldValue.arrayRemove([member])
+        ]) { error in
+            if let error = error {
+                print("Error updating trip document: \(error.localizedDescription)")
+            } else {
+                print("Trip document updated successfully!")
+            }
+        }
+    }
     
     func updateItinerariesInTrip(itineraries: [Itinerary], trip: Trip) {
         guard let tripRef = getDocumentReference(for: trip) else {
@@ -186,7 +181,7 @@ class TripController: NSObject {
         
     }
     
-    private func getAllTripItineraries(for trip:Trip , completion: @escaping ([Itinerary]? , Error?)-> Void){
+    func getAllTripItineraries(for trip:Trip , completion: @escaping ([Itinerary]? , Error?)-> Void){
         let db = Firestore.firestore()
         let tripRef = tripCollectionRef!.document(trip.id!)
         let itinerariesRef = tripRef.collection("itineraries")
@@ -213,7 +208,7 @@ class TripController: NSObject {
     }
     
     // get all trip posts
-    private func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
+    func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
         
         let tripRef = tripCollectionRef!.document(trip.id!)
         let postsRef = tripRef.collection(POST_REF)

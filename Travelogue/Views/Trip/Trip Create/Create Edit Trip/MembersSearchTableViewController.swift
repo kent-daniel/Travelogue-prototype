@@ -10,16 +10,12 @@ import UIKit
 protocol passMembersDelegate : NSObjectProtocol{
     func passMembers(members: [User])
 }
-
+import ProgressHUD
 
 
 class MembersSearchTableViewController: UITableViewController , UISearchBarDelegate{
     weak var delegate : passMembersDelegate?
     var members = [User]()
-    var indicator = UIActivityIndicatorView()
-    
-   
-    
     
     
     override func viewDidLoad() {
@@ -32,17 +28,8 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
         navigationItem.searchController = searchController
         // Ensure the search bar is always visible.
         navigationItem.hidesSearchBarWhenScrolling = false
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Add a loading indicator view (loading spinner)
-        indicator.style = UIActivityIndicatorView.Style.large
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(indicator)
-        NSLayoutConstraint.activate([
-            indicator.centerXAnchor.constraint(equalTo:
-                                                view.safeAreaLayoutGuide.centerXAnchor),
-            indicator.centerYAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerYAnchor)
-        ])
+        
+        
         
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -52,7 +39,8 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
             return
         }
         navigationItem.searchController?.dismiss(animated: true)
-        indicator.startAnimating()
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show("Searching Users")
         Task {
             await UserController().searchUsersByEmail(email: searchText.lowercased()) { (users, error) in
                 if let error = error {
@@ -65,11 +53,15 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
                         self.members.append(user)
                     }
                     // stop loading animation
-                    self.indicator.stopAnimating()
+                    ProgressHUD.dismiss()
                     self.tableView.reloadData()
                     
                 } else {
-                    print("No users found")
+                    ProgressHUD.show("No user found")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        ProgressHUD.dismiss()
+                    }
+                  
                 }
             }
         }

@@ -16,6 +16,7 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
     var selectedTrip : Trip?
     weak var delegate : memberListDelegate?
     
+    
     @IBAction func saveMembersList(_ sender: Any) {
         navigationController?.popViewController(animated: true)
         delegate?.passMemberList(members)
@@ -49,6 +50,10 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
         membersTable.isEditing = true
         membersTable.dataSource = self
         membersTable.delegate = self
+        membersTable.register(UINib(nibName: "MemberTableViewCell", bundle: nil), forCellReuseIdentifier: "membersCell")
+        membersTable.rowHeight = 100
+        
+
     }
     
     
@@ -59,17 +64,42 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "membersCell", for: indexPath) as! MemberTableViewCell
         let member = members![indexPath.row]
-        cell.textLabel?.text = member.name
+        cell.MemberName.text = member.name
+        cell.memberEmail.text = member.email
+        
+        cell.memberProfileImage.image = UIImage(systemName: "person.circle.fill") // Set default image initially
+        
+        if let profileImgUrl = member.profileImgUrl {
+            cell.showLoadingIndicator() // Show spinner
+            
+            ImageManager.downloadImage(from: profileImgUrl) { profileImage, error in
+                cell.hideLoadingIndicator() // Hide spinner
+                
+                if let error = error {
+                    print("Error downloading image: \(error.localizedDescription)")
+                } else if let profileImage = profileImage {
+                    cell.memberProfileImage.image = profileImage
+                }
+            }
+        }
+        
         return cell
     }
+
+
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             members?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            membersCount.text = "Members count : \(members!.count)"
+            membersCount.text = "Members count: \(members?.count ?? 0)"
         }
     }
+
 
     
     // MARK: - Navigation

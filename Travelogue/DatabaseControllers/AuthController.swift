@@ -18,10 +18,7 @@ class AuthController: NSObject {
         
     }
     
-    // FIXME: deperecate this
-    func getCurrentUser()->FirebaseAuth.User?{
-        return Auth.auth().currentUser
-    }
+    
     
     //MARK: create user
     func createUser(email: String, password: String, completion: @escaping (String?, Error?) -> Void) {

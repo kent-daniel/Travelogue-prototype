@@ -34,9 +34,9 @@ class TripTableViewController: UITableViewController {
         // Perform the data fetching operation again
         fetchTrips()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
-        
-        
+        fetchTrips()
     }
     
     
@@ -44,18 +44,23 @@ class TripTableViewController: UITableViewController {
     func fetchTrips() {
         ProgressHUD.animationType = .multipleCircleScaleRipple
         ProgressHUD.show("fetching trips ...")
-        TripController().getUserTrips(user:self.currentUser!) { trips in
-            if let trips = trips {
-                let sortedTrips = trips.sorted { $0.name! < $1.name! } // Sort by name
-                self.userTrips = sortedTrips
-                self.tableView.reloadData()
-            } else {
-                // Handle the error case
-                print("Error retrieving trips")
+        
+        UserController().getUserByID(id: self.currentUser!.id!){user,error in
+            TripController().getUserTrips(user:user!) { trips in
+                if let trips = trips {
+                    let sortedTrips = trips.sorted { $0.name! < $1.name! } // Sort by name
+                    self.userTrips = sortedTrips
+                    self.tableView.reloadData()
+                } else {
+                    // Handle the error case
+                    print("Error retrieving trips")
+                }
+                self.pullRefreshControl.endRefreshing()
+                ProgressHUD.dismiss()
             }
-            self.pullRefreshControl.endRefreshing()
-            ProgressHUD.dismiss()
         }
+        
+        
     }
     
     // MARK: - Table view data source
@@ -89,8 +94,8 @@ class TripTableViewController: UITableViewController {
             let detailVC = segue.destination as! TripDetailsViewController
             detailVC.trip = self.userTrips[selectedRow]
         }else if segue.identifier == "createTripSegue"{
-            let createTripVC = segue.destination as! CreateNewTripTableViewController
-            createTripVC.selectedTrip = Trip()
+            let createTripVC = segue.destination as! UpdateTripTableViewController
+            createTripVC.selectedTrip = nil
         }
     }
     

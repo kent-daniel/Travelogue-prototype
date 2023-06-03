@@ -22,7 +22,7 @@ class TripDetailsViewController: UIViewController {
         // set the title of the view controller to the trip name
         self.title = trip?.name
         self.posts = trip?.posts
-//        print(self.trip?.itineraries)
+        
         
         UserController().getDocumentReference(for: currentUser!) { currentUserRef,error  in
             guard let currentUserRef = currentUserRef else {
@@ -86,27 +86,18 @@ class TripDetailsViewController: UIViewController {
     }
     
     
-    func navigateToPostController(from viewController: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let postVC = storyboard.instantiateViewController(withIdentifier: "CreatePostViewController") as? CreatePostViewController else {
-            return
-        }
-        postVC.navigationItem.hidesBackButton=true
-        postVC.selectedTrip = self.trip
-        let navController = UINavigationController(rootViewController: postVC)
-        navController.title = "Create a new post"
-        postVC.navigationItem.hidesBackButton=true
-        viewController.present(navController, animated: true, completion: nil)
-        
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        collectionView.reloadData()
+        TripController().getAllTripPosts(for: self.trip!){ posts,error in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showMapSegue"){
             let mapVC = segue.destination as! TripMapViewController
             // get all name , coordinate & address from the itinerary & pass to mapVC
-            
             // Extract the necessary data from itineraries
             var locations: [(name: String, coordinate: CLLocationCoordinate2D, address: String, imageURL: String?)] = []
             for itinerary in trip?.itineraries ?? [] {
@@ -120,8 +111,13 @@ class TripDetailsViewController: UIViewController {
                     locations.append((name: name, coordinate: coordinate, address: address, imageURL: itinerary.imgURL ?? ""))
                 }
             }
-            
             mapVC.locations = locations
+        }else if (segue.identifier == "tripCreatePostSegue"){
+            let createPostVC = segue.destination as! CreatePostViewController
+            createPostVC.selectedTrip = trip
+        }else if (segue.identifier == "editTripSegue"){
+            let editTripVC = segue.destination as! UpdateTripTableViewController
+            editTripVC.selectedTrip = trip
         }
     }
 }
