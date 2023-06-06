@@ -7,13 +7,14 @@ class ImageManager {
 
         static func downloadImage(from urlString: String, completion: @escaping (UIImage?, Error?) -> Void) {
             
+            let urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             // Check if the image is already cached
-            if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+            if let cachedImage = imageCache.object(forKey: urlString as! NSString) {
                 completion(cachedImage, nil)
                 return
             }
             
-            guard let url = URL(string: urlString) else {
+            guard let url = URL(string: urlString!) else {
                 completion(nil, NSError(domain: "Invalid URL", code: 0, userInfo: nil))
                 return
             }
@@ -27,7 +28,7 @@ class ImageManager {
                 DispatchQueue.main.async {
                     if let image = UIImage(data: data) {
                         // Cache the downloaded image
-                        imageCache.setObject(image, forKey: urlString as NSString)
+                        imageCache.setObject(image, forKey: urlString as! NSString)
                         completion(image, nil)
                     } else {
                         completion(nil, NSError(domain: "Invalid Image Data", code: 0, userInfo: nil))

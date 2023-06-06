@@ -23,6 +23,8 @@ class TripController: NSObject {
         super.init()
     }
     
+    
+    
     // MARK: get user trips
     func getUserTrips(user: User, completion: @escaping ([Trip]?) -> Void) {
         var tripRefs: [DocumentReference]?
@@ -70,15 +72,17 @@ class TripController: NSObject {
         trip.members = members
         trip.locationName = locationName
         trip.countryCode = countryCode
-        trip.itineraries = itineraries
         
         do {
             // Add trip to the "trips" collection
             if mode == .create{
                 let tripRef = try tripCollectionRef!.addDocument(from: trip)
                 trip.id = tripRef.documentID
+                updateItinerariesInTrip(itineraries: itineraries ?? [], trip: trip)
             }else if mode == .edit{
-                let tripRef = try tripCollectionRef!.document(trip.id!).setData(from: trip)
+                let tripRef = try getDocumentReference(for: trip)
+                try tripRef?.setData(from: trip)
+                updateItinerariesInTrip(itineraries: itineraries ?? [], trip: trip)
             }
             
             completion(trip)
@@ -245,42 +249,4 @@ class TripController: NSObject {
         
         
         
-
-
-
-//class TripController: CLLocationManagerDelegate {
-//
-//    var locationManager: CLLocationManager?
-//
-//    func getLocation(completion: @escaping (CLLocation?, Error?) -> Void) {
-//        locationManager = CLLocationManager()
-//        locationManager?.delegate = self
-//        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager?.requestWhenInUseAuthorization()
-//        locationManager?.requestLocation()
-//
-//        // Store the completion handler so it can be called later
-//        self.completionHandler = completion
-//    }
-//
-//    // CLLocationManagerDelegate methods
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else {
-//            return
-//        }
-//        // Call the completion handler with the location and no error
-//        completionHandler?(location, nil)
-//        completionHandler = nil // clear the completion handler
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        // Call the completion handler with no location and the error
-//        completionHandler?(nil, error)
-//        completionHandler = nil // clear the completion handler
-//    }
-//
-//    private var completionHandler: ((CLLocation?, Error?) -> Void)?
-//
-//}
-
 

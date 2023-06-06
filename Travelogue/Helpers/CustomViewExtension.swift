@@ -24,4 +24,59 @@ extension UIView {
         layer.borderWidth = 1.0
         return self
     }
+    
+    @discardableResult
+    func applyBlurryGlassBackground(alpha: CGFloat = 0.9) -> Self {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(blurView)
+        sendSubviewToBack(blurView)
+        
+        let backgroundView = UIView()
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = UIColor.white.withAlphaComponent(alpha)
+        addSubview(backgroundView)
+        sendSubviewToBack(backgroundView)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            blurView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            backgroundView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        return self
+    }
+    
+    private var loadingTag: Int { return 98765 }
+    
+    func showLoadingAnimation() {
+        guard viewWithTag(loadingTag) == nil else { return }
+        
+        let loadingView = UIView(frame: bounds)
+        loadingView.backgroundColor = UIColor.gray
+        loadingView.tag = loadingTag
+        addSubview(loadingView)
+        
+        let animationDuration: TimeInterval = 0.8
+        let transitionColor = CABasicAnimation(keyPath: "backgroundColor")
+        transitionColor.fromValue = UIColor.gray.cgColor
+        transitionColor.toValue = UIColor.white.cgColor
+        transitionColor.duration = animationDuration
+        transitionColor.autoreverses = true
+        transitionColor.repeatCount = Float.greatestFiniteMagnitude
+        loadingView.layer.add(transitionColor, forKey: "backgroundColorTransition")
+    }
+    
+    func hideLoadingAnimation() {
+        guard let loadingView = viewWithTag(loadingTag) else { return }
+        loadingView.layer.removeAnimation(forKey: "backgroundColorTransition")
+        loadingView.removeFromSuperview()
+    }
 }

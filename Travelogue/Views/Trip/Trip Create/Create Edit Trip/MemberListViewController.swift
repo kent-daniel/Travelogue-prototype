@@ -47,6 +47,7 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        membersCount.text = "Members count : \(self.members!.count)"
         membersTable.isEditing = true
         membersTable.dataSource = self
         membersTable.delegate = self
@@ -70,10 +71,10 @@ class MemberListViewController: UIViewController , UITableViewDelegate , UITable
         cell.memberProfileImage.image = UIImage(systemName: "person.circle.fill") // Set default image initially
         
         if let profileImgUrl = member.profileImgUrl {
-            cell.showLoadingIndicator() // Show spinner
+            cell.memberProfileImage.showLoadingAnimation() // Show spinner
             
             ImageManager.downloadImage(from: profileImgUrl) { profileImage, error in
-                cell.hideLoadingIndicator() // Hide spinner
+                cell.memberProfileImage.hideLoadingAnimation() // Hide spinner
                 
                 if let error = error {
                     print("Error downloading image: \(error.localizedDescription)")

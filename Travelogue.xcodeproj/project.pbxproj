@@ -13,6 +13,13 @@
 		8411A3F22A2B14EA00B43B3F /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A3F12A2B14EA00B43B3F /* AlertHelper.swift */; };
 		8411A3F52A2B48B500B43B3F /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A3F32A2B48B500B43B3F /* MemberTableViewCell.swift */; };
 		8411A3F62A2B48B500B43B3F /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8411A3F42A2B48B500B43B3F /* MemberTableViewCell.xib */; };
+		8411A3F82A2B92ED00B43B3F /* ServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A3F72A2B92ED00B43B3F /* ServicesController.swift */; };
+		843047922A2C526D00AD0EBA /* weatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843047912A2C526D00AD0EBA /* weatherDataModel.swift */; };
+		843047942A2C70DF00AD0EBA /* placeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843047932A2C70DF00AD0EBA /* placeDataModel.swift */; };
+		843047962A2C7CCE00AD0EBA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843047952A2C7CCE00AD0EBA /* HomeViewModel.swift */; };
+		843047992A2E176B00AD0EBA /* POICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843047972A2E176B00AD0EBA /* POICollectionViewCell.swift */; };
+		8430479A2A2E176B00AD0EBA /* POICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843047982A2E176B00AD0EBA /* POICollectionViewCell.xib */; };
+		8430479C2A2EC77600AD0EBA /* ViewMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430479B2A2EC77600AD0EBA /* ViewMembersTableViewController.swift */; };
 		844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DA2A011EF70068E2CB /* NavigationHelper.swift */; };
 		844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */; };
 		844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E72A016AB00068E2CB /* TripDetailsViewController.swift */; };
@@ -27,10 +34,8 @@
 		8453A8312A12288100BDBCC6 /* TripInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */; };
 		8453A8332A12289100BDBCC6 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8322A12289100BDBCC6 /* TripMapViewController.swift */; };
 		8453A8392A122E4000BDBCC6 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8382A122E4000BDBCC6 /* Itinerary.swift */; };
-		8453A83C2A1233D900BDBCC6 /* GooglePlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */; };
 		8453A8402A1244DB00BDBCC6 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83F2A1244DB00BDBCC6 /* ImageManager.swift */; };
 		8453A8422A12537C00BDBCC6 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8412A12537C00BDBCC6 /* PostCell.swift */; };
-		845AA63E2A10A904007AFA19 /* TripCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */; };
 		845AA6402A10ABD8007AFA19 /* TripNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */; };
 		845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */; };
 		846EAA932A1312C600506714 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846EAA922A1312C600506714 /* SearchLocationViewController.swift */; };
@@ -94,6 +99,13 @@
 		8411A3F12A2B14EA00B43B3F /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8411A3F32A2B48B500B43B3F /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		8411A3F42A2B48B500B43B3F /* MemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberTableViewCell.xib; sourceTree = "<group>"; };
+		8411A3F72A2B92ED00B43B3F /* ServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesController.swift; sourceTree = "<group>"; };
+		843047912A2C526D00AD0EBA /* weatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherDataModel.swift; sourceTree = "<group>"; };
+		843047932A2C70DF00AD0EBA /* placeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeDataModel.swift; sourceTree = "<group>"; };
+		843047952A2C7CCE00AD0EBA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		843047972A2E176B00AD0EBA /* POICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICollectionViewCell.swift; sourceTree = "<group>"; };
+		843047982A2E176B00AD0EBA /* POICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = POICollectionViewCell.xib; sourceTree = "<group>"; };
+		8430479B2A2EC77600AD0EBA /* ViewMembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMembersTableViewController.swift; sourceTree = "<group>"; };
 		844511DA2A011EF70068E2CB /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersSearchTableViewController.swift; sourceTree = "<group>"; };
 		844511E72A016AB00068E2CB /* TripDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewController.swift; sourceTree = "<group>"; };
@@ -107,10 +119,8 @@
 		8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoViewController.swift; sourceTree = "<group>"; };
 		8453A8322A12289100BDBCC6 /* TripMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
 		8453A8382A122E4000BDBCC6 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
-		8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesController.swift; sourceTree = "<group>"; };
 		8453A83F2A1244DB00BDBCC6 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		8453A8412A12537C00BDBCC6 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCellTableViewCell.swift; sourceTree = "<group>"; };
 		845AA63F2A10ABD8007AFA19 /* TripNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripNavigationViewController.swift; sourceTree = "<group>"; };
 		845AA6412A10B9F8007AFA19 /* PostNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavViewController.swift; sourceTree = "<group>"; };
 		846EAA922A1312C600506714 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +258,9 @@
 			children = (
 				844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */,
 				8453A8252A12277E00BDBCC6 /* HomePageViewController.swift */,
+				843047952A2C7CCE00AD0EBA /* HomeViewModel.swift */,
+				843047972A2E176B00AD0EBA /* POICollectionViewCell.swift */,
+				843047982A2E176B00AD0EBA /* POICollectionViewCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -285,10 +298,10 @@
 			children = (
 				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
 				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
-				845AA63D2A10A904007AFA19 /* TripCellTableViewCell.swift */,
 				8453A8412A12537C00BDBCC6 /* PostCell.swift */,
 				84743E202A264FA6001B2676 /* TripCell.swift */,
 				84743E212A264FA7001B2676 /* TripCell.xib */,
+				8430479B2A2EC77600AD0EBA /* ViewMembersTableViewController.swift */,
 			);
 			path = "View Trip";
 			sourceTree = "<group>";
@@ -311,7 +324,9 @@
 		8453A83A2A122E5C00BDBCC6 /* APIControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8453A83B2A1233D900BDBCC6 /* GooglePlacesController.swift */,
+				8411A3F72A2B92ED00B43B3F /* ServicesController.swift */,
+				843047912A2C526D00AD0EBA /* weatherDataModel.swift */,
+				843047932A2C70DF00AD0EBA /* placeDataModel.swift */,
 			);
 			path = APIControllers;
 			sourceTree = "<group>";
@@ -527,6 +542,7 @@
 				84F3372629F94B1D00A3BD9C /* LaunchScreen.storyboard in Resources */,
 				84EF58C52A1F3F9100024615 /* GoogleService-Info.plist in Resources */,
 				84F3372329F94B1D00A3BD9C /* Assets.xcassets in Resources */,
+				8430479A2A2E176B00AD0EBA /* POICollectionViewCell.xib in Resources */,
 				84F3371E29F94B1D00A3BD9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,11 +573,15 @@
 				845AA6402A10ABD8007AFA19 /* TripNavigationViewController.swift in Sources */,
 				8453A8332A12289100BDBCC6 /* TripMapViewController.swift in Sources */,
 				84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */,
+				843047962A2C7CCE00AD0EBA /* HomeViewModel.swift in Sources */,
 				844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */,
 				84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */,
 				84743E1F2A26439E001B2676 /* ProfilePageViewController.swift in Sources */,
+				843047992A2E176B00AD0EBA /* POICollectionViewCell.swift in Sources */,
+				843047922A2C526D00AD0EBA /* weatherDataModel.swift in Sources */,
 				846EAA932A1312C600506714 /* SearchLocationViewController.swift in Sources */,
 				844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */,
+				843047942A2C70DF00AD0EBA /* placeDataModel.swift in Sources */,
 				84F3371B29F94B1D00A3BD9C /* LoginViewController.swift in Sources */,
 				8411A3EC2A27271800B43B3F /* MemberListViewController.swift in Sources */,
 				845AA6422A10B9F8007AFA19 /* PostNavViewController.swift in Sources */,
@@ -576,13 +596,14 @@
 				84C5154629F9EBCE00B2902B /* User.swift in Sources */,
 				8411A3F02A28950C00B43B3F /* UpdateTripTableViewController.swift in Sources */,
 				8453A8392A122E4000BDBCC6 /* Itinerary.swift in Sources */,
+				8430479C2A2EC77600AD0EBA /* ViewMembersTableViewController.swift in Sources */,
 				84C5154329F9DFB900B2902B /* UserController.swift in Sources */,
 				8411A3F52A2B48B500B43B3F /* MemberTableViewCell.swift in Sources */,
 				84708BDF2A2397C900F5F990 /* CustomButtonExtension.swift in Sources */,
-				845AA63E2A10A904007AFA19 /* TripCellTableViewCell.swift in Sources */,
 				84708BDD2A2393BA00F5F990 /* CustomTextfieldExtension.swift in Sources */,
 				84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */,
 				844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */,
+				8411A3F82A2B92ED00B43B3F /* ServicesController.swift in Sources */,
 				8411A3F22A2B14EA00B43B3F /* AlertHelper.swift in Sources */,
 				84C5154A29FA004500B2902B /* TripController.swift in Sources */,
 				840672152A243BD000C53AEE /* CustomViewExtension.swift in Sources */,
@@ -591,7 +612,6 @@
 				84EF58C32A1DD52D00024615 /* DateParser.swift in Sources */,
 				8453A8292A1227D000BDBCC6 /* PostListViewController.swift in Sources */,
 				844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */,
-				8453A83C2A1233D900BDBCC6 /* GooglePlacesController.swift in Sources */,
 				84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */,
 				8445EAB32A21D44300581E93 /* hideKeyboardExtension.swift in Sources */,
 				844D6AAD2A0BF97E007055CD /* Post.swift in Sources */,

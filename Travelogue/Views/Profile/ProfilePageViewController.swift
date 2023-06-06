@@ -40,8 +40,10 @@ class ProfilePageViewController: UIViewController {
             profileImage.image = UIImage(systemName: "person.fill")
         }else{
             // download image
+            self.profileImage.showLoadingAnimation()
             ImageManager.downloadImage(from: (currentUser?.profileImgUrl)!){image,error in
                 self.profileImage.image = image
+                self.profileImage.hideLoadingAnimation()
             }
         }
     }

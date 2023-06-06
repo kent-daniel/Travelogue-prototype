@@ -14,30 +14,11 @@ class MemberTableViewCell: UITableViewCell {
     
     private var activityIndicator: UIActivityIndicatorView!
     
-    func showLoadingIndicator() {
-        if activityIndicator == nil {
-            activityIndicator = UIActivityIndicatorView(style: .medium)
-            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-            contentView.addSubview(activityIndicator)
-            
-            NSLayoutConstraint.activate([
-                activityIndicator.centerXAnchor.constraint(equalTo: memberProfileImage.centerXAnchor),
-                activityIndicator.centerYAnchor.constraint(equalTo: memberProfileImage.centerYAnchor)
-            ])
-            
-            memberProfileImage.applyBorderRadius(radius: memberProfileImage.frame.size.width / 2) // Set rounded corners using the extension
-        }
-        
-        activityIndicator.startAnimating()
-    }
-
-    
-    func hideLoadingIndicator() {
-        activityIndicator?.stopAnimating()
-    }
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        memberProfileImage.applyBorderRadius(radius: memberProfileImage.frame.width/2)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

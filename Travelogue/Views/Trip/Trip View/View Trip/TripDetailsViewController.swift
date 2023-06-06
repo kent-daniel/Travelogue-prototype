@@ -7,14 +7,18 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 class TripDetailsViewController: UIViewController {
+    
     @IBOutlet weak var editButton: UIBarButtonItem!
     var trip:Trip?
     var currentUser:User?
+    var currentUserRef:DocumentReference?
     var collectionView: UICollectionView!
     var posts: [Post]?
-    
+    var isAdmin: Bool = false
+    var tripMembers:[User]? = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -22,39 +26,33 @@ class TripDetailsViewController: UIViewController {
         // set the title of the view controller to the trip name
         self.title = trip?.name
         self.posts = trip?.posts
+        print(self.trip?.members)
         
+        for memberRef in (self.trip?.members) ?? [] {
+            
+            UserController().getUser(from: memberRef) { user in
+                if let user = user {
+                    self.tripMembers!.append(user)
+                }
+                
+            }
+        }
         
         UserController().getDocumentReference(for: currentUser!) { currentUserRef,error  in
             guard let currentUserRef = currentUserRef else {
                 // handle the case where currentUserRef is nil
                 return
             }
-            
-            print(currentUserRef , self.trip?.admin)
+            self.currentUserRef = currentUserRef
+            // check admin priviledge
             if currentUserRef == self.trip?.admin {
+                self.isAdmin = true
                 
-                self.editButton.isEnabled = true
-            } else {
-                self.editButton.isEnabled = false
             }
         }
         
         
-        let add = UIAction(title: "Create A Post" , image: UIImage(systemName: "plus.app")) { _ in
-            self.performSegue(withIdentifier: "tripCreatePostSegue", sender: nil)
-        }
         
-        let edit = UIAction(title: "Edit Trip", image: UIImage(systemName: "pencil")) { _ in
-            // go to edit trip VC
-            
-        }
-        
-        let delete = UIAction(title: "Delete Trip", image: UIImage(systemName: "trash")) { _ in
-            
-        }
-        
-        let menu = UIMenu(title: "Menu", children: [add, edit, delete])
-        editButton.menu = menu
         
         
         // Initialize collection view layout
@@ -94,6 +92,71 @@ class TripDetailsViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // Common actions for both members and admins
+        let createPostAction = UIAlertAction(title: "Create a New Post", style: .default) { _ in
+            // Handle create post action
+            self.performSegue(withIdentifier: "tripCreatePostSegue", sender: nil)
+        }
+        
+        let seeMembersAction = UIAlertAction(title: "See Trip Members", style: .default) { _ in
+            // Handle see members action
+            self.performSegue(withIdentifier: "viewTripMembers", sender: nil)
+        }
+        
+        actionSheet.addAction(createPostAction)
+        actionSheet.addAction(seeMembersAction)
+        
+        if isAdmin {
+            // Actions only for admin
+            let editTripAction = UIAlertAction(title: "Edit Trip", style: .default) { _ in
+                // Handle edit trip action
+                self.performSegue(withIdentifier: "editTripSegue", sender: nil)
+            }
+            
+            actionSheet.addAction(editTripAction)
+        } else {
+            // Actions only for members
+            let leaveGroupAction = UIAlertAction(title: "Leave Group", style: .destructive) { _ in
+                let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to leave the group?", preferredStyle: .alert)
+                
+                let confirmAction = UIAlertAction(title: "Leave", style: .destructive) { _ in
+                    // Handle leave group action
+                    
+                    TripController().removeMemberFromTrip(member: self.currentUserRef!, trip: self.trip!)
+                    let tripRef = TripController().getDocumentReference(for: self.trip!)
+                    UserController().removeTripFromUser(user: self.currentUser!, tripRefToRemove: tripRef!)
+                    
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
+                confirmationAlert.addAction(confirmAction)
+                confirmationAlert.addAction(cancelAction)
+                
+                self.present(confirmationAlert, animated: true, completion: nil)
+            }
+            
+            actionSheet.addAction(leaveGroupAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+        
+        // Present the action sheet
+        if let popoverController = actionSheet.popoverPresentationController {
+            popoverController.barButtonItem = editButton
+        }
+        present(actionSheet, animated: true, completion: nil)
+    }
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showMapSegue"){
             let mapVC = segue.destination as! TripMapViewController
@@ -118,6 +181,15 @@ class TripDetailsViewController: UIViewController {
         }else if (segue.identifier == "editTripSegue"){
             let editTripVC = segue.destination as! UpdateTripTableViewController
             editTripVC.selectedTrip = trip
+            editTripVC.tripMembers = self.tripMembers ?? []
+            if isAdmin{
+                editTripVC.mode = .edit
+            }
+        }else if (segue.identifier == "viewTripMembers"){
+            let viewMembersVC = segue.destination as! ViewMembersTableViewController
+            viewMembersVC.members = self.tripMembers
+
+
         }
     }
 }

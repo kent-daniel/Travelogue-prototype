@@ -94,11 +94,14 @@ class LoginViewController: UIViewController {
    
     func setUpBackgroundImage() {
         let httpsUrl = "https://source.unsplash.com/random/600x900/?sky"
+        self.loginPageImage.showLoadingAnimation()
         ImageManager.downloadImage(from: httpsUrl) { (image, error) in
             if let img = image {
                 self.loginPageImage.image = img
+                self.loginPageImage.hideLoadingAnimation()
             } else {
                 print("Error downloading image: \(error?.localizedDescription ?? "unknown error")")
+                self.loginPageImage.hideLoadingAnimation()
             }
         }
     }

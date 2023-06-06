@@ -29,6 +29,8 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
         // Ensure the search bar is always visible.
         navigationItem.hidesSearchBarWhenScrolling = false
         
+        tableView.register(UINib(nibName: "MemberTableViewCell", bundle: nil), forCellReuseIdentifier: "membersCell")
+        tableView.rowHeight = 100
         
         
     }
@@ -80,14 +82,26 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath)
-        
-        // Get the member at the current index path
+        let cell = tableView.dequeueReusableCell(withIdentifier: "membersCell", for: indexPath) as! MemberTableViewCell
         let member = members[indexPath.row]
+        cell.MemberName.text = member.name
+        cell.memberEmail.text = member.email
         
-        // Set the cell's text label to the member's email
-        cell.textLabel?.text = member.email
+        cell.memberProfileImage.image = UIImage(systemName: "person.circle.fill") // Set default image initially
         
+        if let profileImgUrl = member.profileImgUrl {
+            cell.memberProfileImage.showLoadingAnimation() // Show spinner
+            
+            ImageManager.downloadImage(from: profileImgUrl) { profileImage, error in
+                cell.memberProfileImage.hideLoadingAnimation() // Hide spinner
+                
+                if let error = error {
+                    print("Error downloading image: \(error.localizedDescription)")
+                } else if let profileImage = profileImage {
+                    cell.memberProfileImage.image = profileImage
+                }
+            }
+        }
         
         return cell
     }
@@ -100,7 +114,7 @@ class MembersSearchTableViewController: UITableViewController , UISearchBarDeleg
            delegate?.passMembers(members: [selectedMember])
            
            // Go back to the previous screen
-           navigationController?.popViewController(animated: false)
+           navigationController?.popViewController(animated: true)
        }
     
     
