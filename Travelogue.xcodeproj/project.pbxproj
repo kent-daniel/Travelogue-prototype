@@ -20,7 +20,6 @@
 		843047992A2E176B00AD0EBA /* POICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843047972A2E176B00AD0EBA /* POICollectionViewCell.swift */; };
 		8430479A2A2E176B00AD0EBA /* POICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843047982A2E176B00AD0EBA /* POICollectionViewCell.xib */; };
 		8430479C2A2EC77600AD0EBA /* ViewMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430479B2A2EC77600AD0EBA /* ViewMembersTableViewController.swift */; };
-		844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511DA2A011EF70068E2CB /* NavigationHelper.swift */; };
 		844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */; };
 		844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844511E72A016AB00068E2CB /* TripDetailsViewController.swift */; };
 		8445EAB32A21D44300581E93 /* hideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */; };
@@ -106,7 +105,6 @@
 		843047972A2E176B00AD0EBA /* POICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICollectionViewCell.swift; sourceTree = "<group>"; };
 		843047982A2E176B00AD0EBA /* POICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = POICollectionViewCell.xib; sourceTree = "<group>"; };
 		8430479B2A2EC77600AD0EBA /* ViewMembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMembersTableViewController.swift; sourceTree = "<group>"; };
-		844511DA2A011EF70068E2CB /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		844511E52A015AD50068E2CB /* MembersSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersSearchTableViewController.swift; sourceTree = "<group>"; };
 		844511E72A016AB00068E2CB /* TripDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewController.swift; sourceTree = "<group>"; };
 		8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hideKeyboardExtension.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 		844511D72A011DA50068E2CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				844511DA2A011EF70068E2CB /* NavigationHelper.swift */,
 				8453A83F2A1244DB00BDBCC6 /* ImageManager.swift */,
 				84EF58C22A1DD52D00024615 /* DateParser.swift */,
 				8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */,
@@ -574,7 +571,6 @@
 				8453A8332A12289100BDBCC6 /* TripMapViewController.swift in Sources */,
 				84D994CD29FFE85B0057B8C8 /* SignUpViewController.swift in Sources */,
 				843047962A2C7CCE00AD0EBA /* HomeViewModel.swift in Sources */,
-				844511DB2A011EF70068E2CB /* NavigationHelper.swift in Sources */,
 				84C5154129F9D8E000B2902B /* TripTableViewController.swift in Sources */,
 				84743E1F2A26439E001B2676 /* ProfilePageViewController.swift in Sources */,
 				843047992A2E176B00AD0EBA /* POICollectionViewCell.swift in Sources */,

@@ -10,23 +10,8 @@ import UIKit
 
 class NavigationHelper {
     
+  
     
-    static func navigateToLogin(from viewController: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let loginVC = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController else {
-            return
-        }
-        loginVC.navigationItem.hidesBackButton=true
-        viewController.navigationController?.pushViewController(loginVC, animated: true)
-    }
-    static func navigateToHomeController(from viewController: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeTabbarViewController else {
-            return
-        }
-        homeVC.navigationItem.hidesBackButton=true
-        viewController.navigationController?.pushViewController(homeVC, animated: true)
-    }
     static func navigateToPostController(from viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let postVC = storyboard.instantiateViewController(withIdentifier: "CreatePostViewController") as? CreatePostViewController else {

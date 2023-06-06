@@ -87,14 +87,14 @@ class ServicesController:NSObject{
             }
         }.resume()
     }
-    static func fetchNearbyPOI(latitude: Double, longitude: Double, completion: @escaping ([PlaceData]?, Error?) -> Void) {
+    static func fetchNearbyPOI(latitude: Double, longitude: Double, kinds:String , limit:Int, completion: @escaping ([PlaceData]?, Error?) -> Void) {
         let apiKey = "5ae2e3f221c38a28845f05b628153fc97ecf60f9af695433a4f53100"
         let radius = 5000 // 5KM
-        let limit = 15
-        let kinds = "urban_environment,foods,shops"
+        let limit = limit
+        let kinds = kinds
         let rate = 1
         
-        let urlString = "https://api.opentripmap.com/0.1/en/places/radius?apikey=\(apiKey)&lat=\(latitude)&lon=\(longitude)&radius=\(radius)&limit=\(limit)&kinds=\("urban_environment,foods,shops")&rate=\(1)"
+        let urlString = "https://api.opentripmap.com/0.1/en/places/radius?apikey=\(apiKey)&lat=\(latitude)&lon=\(longitude)&radius=\(radius)&limit=\(limit)&kinds=\(kinds)&rate=\(1)"
         
         guard let url = URL(string: urlString) else {
             // Handle invalid URL
@@ -136,35 +136,7 @@ class ServicesController:NSObject{
 //    }
 
     
-    static func reverseGeoCode(lat: Double, lng: Double, completion: @escaping (String?) -> Void) {
-        let geocoder = CLGeocoder()
-        let location = CLLocation(latitude: lat, longitude: lng)
-        print(location)
+    
 
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if let error = error {
-                print("Reverse geocoding error: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-
-            if let placemark = placemarks?.first {
-                // Access the address properties from the placemark
-                let address = "\(placemark.thoroughfare ?? ""), \(placemark.locality ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
-
-                print("Reverse geocoded address: \(address)")
-                completion(address)
-            } else {
-                completion(nil)
-            }
-        }
-    }
-
-
-    static func constructGoogleMapsLink(address: String, latitude: Double, longitude: Double) -> String {
-        let encodedAddress = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let url = "https://www.google.com/maps/search/?api=1&query=\(encodedAddress)&query_place_id=&query_loc=\(latitude),\(longitude)"
-        return url
-    }
 
 }

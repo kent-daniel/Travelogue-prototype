@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 import CoreLocation
 import LinkPresentation
 
@@ -6,7 +7,8 @@ class HomePageViewController: UIViewController {
     let locationManager = CLLocationManager()
     var lat: Double?
     var long: Double?
-    var POIRichLinks: [String] = []
+    var POIList: [POI]? = [POI]()
+    @IBOutlet weak var POICollectionView: UICollectionView!
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var weatherTemp: UILabel!
@@ -14,7 +16,7 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var placeName: UILabel!
     @IBOutlet weak var weatherDataContainer: UIView!
     
-    @IBOutlet weak var POICollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,11 @@ class HomePageViewController: UIViewController {
         
         POICollectionView.dataSource = self
         POICollectionView.delegate = self
-        // Register your custom collection view cell class
-        POICollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "POICollectionCell")
+        let nib = UINib(nibName: "POICollectionViewCell", bundle: nil)
+        POICollectionView.register(nib, forCellWithReuseIdentifier: "POICollectionCell")
+        
+        POICollectionView.clipsToBounds = false
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,14 +59,20 @@ extension HomePageViewController: CLLocationManagerDelegate {
             self.long = coordinate.longitude
             print("Latitude: \(coordinate.latitude), Longitude: \(coordinate.longitude)")
             
-//            HomeViewModel.getPOIRichLinks(lat: self.lat!, long: self.long!) { richLinks in
-//                // Update the UI with rich links
-//                DispatchQueue.main.async {
-//                    self.POIRichLinks = richLinks
-//                    self.POICollectionView.reloadData()
-//                }
-//            }
             
+            
+            HomeViewModel.getPOINearby(lat: self.lat!, long: self.long!){ POIlist,err  in
+                for poi in POIlist ?? []{
+                    
+                    self.POIList?.append(poi)
+                    
+                }
+                DispatchQueue.main.async {
+                    self.POICollectionView.reloadData()
+                    
+                }
+            }
+
             ServicesController.fetchWeatherData(latitude: self.lat!, longitude: self.long!) { result in
                 switch result {
                 case .success(let weatherData):
@@ -125,36 +136,44 @@ extension HomePageViewController: CLLocationManagerDelegate {
 
 extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return POIRichLinks.count
+        return POIList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "POICollectionCell", for: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "POICollectionCell", for: indexPath) as! POICollectionViewCell
         
-        let richLink = POIRichLinks[indexPath.item]
-        
-        // Create a LPLinkView instance
-        let linkView = LPLinkView()
-        linkView.frame = cell.bounds
-        
-        if let url = URL(string: richLink) {
-            // Fetch the link metadata
-            let provider = LPMetadataProvider()
-            provider.startFetchingMetadata(for: url) { metadata, error in
-                if let metadata = metadata {
-                    // Display the link preview in the LPLinkView
-                    linkView.metadata = metadata
-                    
-                    DispatchQueue.main.async {
-                        // Add the LPLinkView to the cell's content view
-                        cell.contentView.addSubview(linkView)
-                    }
-                }
-            }
-        }
+        let poi = POIList![indexPath.item]
+        cell.placename.text = poi.name
+        cell.address.text = poi.address
+        cell.distance.text = "\(String(describing: poi.distance)) km away"
+        cell.placeType.text = poi.type
         
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            guard let poi = POIList?[indexPath.item], let latitude = poi.latitude, let longitude = poi.longitude else {
+                return
+            }
+            
+            let alertController = UIAlertController(title: "Get Directions", message: "Do you want to get directions to \(poi.name ?? "")?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            let openAction = UIAlertAction(title: "Open Maps", style: .default) { _ in
+                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let placemark = MKPlacemark(coordinate: coordinate)
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = poi.name
+                
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
+                mapItem.openInMaps(launchOptions: launchOptions)
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(openAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)

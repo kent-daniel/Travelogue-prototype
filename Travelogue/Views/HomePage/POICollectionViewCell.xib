@@ -11,17 +11,53 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="POICollectionViewCell" customModule="Travelogue" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="260" height="226"/>
+            <rect key="frame" x="0.0" y="0.0" width="287" height="228"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="260" height="226"/>
+                <rect key="frame" x="0.0" y="0.0" width="287" height="228"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kL-FP-9gH">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="226"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <rect key="frame" x="0.0" y="1" width="287" height="226"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNd-2z-fcu">
+                                <rect key="frame" x="27" y="97.333333333333329" width="175" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.6 km away" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pk-6h-otg">
+                                <rect key="frame" x="26.999999999999993" y="137.66666666666666" width="94.333333333333314" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍴" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3g9-a7-fdB">
+                                <rect key="frame" x="27" y="54.000000000000007" width="26" height="26.333333333333336"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placename" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2F-ev-d7A">
+                                <rect key="frame" x="63" y="54" width="175" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="S2F-ev-d7A" firstAttribute="leading" secondItem="9kL-FP-9gH" secondAttribute="leading" constant="63" id="2K3-db-eiB"/>
+                            <constraint firstAttribute="trailing" secondItem="S2F-ev-d7A" secondAttribute="trailing" constant="49" id="Fga-aL-202"/>
+                            <constraint firstAttribute="trailing" secondItem="vNd-2z-fcu" secondAttribute="trailing" constant="85" id="NRL-ei-NeY"/>
+                            <constraint firstItem="5Pk-6h-otg" firstAttribute="top" secondItem="vNd-2z-fcu" secondAttribute="bottom" constant="20" id="Pbj-6h-Yr7"/>
+                            <constraint firstItem="5Pk-6h-otg" firstAttribute="leading" secondItem="9kL-FP-9gH" secondAttribute="leading" constant="27" id="QoL-bw-3rE"/>
+                            <constraint firstItem="S2F-ev-d7A" firstAttribute="top" secondItem="9kL-FP-9gH" secondAttribute="top" constant="54" id="Vb2-pH-VA9"/>
+                            <constraint firstItem="3g9-a7-fdB" firstAttribute="leading" secondItem="9kL-FP-9gH" secondAttribute="leading" constant="27" id="Wsu-MA-ZOn"/>
                             <constraint firstAttribute="height" constant="226" id="cQ8-ZZ-YBw"/>
+                            <constraint firstItem="vNd-2z-fcu" firstAttribute="top" secondItem="3g9-a7-fdB" secondAttribute="bottom" constant="17" id="fPB-cA-9fi"/>
+                            <constraint firstItem="vNd-2z-fcu" firstAttribute="leading" secondItem="9kL-FP-9gH" secondAttribute="leading" constant="27" id="fzs-jW-A2d"/>
+                            <constraint firstItem="3g9-a7-fdB" firstAttribute="top" secondItem="9kL-FP-9gH" secondAttribute="top" constant="54" id="nED-Zw-zLx"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -32,12 +68,22 @@
                 <constraint firstItem="9kL-FP-9gH" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="rLk-Cb-qjJ"/>
                 <constraint firstItem="9kL-FP-9gH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wQq-ZT-6wS"/>
             </constraints>
-            <size key="customSize" width="260" height="226"/>
-            <point key="canvasLocation" x="192.36641221374046" y="74.647887323943664"/>
+            <size key="customSize" width="287" height="228"/>
+            <connections>
+                <outlet property="POIcontainer" destination="9kL-FP-9gH" id="gbR-3s-dFV"/>
+                <outlet property="address" destination="vNd-2z-fcu" id="7yg-f8-Zi9"/>
+                <outlet property="distance" destination="5Pk-6h-otg" id="3Fo-0r-siO"/>
+                <outlet property="placeType" destination="3g9-a7-fdB" id="GQ7-qg-gg2"/>
+                <outlet property="placename" destination="S2F-ev-d7A" id="jfU-id-Cyn"/>
+            </connections>
+            <point key="canvasLocation" x="229.7709923664122" y="73.943661971830991"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

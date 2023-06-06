@@ -922,8 +922,8 @@
                                     <constraint firstItem="0Ee-mw-KAq" firstAttribute="leading" secondItem="FqZ-gg-VIW" secondAttribute="leading" constant="8" id="r0u-eu-ei8"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wL3-pW-2I3">
-                                <rect key="frame" x="20" y="247" width="390" height="167"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wL3-pW-2I3">
+                                <rect key="frame" x="20" y="271" width="390" height="167"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="167" id="AoF-0j-Qol"/>
@@ -935,7 +935,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SXg-F0-VUb">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SXg-F0-VUb" customClass="POICollectionViewCell" customModule="Travelogue" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="19.666666666666668" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P0s-bu-lH4">
@@ -945,6 +945,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby Points Of Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-UI-4h2">
+                                <rect key="frame" x="20" y="242" width="206" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rbf-Al-HME"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -953,16 +959,18 @@
                             <constraint firstItem="CJi-m1-BSp" firstAttribute="leading" secondItem="rbf-Al-HME" secondAttribute="leading" constant="20" id="FUa-Rh-mxO"/>
                             <constraint firstItem="CJi-m1-BSp" firstAttribute="top" secondItem="rbf-Al-HME" secondAttribute="top" constant="25" id="QCw-Gp-xQS"/>
                             <constraint firstItem="FqZ-gg-VIW" firstAttribute="top" secondItem="rbf-Al-HME" secondAttribute="top" constant="41" id="RKM-A8-PSI"/>
+                            <constraint firstItem="wL3-pW-2I3" firstAttribute="top" secondItem="r1v-UI-4h2" secondAttribute="bottom" constant="8" symbolic="YES" id="YiP-fk-4bQ"/>
                             <constraint firstItem="rbf-Al-HME" firstAttribute="trailing" secondItem="CJi-m1-BSp" secondAttribute="trailing" constant="20" id="a7R-jQ-fct"/>
                             <constraint firstItem="wL3-pW-2I3" firstAttribute="leading" secondItem="rbf-Al-HME" secondAttribute="leading" constant="20" id="evg-y2-V4O"/>
-                            <constraint firstItem="wL3-pW-2I3" firstAttribute="top" secondItem="CJi-m1-BSp" secondAttribute="bottom" constant="40" id="hU5-Sa-jXM"/>
+                            <constraint firstItem="r1v-UI-4h2" firstAttribute="leading" secondItem="rbf-Al-HME" secondAttribute="leading" constant="20" id="gXX-vz-TgT"/>
+                            <constraint firstItem="r1v-UI-4h2" firstAttribute="top" secondItem="CJi-m1-BSp" secondAttribute="bottom" constant="35" id="jbj-dy-U0Q"/>
                             <constraint firstItem="FqZ-gg-VIW" firstAttribute="leading" secondItem="rbf-Al-HME" secondAttribute="leading" constant="39" id="sJt-J8-bz4"/>
                             <constraint firstItem="rbf-Al-HME" firstAttribute="trailing" secondItem="wL3-pW-2I3" secondAttribute="trailing" constant="20" id="y1G-zx-ltQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="IN8-XL-ut5"/>
                     <connections>
-                        <outlet property="POICollectionView" destination="wL3-pW-2I3" id="SJt-1p-UsD"/>
+                        <outlet property="POICollectionView" destination="wL3-pW-2I3" id="mC7-P0-mFj"/>
                         <outlet property="placeName" destination="0Ee-mw-KAq" id="4eZ-um-AwK"/>
                         <outlet property="weatherDataContainer" destination="FqZ-gg-VIW" id="1Tc-ps-Uzn"/>
                         <outlet property="weatherImage" destination="CJi-m1-BSp" id="cPm-H2-hz2"/>
