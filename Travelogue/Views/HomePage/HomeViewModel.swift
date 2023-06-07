@@ -6,7 +6,7 @@ struct POI {
     var name: String?
     var latitude: Double?
     var longitude: Double?
-    var distance: Double?
+    var distance: String?
 }
 
 class HomeViewModel: NSObject {
@@ -76,7 +76,7 @@ class HomeViewModel: NSObject {
         
         let distance = place.properties.dist
         
-        newPOI.distance = Double(String(format: "%.2f", distance / 1000)) ?? 0.0
+        newPOI.distance = String(format: "%.2f", distance / 1000)
 
         
         let xid = place.properties.xid

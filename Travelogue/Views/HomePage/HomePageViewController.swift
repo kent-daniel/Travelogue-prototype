@@ -18,6 +18,7 @@ class HomePageViewController: UIViewController {
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +37,9 @@ class HomePageViewController: UIViewController {
         let nib = UINib(nibName: "POICollectionViewCell", bundle: nil)
         POICollectionView.register(nib, forCellWithReuseIdentifier: "POICollectionCell")
         
+        
         POICollectionView.clipsToBounds = false
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,22 +59,21 @@ extension HomePageViewController: CLLocationManagerDelegate {
             let coordinate = location.coordinate
             self.lat = coordinate.latitude
             self.long = coordinate.longitude
-            print("Latitude: \(coordinate.latitude), Longitude: \(coordinate.longitude)")
             
-            
-            
+            var fetchPOIList:[POI]? = []
             HomeViewModel.getPOINearby(lat: self.lat!, long: self.long!){ POIlist,err  in
                 for poi in POIlist ?? []{
                     
-                    self.POIList?.append(poi)
+                    fetchPOIList?.append(poi)
                     
                 }
                 DispatchQueue.main.async {
+                    self.POIList = fetchPOIList
                     self.POICollectionView.reloadData()
                     
                 }
             }
-
+            
             ServicesController.fetchWeatherData(latitude: self.lat!, longitude: self.long!) { result in
                 switch result {
                 case .success(let weatherData):
@@ -105,7 +106,7 @@ extension HomePageViewController: CLLocationManagerDelegate {
                     print("Error fetching weather data: \(error.localizedDescription)")
                 }
             }
-
+            
         }
     }
     
@@ -142,38 +143,44 @@ extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "POICollectionCell", for: indexPath) as! POICollectionViewCell
         
-        let poi = POIList![indexPath.item]
+        
+        // Access the element in the array
+        let poi = self.POIList![indexPath.row]
+        // Update the cell with the poi data
         cell.placename.text = poi.name
         cell.address.text = poi.address
-        cell.distance.text = "\(String(describing: poi.distance)) km away"
+        cell.distance.text = "\(poi.distance!) km away"
         cell.placeType.text = poi.type
         
         return cell
+        
+        
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            guard let poi = POIList?[indexPath.item], let latitude = poi.latitude, let longitude = poi.longitude else {
-                return
-            }
-            
-            let alertController = UIAlertController(title: "Get Directions", message: "Do you want to get directions to \(poi.name ?? "")?", preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            let openAction = UIAlertAction(title: "Open Maps", style: .default) { _ in
-                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                let placemark = MKPlacemark(coordinate: coordinate)
-                let mapItem = MKMapItem(placemark: placemark)
-                mapItem.name = poi.name
-                
-                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
-                mapItem.openInMaps(launchOptions: launchOptions)
-            }
-            
-            alertController.addAction(cancelAction)
-            alertController.addAction(openAction)
-            
-            present(alertController, animated: true, completion: nil)
+        guard let poi = POIList?[indexPath.item], let latitude = poi.latitude, let longitude = poi.longitude else {
+            return
         }
+        
+        let alertController = UIAlertController(title: "Get Directions", message: "Do you want to get directions to \(poi.name ?? "")?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let openAction = UIAlertAction(title: "Open Maps", style: .default) { _ in
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let placemark = MKPlacemark(coordinate: coordinate)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = poi.name
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(openAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)

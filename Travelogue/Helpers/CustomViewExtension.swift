@@ -10,9 +10,9 @@ extension UIView {
     
     @discardableResult
     func applyShadow() -> Self {
-        layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 5)
+        layer.shadowColor = UIColor.tertiarySystemBackground.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 10
         layer.masksToBounds = false
         return self
@@ -64,7 +64,7 @@ extension UIView {
         loadingView.tag = loadingTag
         addSubview(loadingView)
         
-        let animationDuration: TimeInterval = 0.8
+        let animationDuration: TimeInterval = 0.5
         let transitionColor = CABasicAnimation(keyPath: "backgroundColor")
         transitionColor.fromValue = UIColor.gray.cgColor
         transitionColor.toValue = UIColor.white.cgColor

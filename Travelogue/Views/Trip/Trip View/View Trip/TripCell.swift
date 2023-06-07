@@ -20,7 +20,7 @@ class TripCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        tripContainer.applyBorderRadius(radius: 30).applyBorder(color: .systemGray )
+        tripContainer.applyBorderRadius(radius: 15).applyShadow()
         adminProfile.applyBorderRadius(radius: adminProfile.frame.width/2)
     }
 

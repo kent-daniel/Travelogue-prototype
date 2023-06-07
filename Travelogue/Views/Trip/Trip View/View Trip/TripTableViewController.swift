@@ -19,7 +19,8 @@ class TripTableViewController: UITableViewController {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.currentUser = appDelegate?.currentUser
-        
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show("loading trips ...")
         fetchTrips()
         let nib = UINib(nibName: "TripCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "TripCell")
@@ -52,7 +53,11 @@ class TripTableViewController: UITableViewController {
                         .sorted { $0.key < $1.key } // Sort sections by date in descending order
                         .map { $0.value } // Extract the grouped trips
                     
-                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        ProgressHUD.dismiss()
+                    }
+                    
                 } else {
                     // Handle the error case
                     print("Error retrieving trips")
