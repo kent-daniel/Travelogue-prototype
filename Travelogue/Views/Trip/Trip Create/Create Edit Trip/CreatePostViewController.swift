@@ -10,7 +10,7 @@ import Photos
 import ProgressHUD
 
 
-class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate, UITextFieldDelegate {
     private var selectedImage: UIImage?
     var currentUser:User?
     var userTrips:[Trip]?
@@ -96,13 +96,19 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Set the text field delegates
+        postTitle.delegate = self
+        Description.delegate = self
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.currentUser = appDelegate?.currentUser
         
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        }
    
     // MARK: request permission
     func requestPhotoLibraryAccessPermission() {

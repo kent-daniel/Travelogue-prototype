@@ -11,6 +11,7 @@ import ProgressHUD
 class UpdateTripTableViewController: UITableViewController , SearchLocationViewControllerDelegate , memberListDelegate , ItineraryListEditDelegate{
     func passMemberList(_ members: [User]?) {
         self.tripMembers = members!
+        membersCount.text = "\(self.tripMembers.count) members"
     }
     
     func didSelectLocation(_ location: Location) {
@@ -42,6 +43,13 @@ class UpdateTripTableViewController: UITableViewController , SearchLocationViewC
                 newMemberRefs.append(userRef!)
             }
         }
+        // FIXME: seperate create & edit trip
+        
+        // create trip
+        
+        // edit trip
+        
+        
         // create / update trip
         if self.mode == .create{
             ProgressHUD.animationType = .singleCirclePulse

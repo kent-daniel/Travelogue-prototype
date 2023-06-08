@@ -20,6 +20,7 @@ class ItineraryListTableViewController: UITableViewController, CreateItineraryDe
         // Add long press gesture recognizer
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
         tableView.addGestureRecognizer(longPressGesture)
+        tableView.rowHeight = 115
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,13 +69,14 @@ class ItineraryListTableViewController: UITableViewController, CreateItineraryDe
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItineraryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItineraryCell", for: indexPath) as! ItineraryTableViewCell
         
         let sectionTitle = sections[indexPath.section]
         if let itineraries = itineraryDict[sectionTitle] {
             let itinerary = itineraries[indexPath.row]
-            cell.textLabel?.text = itinerary.title // Display the trip address in the cell
-            cell.detailTextLabel?.text = itinerary.address
+            cell.itineraryName?.text = itinerary.title // Display the trip address in the cell
+            cell.itineraryLocation?.text = "📍\(itinerary.address!)"
+            cell.itineraryDesc.text = itinerary.desc
         }
         
         return cell
@@ -155,7 +157,6 @@ class ItineraryListTableViewController: UITableViewController, CreateItineraryDe
     func didCreateItinerary(itinerary: Itinerary) {
         itineraryList.append(itinerary)
         prepareData()
-        print(itineraryList)
         tableView.reloadData()
     }
     // MARK: - Saving itinerary list
@@ -168,7 +169,7 @@ class ItineraryListTableViewController: UITableViewController, CreateItineraryDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createItinerarySegue" {
-            let createItineraryVC = segue.destination as! CreateItineraryViewController
+            let createItineraryVC = segue.destination as! CreateItineraryTableViewController
             createItineraryVC.delegate = self
         }
     }

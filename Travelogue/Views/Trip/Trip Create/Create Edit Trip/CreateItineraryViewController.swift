@@ -6,9 +6,9 @@
 //
 
 import UIKit
-protocol CreateItineraryDelegate: NSObjectProtocol{
-    func didCreateItinerary(itinerary: Itinerary)
-}
+//protocol CreateItineraryDelegate: NSObjectProtocol{
+//    func didCreateItinerary(itinerary: Itinerary)
+//}
 class CreateItineraryViewController: UIViewController , SearchLocationViewControllerDelegate{
     var itinerary = Itinerary()
     var address:String?
