@@ -26,17 +26,19 @@
 		8445EAB62A21DD7A00581E93 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 8445EAB52A21DD7A00581E93 /* ProgressHUD */; };
 		84469C132A31705600726867 /* CreateItineraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84469C122A31705600726867 /* CreateItineraryTableViewController.swift */; };
 		84469C152A31796800726867 /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84469C142A31796800726867 /* ItineraryTableViewCell.swift */; };
+		84469C172A3338AE00726867 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84469C162A3338AE00726867 /* PostsViewController.swift */; };
+		84469C1A2A334A8600726867 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84469C182A334A8600726867 /* PostTableViewCell.swift */; };
+		84469C1B2A334A8600726867 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84469C192A334A8600726867 /* PostTableViewCell.xib */; };
+		84469C1D2A3360D700726867 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84469C1C2A3360D700726867 /* FavouritesViewController.swift */; };
 		844D6AA72A0BE4A8007055CD /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */; };
 		844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AA82A0BE816007055CD /* CreatePostViewController.swift */; };
 		844D6AAB2A0BF713007055CD /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AAA2A0BF713007055CD /* StorageController.swift */; };
 		844D6AAD2A0BF97E007055CD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D6AAC2A0BF97E007055CD /* Post.swift */; };
 		8453A8262A12277E00BDBCC6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8252A12277E00BDBCC6 /* HomePageViewController.swift */; };
-		8453A8292A1227D000BDBCC6 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8282A1227D000BDBCC6 /* PostListViewController.swift */; };
 		8453A8312A12288100BDBCC6 /* TripInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */; };
 		8453A8332A12289100BDBCC6 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8322A12289100BDBCC6 /* TripMapViewController.swift */; };
 		8453A8392A122E4000BDBCC6 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8382A122E4000BDBCC6 /* Itinerary.swift */; };
 		8453A8402A1244DB00BDBCC6 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A83F2A1244DB00BDBCC6 /* ImageManager.swift */; };
-		8453A8422A12537C00BDBCC6 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453A8412A12537C00BDBCC6 /* PostCell.swift */; };
 		846EAA932A1312C600506714 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846EAA922A1312C600506714 /* SearchLocationViewController.swift */; };
 		846EAA962A132B1900506714 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 846EAA952A132B1900506714 /* GoogleMaps */; };
 		846EAA982A132B1900506714 /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 846EAA972A132B1900506714 /* GoogleMapsBase */; };
@@ -109,17 +111,19 @@
 		8445EAB22A21D44300581E93 /* hideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hideKeyboardExtension.swift; sourceTree = "<group>"; };
 		84469C122A31705600726867 /* CreateItineraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryTableViewController.swift; sourceTree = "<group>"; };
 		84469C142A31796800726867 /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
+		84469C162A3338AE00726867 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		84469C182A334A8600726867 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		84469C192A334A8600726867 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		84469C1C2A3360D700726867 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		844D6AA62A0BE4A8007055CD /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
 		844D6AA82A0BE816007055CD /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		844D6AAA2A0BF713007055CD /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 		844D6AAC2A0BF97E007055CD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8453A8252A12277E00BDBCC6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
-		8453A8282A1227D000BDBCC6 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		8453A8302A12288100BDBCC6 /* TripInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoViewController.swift; sourceTree = "<group>"; };
 		8453A8322A12289100BDBCC6 /* TripMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
 		8453A8382A122E4000BDBCC6 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		8453A83F2A1244DB00BDBCC6 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		8453A8412A12537C00BDBCC6 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		846EAA922A1312C600506714 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		84708BDC2A2393BA00F5F990 /* CustomTextfieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfieldExtension.swift; sourceTree = "<group>"; };
 		84708BDE2A2397C900F5F990 /* CustomButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonExtension.swift; sourceTree = "<group>"; };
@@ -292,10 +296,11 @@
 			children = (
 				844511E72A016AB00068E2CB /* TripDetailsViewController.swift */,
 				84C5154029F9D8E000B2902B /* TripTableViewController.swift */,
-				8453A8412A12537C00BDBCC6 /* PostCell.swift */,
 				84743E202A264FA6001B2676 /* TripCell.swift */,
 				84743E212A264FA7001B2676 /* TripCell.xib */,
 				8430479B2A2EC77600AD0EBA /* ViewMembersTableViewController.swift */,
+				84469C182A334A8600726867 /* PostTableViewCell.swift */,
+				84469C192A334A8600726867 /* PostTableViewCell.xib */,
 			);
 			path = "View Trip";
 			sourceTree = "<group>";
@@ -303,7 +308,8 @@
 		8453A82E2A12284C00BDBCC6 /* View Trip Posts */ = {
 			isa = PBXGroup;
 			children = (
-				8453A8282A1227D000BDBCC6 /* PostListViewController.swift */,
+				84469C162A3338AE00726867 /* PostsViewController.swift */,
+				84469C1C2A3360D700726867 /* FavouritesViewController.swift */,
 			);
 			path = "View Trip Posts";
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				84F3372329F94B1D00A3BD9C /* Assets.xcassets in Resources */,
 				8430479A2A2E176B00AD0EBA /* POICollectionViewCell.xib in Resources */,
 				84F3371E29F94B1D00A3BD9C /* Main.storyboard in Resources */,
+				84469C1B2A334A8600726867 /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,8 +586,8 @@
 				8411A3EC2A27271800B43B3F /* MemberListViewController.swift in Sources */,
 				84F3375829F966E900A3BD9C /* AuthController.swift in Sources */,
 				844511E82A016AB00068E2CB /* TripDetailsViewController.swift in Sources */,
+				84469C1A2A334A8600726867 /* PostTableViewCell.swift in Sources */,
 				84C5154829F9F1E400B2902B /* Trip.swift in Sources */,
-				8453A8422A12537C00BDBCC6 /* PostCell.swift in Sources */,
 				84F3372129F94B1D00A3BD9C /* Travelogue.xcdatamodeld in Sources */,
 				84EF58BD2A1C978B00024615 /* ItineraryListTableViewController.swift in Sources */,
 				8453A8312A12288100BDBCC6 /* TripInfoViewController.swift in Sources */,
@@ -592,17 +599,18 @@
 				8411A3F52A2B48B500B43B3F /* MemberTableViewCell.swift in Sources */,
 				84708BDF2A2397C900F5F990 /* CustomButtonExtension.swift in Sources */,
 				84708BDD2A2393BA00F5F990 /* CustomTextfieldExtension.swift in Sources */,
+				84469C172A3338AE00726867 /* PostsViewController.swift in Sources */,
 				84469C152A31796800726867 /* ItineraryTableViewCell.swift in Sources */,
 				84F3371729F94B1D00A3BD9C /* AppDelegate.swift in Sources */,
 				844511E62A015AD50068E2CB /* MembersSearchTableViewController.swift in Sources */,
 				8411A3F82A2B92ED00B43B3F /* ServicesController.swift in Sources */,
 				8411A3F22A2B14EA00B43B3F /* AlertHelper.swift in Sources */,
+				84469C1D2A3360D700726867 /* FavouritesViewController.swift in Sources */,
 				84C5154A29FA004500B2902B /* TripController.swift in Sources */,
 				840672152A243BD000C53AEE /* CustomViewExtension.swift in Sources */,
 				8453A8262A12277E00BDBCC6 /* HomePageViewController.swift in Sources */,
 				84743E222A264FA7001B2676 /* TripCell.swift in Sources */,
 				84EF58C32A1DD52D00024615 /* DateParser.swift in Sources */,
-				8453A8292A1227D000BDBCC6 /* PostListViewController.swift in Sources */,
 				844D6AA92A0BE816007055CD /* CreatePostViewController.swift in Sources */,
 				84F3371929F94B1D00A3BD9C /* SceneDelegate.swift in Sources */,
 				8445EAB32A21D44300581E93 /* hideKeyboardExtension.swift in Sources */,

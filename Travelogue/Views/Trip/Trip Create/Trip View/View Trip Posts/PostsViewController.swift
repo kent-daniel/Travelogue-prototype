@@ -1,25 +1,17 @@
 //
-//  TripInfoViewController.swift
+//  PostsViewController.swift
 //  Travelogue
 //
-//  Created by kent daniel on 15/5/2023.
+//  Created by kent daniel on 9/6/2023.
 //
 
 import UIKit
 
-class TripInfoViewController: UIViewController {
-    var trip:Trip?
-    @IBOutlet weak var tripName: UILabel!
-    
-    @IBOutlet weak var tripLoc: UILabel!
-    @IBOutlet weak var tripDate: UILabel!
-    @IBOutlet weak var tripDesc: UILabel!
+class PostsViewController: UIViewController {
+    var posts :[Post]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        tripName.text = trip?.name
-        tripLoc.text = trip?.locationName
-        tripDate.text = DateParser.stringFromDate((trip?.date)!)
-        tripDesc.text = trip?.tripDesc
+        print(posts)
         // Do any additional setup after loading the view.
     }
     

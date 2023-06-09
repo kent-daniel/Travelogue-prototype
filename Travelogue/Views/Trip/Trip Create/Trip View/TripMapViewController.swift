@@ -9,12 +9,12 @@ import UIKit
 import MapKit
 
 class TripMapViewController: UIViewController  , MKMapViewDelegate{
-
     @IBOutlet weak var Map: MKMapView!
+    
     var locations: [(name: String, coordinate: CLLocationCoordinate2D, address: String, imageURL: String?)]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        Map.delegate = self
+//        Map.delegate = self
         plotPinsOnMap()
         centerMapOnLocations()
         // Do any additional setup after loading the view.

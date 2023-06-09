@@ -10,6 +10,7 @@ import CoreLocation
 import Firebase
 
 class TripDetailsViewController: UIViewController, didFinishEditingTrip {
+    
     func didEditTrip(_ trip: Trip) {
         self.trip = trip
         self.title = trip.name
@@ -17,24 +18,37 @@ class TripDetailsViewController: UIViewController, didFinishEditingTrip {
     }
     
     
+
+    
+    @IBOutlet weak var postTableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     var trip:Trip?
     var currentUser:User?
     var currentUserRef:DocumentReference?
-    var collectionView: UICollectionView!
+    
     var posts: [Post]?
     var isAdmin: Bool = false
     var tripMembers:[User]? = [User]()
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.currentUser = appDelegate?.currentUser
         // set the title of the view controller to the trip name
         self.title = trip?.name
-        self.posts = trip?.posts
-        print(self.trip?.members)
-        print("\(trip?.id) id")
         
+        // Sort posts based on date in descending order
+        self.posts = trip!.posts!.sorted(by: { $0.dateTime! > $1.dateTime! })
+        
+        postTableView.dataSource = self
+        postTableView.delegate = self
+        
+        postTableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        postTableView.rowHeight = 450
+        
+        print(self.posts?.count)
         for memberRef in (self.trip?.members) ?? [] {
             UserController().getUser(from: memberRef) { user in
                 if let user = user {
@@ -57,44 +71,18 @@ class TripDetailsViewController: UIViewController, didFinishEditingTrip {
             }
         }
         
-        
-        
-        
-        
-        // Initialize collection view layout
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
-        layout.itemSize = CGSize(width: 300, height: 300)
-        
-        // Initialize collection view
-        collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(PostCell.self, forCellWithReuseIdentifier: "PostCell")
-        collectionView.backgroundColor = .white
-        
-        // Add collection view to view hierarchy
-        view.addSubview(collectionView)
-        
-        // Add constraints to position and size collection view
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.centerYAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
     }
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         TripController().getAllTripPosts(for: self.trip!){ posts,error in
             self.posts = posts
-            self.collectionView.reloadData()
+            
+            // Sort posts based on date in descending order
+            self.posts = self.posts!.sorted(by: { $0.dateTime! > $1.dateTime! })
+            
+            DispatchQueue.main.async {
+                self.postTableView.reloadData()
+            }
         }
         
     }
@@ -199,28 +187,114 @@ class TripDetailsViewController: UIViewController, didFinishEditingTrip {
             viewMembersVC.members = self.tripMembers
 
 
+        }else if (segue.identifier == "tripInfoSegue"){
+            let tripInfoVC = segue.destination as! TripInfoViewController
+            tripInfoVC.trip = self.trip
         }
     }
 }
 
 
-
-// Implement collection view data source and delegate methods
-extension TripDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts?.count ?? 0 // Replace with your actual number of items
+extension TripDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of rows in the table view
+        return self.posts?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCell
-        
-        let post = posts![indexPath.item]
-        cell.configure(with: post)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
+        tapGesture.numberOfTapsRequired = 2
+        cell.addGestureRecognizer(tapGesture)
+        cell.isUserInteractionEnabled = true
+        cell.tag = indexPath.row
+
+        // Configure the cell with post data
+        let post = self.posts![indexPath.row]
+            print(post)
+            cell.postTitle.text = post.title
+            cell.postDesc.text = post.desc ?? ""
+            cell.DateTime.text = DateParser.stringFromDate(post.dateTime! , format:"yyyy-MM-dd HH:mm")
+            cell.profileImage.image = UIImage(systemName: "person.circle.fill")
+            cell.profileImage.showLoadingAnimation()
+            cell.postImage.showLoadingAnimation()
+            ImageManager.downloadImage(from: post.url!){
+                image , err in
+                cell.postImage.hideLoadingAnimation()
+                cell.postImage.image = image
+            }
+            UserController().getUser(from: post.poster!){
+                user in
+                cell.username.text = user?.name
+                ImageManager.downloadImage(from: user!.profileImgUrl!){
+                    image,error  in
+
+                    cell.profileImage.hideLoadingAnimation() // Hide spinner
+
+                    if let error = error {
+                        print("Error downloading image: \(error.localizedDescription)")
+                    } else if let profileImage = image {
+                        cell.profileImage.image = profileImage
+                    }
+
+                }
+            
+            
+        }
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Handle row selection
+        if let itinerary = trip?.posts![indexPath.row] {
+            // Do something with the selected itinerary
+            print("Selected itinerary: \(itinerary)")
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        guard let cell = gesture.view as? PostTableViewCell else { return }
+        let index = cell.tag
+        guard let post = posts?[index] else { return }
+        
+        let alertController = UIAlertController(title: "Save Post", message: "Do you want to save this post?", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+            
+            
+            // Add the new post ID to the array
+            let tripRef = TripController().getDocumentReference(for: self.trip!)
+            let postRef = tripRef?.collection("posts").document(post.id!)
+            // Convert postRef to a string
+            let postRefString = postRef?.path
+
+            // Retrieve existing saved post references from UserDefaults
+            var savedPostRefs = UserDefaults.standard.array(forKey: "SavedPostRefs") as? [String] ?? []
+
+            // Add the new post reference string to the array
+            savedPostRefs.append(postRefString!)
+
+            // Save the updated array to UserDefaults
+            UserDefaults.standard.set(savedPostRefs, forKey: "SavedPostRefs")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 
 }
+
+
 
 

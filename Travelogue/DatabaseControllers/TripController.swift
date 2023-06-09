@@ -264,6 +264,25 @@ class TripController: NSObject {
         
     }
     
+    func getPost(byReference postReference: DocumentReference, completion: @escaping (Post?, Error?) -> Void) {
+        postReference.getDocument { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+            } else if let snapshot = snapshot, snapshot.exists, let data = snapshot.data() {
+                do {
+                    let post = try snapshot.data(as: Post.self)
+                    completion(post, nil)
+                } catch let error {
+                    print("Error decoding post: \(error.localizedDescription)")
+                    completion(nil, error)
+                }
+            } else {
+                completion(nil, nil)
+            }
+        }
+    }
+
+    
     // get all trip posts
     func getAllTripPosts(for trip: Trip, completion: @escaping ([Post]?, Error?) -> Void) {
         
