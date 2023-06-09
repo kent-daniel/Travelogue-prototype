@@ -62,7 +62,21 @@ class TripController: NSObject {
         }
     
     //MARK: create or update trip
-    func createOrUpdateTrip(name: String, desc:String , date:Date , locationName: String, countryCode:String ,  admin: DocumentReference, members:[DocumentReference]?=[] ,itineraries:[Itinerary]?=[] , posts:[Post]?=[], mode:Mode , completion: @escaping (Trip?) -> Void) {
+    // MARK: - Update Trip
+    func updateTrip(id: String, updatedTrip: Trip, completion: @escaping (Trip?) -> Void) {
+        do {
+            let tripRef = try tripCollectionRef!.document(id)
+            try tripRef.setData(from: updatedTrip, merge: true)
+            
+            completion(updatedTrip)
+        } catch {
+            print("Failed to update trip: \(error.localizedDescription)")
+            completion(nil)
+        }
+    }
+    
+    //MARK: create trip
+    func createTrip(name: String, desc: String, date: Date, locationName: String, countryCode: String, admin: DocumentReference, members: [DocumentReference]? = [], itineraries: [Itinerary]? = [], posts: [Post]? = [], completion: @escaping (Trip?) -> Void) {
         let trip = Trip()
         trip.name = name
         trip.members = members
@@ -74,24 +88,17 @@ class TripController: NSObject {
         trip.countryCode = countryCode
         
         do {
-            // Add trip to the "trips" collection
-            if mode == .create{
-                let tripRef = try tripCollectionRef!.addDocument(from: trip)
-                trip.id = tripRef.documentID
-                updateItinerariesInTrip(itineraries: itineraries ?? [], trip: trip)
-            }else if mode == .edit{
-                let tripRef = try getDocumentReference(for: trip)
-                try tripRef?.setData(from: trip)
-                updateItinerariesInTrip(itineraries: itineraries ?? [], trip: trip)
-            }
-            
+            let tripRef = try tripCollectionRef!.addDocument(from: trip)
+            trip.id = tripRef.documentID
+            createItinerariesInTrip(itineraries: itineraries , trip: trip)
             completion(trip)
-            
         } catch {
             print("Failed to create trip: \(error.localizedDescription)")
             completion(nil)
         }
     }
+    
+    
 
     
     // MARK: get doc reference
@@ -137,24 +144,44 @@ class TripController: NSObject {
         }
     }
     
-    func updateItinerariesInTrip(itineraries: [Itinerary], trip: Trip) {
+    // TODO: create itineraries in trip
+    func createItinerariesInTrip(itineraries: [Itinerary]? = [] , trip:Trip ){
+        // Loop through the itineraries and create a child collection for each itinerary
+        for itinerary in itineraries ?? [] {
+            // Generate a new document reference for the child document
+            let childDocumentRef = tripCollectionRef?.document(trip.id!).collection("itineraries").document()
+
+            // Set the data for the child document
+            do {
+                try childDocumentRef!.setData(from: itinerary)
+            } catch let error {
+                print("Error creating itinerary: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // MARK: update itineraries
+    func updateItinerariesInTrip(itineraries: [Itinerary], trip: Trip, completion: @escaping ([Itinerary]?, Error?) -> Void) {
         guard let tripRef = getDocumentReference(for: trip) else {
+            completion(nil, nil)
             return
         }
         
         // Create a subcollection reference for itineraries under the trip
         let itinerariesCollectionRef = tripRef.collection("itineraries")
         
-        // Delete existing itineraries in the subcollection
+        let batch = itinerariesCollectionRef.firestore.batch()
+        
+        // Delete each existing itinerary document
         itinerariesCollectionRef.getDocuments { (snapshot, error) in
             if let error = error {
-                print("Error retrieving existing itineraries: \(error.localizedDescription)")
+                completion(nil, error)
                 return
             }
             
             // Delete each existing itinerary document
             snapshot?.documents.forEach { document in
-                itinerariesCollectionRef.document(document.documentID).delete()
+                batch.deleteDocument(document.reference)
             }
             
             // Add the new itineraries to the subcollection
@@ -169,9 +196,35 @@ class TripController: NSObject {
                 }
             }
             
-            print("Itineraries overwritten successfully")
+            // Commit the batch operation
+            batch.commit { (error) in
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    // Fetch the updated itineraries from Firestore
+                    itinerariesCollectionRef.getDocuments { (snapshot, error) in
+                        if let error = error {
+                            completion(nil, error)
+                            return
+                        }
+                        
+                        var updatedItineraries: [Itinerary] = []
+                        
+                        // Convert the Firestore documents back to Itinerary objects
+                        snapshot?.documents.forEach { document in
+                            if let itinerary = try? document.data(as: Itinerary.self) {
+                                updatedItineraries.append(itinerary)
+                            }
+                        }
+                        
+                        completion(updatedItineraries, nil)
+                    }
+                }
+            }
         }
     }
+
+
 
     // MARK: add post to trip
     func addPostToTrip(post: Post?, trip: Trip, by currentUser: User) {

@@ -12,6 +12,7 @@ protocol CreateItineraryDelegate: NSObjectProtocol{
 class CreateItineraryTableViewController: UITableViewController, SearchLocationViewControllerDelegate {
     func didSelectLocation(_ location: Location) {
         locationName.text = location.name
+        coor = location.coordinate
         address = location.address
     }
     var itinerary = Itinerary()
@@ -42,8 +43,7 @@ class CreateItineraryTableViewController: UITableViewController, SearchLocationV
             itinerary.coordinate = coor ?? []
             itinerary.desc = itineraryDesc.text ?? ""
             
-            print(itinerary.dateTime)
-            
+                        
             self.delegate?.didCreateItinerary(itinerary: itinerary)
             self.navigationController?.popViewController(animated: true)
         } else {

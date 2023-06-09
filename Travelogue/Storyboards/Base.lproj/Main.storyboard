@@ -336,7 +336,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hhl-zy-zkY">
-                                <rect key="frame" x="52" y="106" width="327" height="32"/>
+                                <rect key="frame" x="52" y="63" width="327" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Posts"/>
@@ -1089,7 +1089,7 @@
         <!--Trip Nav Flow-->
         <scene sceneID="1jt-kQ-xMD">
             <objects>
-                <navigationController title="Trip Nav Flow" automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" customClass="TripNavigationViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="Trip Nav Flow" automaticallyAdjustsScrollViewInsets="NO" id="bHZ-ty-ILD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Trips" image="book.closed" catalog="system" selectedImage="book.closed.fill" id="EN3-QX-aqf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZu-e7-Agk">
@@ -1322,7 +1322,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7q-hz-iHV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7q-hz-iHV">
                                                     <rect key="frame" x="20" y="13" width="76" height="42"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1474,7 +1474,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mEo-Hi-wAC"/>
         <segue reference="5Be-74-qyF"/>
-        <segue reference="gsL-tx-Rm9"/>
+        <segue reference="9fG-bZ-CFe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book.closed" catalog="system" width="115" height="128"/>

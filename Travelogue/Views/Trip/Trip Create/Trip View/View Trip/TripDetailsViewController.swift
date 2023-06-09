@@ -9,7 +9,13 @@ import UIKit
 import CoreLocation
 import Firebase
 
-class TripDetailsViewController: UIViewController {
+class TripDetailsViewController: UIViewController, didFinishEditingTrip {
+    func didEditTrip(_ trip: Trip) {
+        self.trip = trip
+        self.title = trip.name
+        print(trip)
+    }
+    
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     var trip:Trip?
@@ -27,9 +33,9 @@ class TripDetailsViewController: UIViewController {
         self.title = trip?.name
         self.posts = trip?.posts
         print(self.trip?.members)
+        print("\(trip?.id) id")
         
         for memberRef in (self.trip?.members) ?? [] {
-            
             UserController().getUser(from: memberRef) { user in
                 if let user = user {
                     self.tripMembers!.append(user)
@@ -185,6 +191,9 @@ class TripDetailsViewController: UIViewController {
             if isAdmin{
                 editTripVC.mode = .edit
             }
+            
+            editTripVC.delegate = self
+            
         }else if (segue.identifier == "viewTripMembers"){
             let viewMembersVC = segue.destination as! ViewMembersTableViewController
             viewMembersVC.members = self.tripMembers

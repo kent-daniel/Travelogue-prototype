@@ -8,6 +8,10 @@
 import UIKit
 import Firebase
 import ProgressHUD
+protocol didFinishEditingTrip: NSObjectProtocol {
+    func didEditTrip(_ trip: Trip)
+}
+
 class UpdateTripTableViewController: UITableViewController , SearchLocationViewControllerDelegate , memberListDelegate , ItineraryListEditDelegate{
     func passMemberList(_ members: [User]?) {
         self.tripMembers = members!
@@ -21,6 +25,7 @@ class UpdateTripTableViewController: UITableViewController , SearchLocationViewC
     
     func didFinishEditingItineraryList(itineraries: [Itinerary]) {
         self.tripItineraries = itineraries
+        print(self.tripItineraries)
     }
     
     @IBAction func saveTripChanges(_ sender: Any) {
@@ -43,78 +48,107 @@ class UpdateTripTableViewController: UITableViewController , SearchLocationViewC
                 newMemberRefs.append(userRef!)
             }
         }
-        // FIXME: seperate create & edit trip
+        
         
         // create trip
-        
-        // edit trip
-        
-        
-        // create / update trip
         if self.mode == .create{
             ProgressHUD.animationType = .singleCirclePulse
             ProgressHUD.show("Creating New Trip")
-            TripController().createOrUpdateTrip(name: tripNameText.text!, desc: tripDescText.text!, date: tripDate.date, locationName: locationName.text!, countryCode: (locationCode ?? selectedTrip?.countryCode) ?? "AU", admin: self.currentUserRef!,members: newMemberRefs ,mode:.create){ [self]
-                trip in
+            TripController().createTrip(name: tripNameText.text!, desc: tripDescText.text!, date: tripDate.date, locationName: locationName.text!, countryCode: (locationCode ?? selectedTrip?.countryCode) ?? "AU", admin: self.currentUserRef!,members: newMemberRefs,itineraries: self.tripItineraries){
+                newTrip in
                 // add trip to current user
-                let tripRef = TripController().getDocumentReference(for: trip!)
+                let tripRef = TripController().getDocumentReference(for: newTrip!)
                 UserController().addTripToUser(user: self.currentUser!, newTripRef: tripRef!)
-                
-                
-                
-                
-                
                     // Add trip to all the invited members
                 for member in self.tripMembers {
                     if member != self.currentUser {
                         UserController().addTripToUser(user: member, newTripRef: tripRef!)
                     }
                 }
-                
-                
-                
                 DispatchQueue.main.async {
                     ProgressHUD.dismiss()
                     self.navigationController?.popViewController(animated: true)
                 }
-                
                 
             }
         }else if self.mode == .edit{
             ProgressHUD.animationType = .singleCirclePulse
             ProgressHUD.show("Updating Trip")
-            TripController().createOrUpdateTrip(name: tripNameText.text!, desc: tripDescText.text!, date: tripDate.date, locationName: locationName.text!, countryCode: (locationCode ?? selectedTrip?.countryCode) ?? "AU", admin: self.currentUserRef!, mode:.edit){ [self] trip in
-                
-                
-                
-                let tripRef = TripController().getDocumentReference(for: self.selectedTrip!)
-                for memberRef in selectedTrip!.members!{
-                    // remove all members from the original trip
-                    TripController().removeMemberFromTrip(member: memberRef, trip: self.selectedTrip!)
-                    // remove the trip from all the original members
-                    UserController().getUser(from: memberRef) {user in
-                        UserController().removeTripFromUser(user: user!, tripRefToRemove: tripRef!)
+
+            let updatedTrip = Trip()
+            updatedTrip.admin = currentUserRef
+            updatedTrip.id = selectedTrip?.id
+            updatedTrip.name = tripNameText.text
+            updatedTrip.tripDesc = tripDescText.text
+            updatedTrip.locationName = locationName.text
+            updatedTrip.countryCode = locationCode
+            updatedTrip.date = tripDate.date
+
+            var memberRefs: [DocumentReference] = []
+
+            // Use a DispatchGroup to wait for all member references to be retrieved
+            let group = DispatchGroup()
+
+
+            for mem in self.tripMembers {
+                    group.enter()
+                    UserController().getDocumentReference(for: mem) { mref, err in
+                        if let mref = mref {
+                            memberRefs.append(mref)
+                        }
+                        group.leave()
                     }
                 }
-               
-                // add trip to all users
-                for member in tripMembers{
-                    UserController().addTripToUser(user: member,newTripRef: tripRef!)
+
+            group.notify(queue: .main) {
+                    updatedTrip.members = memberRefs
+                    
+                    let tripRef = TripController().getDocumentReference(for: self.selectedTrip!)
+                    
+                    // Remove trip from original members
+                    for membRef in self.selectedTrip!.members ?? [] {
+                        UserController().getUser(from: membRef) { user in
+                            if let user = user {
+                                UserController().removeTripFromUser(user: user, tripRefToRemove: tripRef!)
+                            }
+                        }
+                    }
+                    
+                    // Add trip to updated members
+                    for memberRef in updatedTrip.members ?? [] {
+                        UserController().getUser(from: memberRef) { member in
+                            if let member = member {
+                                UserController().addTripToUser(user: member, newTripRef: tripRef!)
+                            }
+                        }
+                    }
+                    
+                    // Call the updateTrip function
+                TripController().updateTrip(id: updatedTrip.id!, updatedTrip: updatedTrip) { trip in
+                        if let trip = trip {
+                            
+                            TripController().updateItinerariesInTrip(itineraries: self.tripItineraries , trip: updatedTrip){ itineraries,err in
+                                trip.itineraries = itineraries
+                                ProgressHUD.dismiss()
+                                self.delegate?.didEditTrip(trip)
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                        } else {
+                            ProgressHUD.dismiss()
+                            // Handle failure
+                        }
+                    }
                 }
-                TripController().updateTripMembers(members: newMemberRefs, trip: trip!)
-                
-                
-                DispatchQueue.main.async {
-                    ProgressHUD.dismiss()
-                    self.navigationController?.popViewController(animated: true)
-                }
-                
-                
-            }
+
+
+            print(selectedTrip?.id)
+
             
         }
         
-       
+        
         
     }
     @IBOutlet weak var tripNameText: UITextView!
@@ -130,6 +164,7 @@ class UpdateTripTableViewController: UITableViewController , SearchLocationViewC
     var mode: TripController.Mode = .create
     var currentUser:User?
     var currentUserRef:DocumentReference?
+    weak var delegate: didFinishEditingTrip?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,57 +221,7 @@ class UpdateTripTableViewController: UITableViewController , SearchLocationViewC
         return 6
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     
-     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -245,6 +230,7 @@ class UpdateTripTableViewController: UITableViewController , SearchLocationViewC
             searchLocationVC.delegate = self
         }else if (segue.identifier == "tripCreateItinerarySegue"){
             let itineraryListVC = segue.destination as! ItineraryListTableViewController
+            itineraryListVC.itineraryList = self.tripItineraries
             itineraryListVC.delegate = self
         }else if (segue.identifier == "tripAddMembersSegue"){
             let addMembersVC = segue.destination as! MemberListViewController
